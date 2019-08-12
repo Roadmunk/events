@@ -37,9 +37,14 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/proto
+
+      - run:
+          name: Login to NPM
+          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
+
       - run:
           name: Publish to NPM
-          command: npm publish
+          command: npm publish --access public
 
 workflows:
   version: 2
@@ -49,3 +54,8 @@ workflows:
       - publish:
           requires:
             - compile
+          filters:
+            tags:
+              only: /.*/
+            branches:
+              ignore: /.*/
