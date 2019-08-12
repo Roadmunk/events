@@ -36,7 +36,7 @@ jobs:
 
     steps:
       - attach_workspace:
-          at: .
+          at: ~/proto
       - run:
           name: Publish to NPM
           command: npm publish
