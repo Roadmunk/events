@@ -56,6 +56,6 @@ workflows:
             - compile
           filters:
             tags:
-              only: /.*/
+              only: /^v.*/
             branches:
               ignore: /.*/
