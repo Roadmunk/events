@@ -15,7 +15,6 @@ jobs:
       - run: 
           name: Compile protobufs
           command: |
-            mkdir -p $HOME/proto
             protoc account_updated.proto --js_out=import_style=commonjs,binary:$HOME/proto --proto_path=$HOME/proto/
             protoc user_updated.proto --js_out=import_style=commonjs,binary:$HOME/proto --proto_path=$HOME/proto/
 
@@ -27,7 +26,7 @@ jobs:
       - persist_to_workspace:
           root: $HOME/proto
           paths:
-            - .
+            - ./*
 
   publish:
     <<: *defaults
