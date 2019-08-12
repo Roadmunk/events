@@ -2,7 +2,7 @@
 version: 2
 
 defaults: &defaults
-  working_directory: ~/proto
+  working_directory: /root/proto
 
 jobs:
   compile:
@@ -15,14 +15,14 @@ jobs:
       - run: 
           name: Compile protobufs
           command: |
-            mkdir -p $HOME/proto/dist
-            protoc account_updated.proto --js_out=import_style=commonjs,binary:$HOME/proto/dist --proto_path=$HOME/proto/
-            protoc user_updated.proto --js_out=import_style=commonjs,binary:$HOME/proto/dist --proto_path=$HOME/proto/
+            mkdir -p /root/proto/dist
+            protoc account_updated.proto --js_out=import_style=commonjs,binary:/root/proto/dist --proto_path=/root/proto/
+            protoc user_updated.proto --js_out=import_style=commonjs,binary:/root/proto/dist --proto_path=/root/proto/
 
       # As an early step, we'll save artifacts instead
       # of pushing them to npm.
       - store_artifacts:
-          path: $HOME/proto/dist
+          path: /root/proto/dist
 
       - persist_to_workspace:
           root: /root/proto
