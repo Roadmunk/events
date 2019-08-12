@@ -21,10 +21,10 @@ jobs:
       # As an early step, we'll save artifacts instead
       # of pushing them to npm.
       - store_artifacts:
-          path: $HOME/proto
+          path: ~/proto
 
       - persist_to_workspace:
-          root: $HOME/proto
+          root: ~/proto
           paths:
             - ./*
 
