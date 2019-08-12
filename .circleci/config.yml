@@ -5,13 +5,13 @@ jobs:
     docker:
       - image: grpc/go
 
-    working_directory: ~/proto
+    working_directory: $HOME/proto
     steps:
       - checkout
       - run: 
           name: Compile protobufs
           command: |
-            protoc --js_out=import_style=commonjs,binary:/tmp/proto ~/proto/*.proto
+            protoc --js_out=import_style=commonjs,binary:/tmp/proto $HOME/proto/*.proto
 
       # As an early step, we'll save artifacts instead
       # of pushing them to npm.
