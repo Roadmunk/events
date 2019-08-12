@@ -1,0 +1,17 @@
+# Compile protobufs and push them to npm
+version: 2
+jobs:
+  compile:
+    docker:
+      - image: grpc/go
+
+    working_directory: ~/proto
+    steps:
+      - checkout
+      - run: 
+          name: Compile protobufs
+          command: |
+            protoc --js_out=import_style=commonjs,binary:/tmp/proto ~/proto/*.proto
+
+      - store_artifacts:
+          path: /tmp/proto
