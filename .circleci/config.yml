@@ -14,6 +14,12 @@ jobs:
             protoc --js_out=import_style=commonjs,binary:/tmp/proto ~/proto/*.proto
 
       # As an early step, we'll save artifacts instead
-      # of pushing them to npm
+      # of pushing them to npm.
       - store_artifacts:
           path: /tmp/proto
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - compile
