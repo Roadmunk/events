@@ -50,7 +50,10 @@ workflows:
   version: 2
   build:
     jobs:
-      - compile
+      - compile:
+          filters:
+            tags:
+              only: /^v.*/
       - publish:
           requires:
             - compile
