@@ -11,7 +11,7 @@ jobs:
       - run: 
           name: Compile protobufs
           command: |
-            protoc --js_out=import_style=commonjs,binary:/tmp/proto --proto_path=$HOME/proto/
+            protoc *.proto --js_out=import_style=commonjs,binary:/tmp/proto --proto_path=$HOME/proto/
 
       # As an early step, we'll save artifacts instead
       # of pushing them to npm.
