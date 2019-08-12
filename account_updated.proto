@@ -1,0 +1,13 @@
+syntax = "proto3";
+package roadmunk;
+
+message AccountUpdatedMessage {
+  string id = 1;
+  string company_name = 2;
+  bool use_strict_password_strength = 3;
+  int32 min_password_length = 4;
+  bool is_single_sign_on_only = 5;
+  string default_authentication_provider_type = 6;
+  bool should_publish_require_sso = 7;
+  string billing_email = 8;
+}
