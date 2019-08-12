@@ -1,27 +1,51 @@
 # Compile protobufs and push them to npm
 version: 2
+
+defaults: &defaults
+  working_directory: ~/proto
+
 jobs:
   compile:
+    <<: *defaults
     docker:
       - image: grpc/go
 
-    working_directory: $HOME/proto
     steps:
       - checkout
       - run: 
           name: Compile protobufs
           command: |
-            mkdir -p /tmp/proto
-            protoc account_updated.proto --js_out=import_style=commonjs,binary:/tmp/proto --proto_path=$HOME/proto/
-            protoc user_updated.proto --js_out=import_style=commonjs,binary:/tmp/proto --proto_path=$HOME/proto/
+            mkdir -p $HOME/proto/dist
+            protoc account_updated.proto --js_out=import_style=commonjs,binary:$HOME/proto/dist --proto_path=$HOME/proto/
+            protoc user_updated.proto --js_out=import_style=commonjs,binary:$HOME/proto/dist --proto_path=$HOME/proto/
 
       # As an early step, we'll save artifacts instead
       # of pushing them to npm.
       - store_artifacts:
-          path: /tmp/proto
+          path: /root/proto/dist
+
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
+
+  publish:
+    <<: *defaults
+    docker:
+      - image: circleci/node:11
+
+    steps:
+      - attach_workspace:
+          at: ~/proto
+      - run:
+          name: Publish to NPM
+          command: npm publish
 
 workflows:
   version: 2
   build:
     jobs:
       - compile
+      - publish:
+          requires:
+            - compile
