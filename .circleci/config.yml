@@ -15,6 +15,7 @@ jobs:
       - run: 
           name: Compile protobufs
           command: |
+            mkdir -p $HOME/proto/dist
             protoc account_updated.proto --js_out=import_style=commonjs,binary:$HOME/proto/dist --proto_path=$HOME/proto/
             protoc user_updated.proto --js_out=import_style=commonjs,binary:$HOME/proto/dist --proto_path=$HOME/proto/
 
