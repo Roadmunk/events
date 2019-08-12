@@ -46,4 +46,6 @@ workflows:
   build:
     jobs:
       - compile
-      - publish
+      - publish:
+          requires:
+            - compile
