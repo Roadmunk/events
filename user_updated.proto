@@ -12,7 +12,7 @@ message UserUpdatedMessage {
   string job_title = 8;
   string avatar_image = 9;
   string account_role = 10;
-  int64 inactive_on = 11;
+  string inactive_on = 11;
 
   message OnboardingFlag {
     string current_signup_step = 1;
