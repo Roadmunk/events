@@ -22,4 +22,5 @@ message UserUpdatedMessage {
   OnboardingFlag onboarding_flags = 12;
   string invited_by = 13;
   string default_authentication_provider_type = 14;
+  string deployment = 15;
 }
