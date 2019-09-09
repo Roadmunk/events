@@ -10,4 +10,5 @@ message AccountUpdatedMessage {
   string default_authentication_provider_type = 6;
   bool should_publish_require_sso = 7;
   string billing_email = 8;
+  string deployment = 9;
 }
