@@ -1,0 +1,12 @@
+syntax = "proto3";
+package roadmunk;
+
+message SignupAccountRequest {
+  string email       = 1;
+  string userID      = 2;
+  string accountID   = 3;
+  string deployment  = 4;
+  string accountRole = 5;
+  string source      = 6;
+  string hash        = 7;
+}
