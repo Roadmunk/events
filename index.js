@@ -6,6 +6,6 @@ const { AccountSignupCompleted } = require('./dist/account_signup_pb');
 module.exports = {
   AccountUpdatedMessage,
   UserUpdatedMessage,
-	SignupAccountRequest,
-	AccountSignupCompleted,
+  SignupAccountRequest,
+  AccountSignupCompleted,
 };
