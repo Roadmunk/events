@@ -2,9 +2,9 @@ syntax = "proto3";
 package roadmunk;
 
 message AccountSignupCompleted {
-  string userID      = 1;
-  string accountID   = 2;
-  string deployment  = 3;
-  string accountRole = 4;
-  string source      = 5;
+  string user_id      = 1;
+  string account_id   = 2;
+  string deployment   = 3;
+  string account_role = 4;
+  string source       = 5;
 }
