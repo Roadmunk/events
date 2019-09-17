@@ -6,7 +6,7 @@ message SignupAccountRequest {
   string user_id     = 2;
   string account_id  = 3;
   string deployment  = 4;
-  string accountRole = 5;
+  string account_role = 5;
   string source      = 6;
   string hash        = 7;
 }
