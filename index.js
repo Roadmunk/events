@@ -2,6 +2,7 @@ const { UserUpdatedMessage } = require('./dist/user_updated_pb');
 const { AccountUpdatedMessage } = require('./dist/account_updated_pb');
 const { SignupAccountRequest } = require('./dist/signup_account_pb');
 const { AccountSignupCompleted } = require('./dist/account_signup_pb');
+const { SendEmailRequest } = require('./dist/send_email_pb');
 
 module.exports = {
   // Account Updated
@@ -22,4 +23,10 @@ module.exports = {
   SIGNUP_ACCOUNT_FAILURE: 'signup-account-failure',
   SignupAccountRequest,
   AccountSignupCompleted,
+
+  // Send email
+  SEND_EMAIL: 'send-email',
+  SEND_EMAIL_SUCCESS: 'send-email-success',
+  SEND_EMAIL_FAILURE: 'send-email-failure',
+  SendEmailRequest,
 };

@@ -1,0 +1,9 @@
+syntax = "proto3";
+package roadmunk;
+
+message SendEmailRequest {
+  string deployment = 1;
+  string template   = 2;
+  // JSON String containing the params for the template
+  string params     = 3;
+}
