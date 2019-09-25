@@ -6,5 +6,5 @@ message SendEmailRequest {
   string template   = 2;
   // JSON String containing the params for the template
   string params     = 3;
-  string emailID    = 4;
+  string email_id   = 4;
 }
