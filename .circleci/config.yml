@@ -15,13 +15,7 @@ jobs:
       - run: 
           name: Compile protobufs
           command: |
-            mkdir -p $HOME/proto/dist
-            protoc account_updated.proto --js_out=import_style=commonjs,binary:$HOME/proto/dist --proto_path=$HOME/proto/
-            protoc user_updated.proto --js_out=import_style=commonjs,binary:$HOME/proto/dist --proto_path=$HOME/proto/
-            protoc signup_account.proto --js_out=import_style=commonjs,binary:$HOME/proto/dist --proto_path=$HOME/proto/
-            protoc account_signup.proto --js_out=import_style=commonjs,binary:$HOME/proto/dist --proto_path=$HOME/proto/
-            protoc send_email.proto --js_out=import_style=commonjs,binary:$HOME/proto/dist --proto_path=$HOME/proto/
-            protoc idea_roadmap_item_attach.proto --js_out=import_style=commonjs,binary:$HOME/proto/dist --proto_path=$HOME/proto/
+            npm run build
 
       # As an early step, we'll save artifacts instead
       # of pushing them to npm.
