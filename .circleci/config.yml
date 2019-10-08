@@ -15,7 +15,8 @@ jobs:
       - run: 
           name: Compile protobufs
           command: |
-            npm run build
+            mkdir -p $HOME/proto/dist
+            protoc --js_out=import_style=commonjs,binary:dist *.proto
 
       # As an early step, we'll save artifacts instead
       # of pushing them to npm.
