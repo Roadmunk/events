@@ -4,6 +4,7 @@ const { SignupAccountRequest } = require('./dist/signup_account_pb');
 const { AccountSignupCompleted } = require('./dist/account_signup_pb');
 const { SendEmailRequest } = require('./dist/send_email_pb');
 const { IdeaRoadmapItemAttachMessage } = require('./dist/idea_roadmap_item_attach_pb');
+const { InviteUserRequest } = require('./dist/invite_user_pb');
 
 module.exports = {
   // Account Updated
@@ -36,4 +37,10 @@ module.exports = {
   IDEA_ROADMAP_ITEM_ATTACH_SUCCESS: 'idea-roadmap-item-attach-success',
   IDEA_ROADMAP_ITEM_ATTACH_FAILURE: 'idea-roadmap-item-attach-failure',
   IdeaRoadmapItemAttachMessage,
+
+  // Invite a user
+  INVITE_USER: 'invite-user',
+  INVITE_USER_SUCCESS: 'invite-user-success',
+  INVITE_USER_FAILURE: 'invite-user-failure',
+  InviteUserRequest,
 };
