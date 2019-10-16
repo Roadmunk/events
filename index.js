@@ -38,6 +38,12 @@ module.exports = {
   IDEA_ROADMAP_ITEM_ATTACH_FAILURE: 'idea-roadmap-item-attach-failure',
   IdeaRoadmapItemAttachMessage,
 
+  // Detach an idea from a roadmap item
+  IDEA_ROADMAP_ITEM_DETACH: 'idea-roadmap-item-detach',
+  IDEA_ROADMAP_ITEM_DETACH_SUCCESS: 'idea-roadmap-item-detach-success',
+  IDEA_ROADMAP_ITEM_DETACH_FAILURE: 'idea-roadmap-item-detach-failure',
+  IdeaRoadmapItemDetachMessage,
+
   // Invite a user
   INVITE_USER: 'invite-user',
   INVITE_USER_SUCCESS: 'invite-user-success',
