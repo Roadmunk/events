@@ -1,9 +1,9 @@
 syntax = "proto3";
 package roadmunk;
 
-message CustomersCSVUploadMessage {
-  string filelocation    = 1;
-  string user_id         = 2;
-  string account_id      = 3;
-  string deployment      = 4;
+message CustomersCSVIngestionMessage {
+  string file_location  = 1;
+  string user_id        = 2;
+  string account_id     = 3;
+  string deployment     = 4;
 }

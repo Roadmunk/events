@@ -6,7 +6,7 @@ const { SendEmailRequest } = require('./dist/send_email_pb');
 const { IdeaRoadmapItemAttachMessage } = require('./dist/idea_roadmap_item_attach_pb');
 const { IdeaRoadmapItemDetachMessage } = require('./dist/idea_roadmap_item_detach_pb');
 const { InviteUserRequest } = require('./dist/invite_user_pb');
-const { CustomersCSVUploadMessage } = require('./dist/customers_csv_upload_pb');
+const { CustomersCSVIngestionMessage } = require('./dist/customers_csv_ingestion_pb');
 
 
 module.exports = {
@@ -53,9 +53,9 @@ module.exports = {
   INVITE_USER_FAILURE: 'invite-user-failure',
   InviteUserRequest,
   
-  // Uploading a CSV for new customers
-  CUSTOMERS_CSV_UPLOAD: 'customers-csv-upload',
-  CUSTOMERS_CSV_UPLOAD_SUCCESS: 'customers-csv-upload-success',
-  CUSTOMERS_CSV_UPLOAD_FAILURE: 'customers-csv-upload-failure',
-  CustomersCSVUploadMessage,
+  // Ingesting a CSV for new customers
+  CUSTOMERS_CSV_INGESTION: 'customers-csv-ingestion',
+  CUSTOMERS_CSV_INGESTION_SUCCESS: 'customers-csv-ingestion-success',
+  CUSTOMERS_CSV_INGESTION_FAILURE: 'customers-csv-ingestion-failure',
+  CustomersCSVIngestionMessage,
 };
