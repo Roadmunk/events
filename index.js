@@ -8,7 +8,6 @@ const { IdeaRoadmapItemDetachMessage } = require('./dist/idea_roadmap_item_detac
 const { InviteUserRequest } = require('./dist/invite_user_pb');
 const { CustomersCSVIngestionMessage } = require('./dist/customers_csv_ingestion_pb');
 
-
 module.exports = {
   // Account Updated
   ACCOUNT_UPDATED: 'account-updated',
