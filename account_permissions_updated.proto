@@ -1,0 +1,21 @@
+syntax = "proto3";
+package roadmunk;
+
+message AccountPermissionsUpdatedMessage {
+  bool admin_is_fim_enabled = 1;
+  bool admin_can_comment = 2;
+  bool admin_can_edit_products = 3;
+  bool admin_can_add_customers = 4;
+  bool admin_can_edit_customers = 5;
+  bool collaborator_is_fim_enabled = 6;
+  bool collaborator_can_comment = 7;
+  bool collaborator_can_edit_products = 8;
+  bool collaborator_can_add_customers = 9;
+  bool collaborator_can_edit_customers = 10;
+  bool reviewer_is_fim_enabled = 11;
+  bool reviewer_can_comment = 12;
+  bool reviewer_can_edit_products = 13;
+  bool reviewer_can_add_customers = 14;
+  bool reviewer_can_edit_customers = 15;
+	string id = 16;
+}

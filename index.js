@@ -7,6 +7,7 @@ const { IdeaRoadmapItemAttachMessage } = require('./dist/idea_roadmap_item_attac
 const { IdeaRoadmapItemDetachMessage } = require('./dist/idea_roadmap_item_detach_pb');
 const { InviteUserRequest } = require('./dist/invite_user_pb');
 const { CustomersCSVIngestionMessage } = require('./dist/customers_csv_ingestion_pb');
+const { AccountPermissionsUpdatedMessage } = require('./dist/account_permissions_updated_pb');
 
 module.exports = {
   // Account Updated
@@ -51,10 +52,16 @@ module.exports = {
   INVITE_USER_SUCCESS: 'invite-user-success',
   INVITE_USER_FAILURE: 'invite-user-failure',
   InviteUserRequest,
-  
+
   // Ingesting a CSV for new customers
   CUSTOMERS_CSV_INGESTION: 'customers-csv-ingestion',
   CUSTOMERS_CSV_INGESTION_SUCCESS: 'customers-csv-ingestion-success',
   CUSTOMERS_CSV_INGESTION_FAILURE: 'customers-csv-ingestion-failure',
   CustomersCSVIngestionMessage,
+
+  // Account permission settings updated
+  ACCOUNT_PERMISSIONS_UPDATED: 'account-permissions-updated',
+  ACCOUNT_PERMISSIONS_UPDATED_SUCCESS: 'account-permissions-updated-success',
+  ACCOUNT_PERMISSIONS_UPDATED_FAILURE: 'account-permissions-updated-failure',
+  AccountPermissionsUpdatedMessage,
 };
