@@ -7,6 +7,8 @@ const { IdeaRoadmapItemAttachMessage } = require('./dist/idea_roadmap_item_attac
 const { IdeaRoadmapItemDetachMessage } = require('./dist/idea_roadmap_item_detach_pb');
 const { InviteUserRequest } = require('./dist/invite_user_pb');
 const { CustomersCSVIngestionMessage } = require('./dist/customers_csv_ingestion_pb');
+const { MoveUserRequest } = require('./dist/move_user_pb');
+const { MergeAccountRequest } = require('./dist/merge_account_pb');
 
 module.exports = {
   // Account Updated
@@ -57,4 +59,16 @@ module.exports = {
   CUSTOMERS_CSV_INGESTION_SUCCESS: 'customers-csv-ingestion-success',
   CUSTOMERS_CSV_INGESTION_FAILURE: 'customers-csv-ingestion-failure',
   CustomersCSVIngestionMessage,
+
+  // Moving a user to a new account
+  MOVE_USER: 'move-user',
+  MOVE_USER_SUCCESS: 'move-user-success',
+  MOVE_USER_FAILURE: 'move-user-failure',
+  MoveUserRequest,
+
+  // Merge two accounts
+  MERGE_ACCOUNT: 'merge-account',
+  MERGE_ACCOUNT_SUCCESS: 'merge-account-success',
+  MERGE_ACCOUNT_FAILURE: 'merge-account-failure',
+  MergeAccountRequest,
 };

@@ -1,0 +1,10 @@
+syntax = "proto3";
+package roadmunk;
+
+message MergeAccountRequest {
+  string source_account      = 1;
+  string destination_account = 2;
+  string modified_by_user    = 3;
+  string deployment          = 4;
+  string source              = 5;
+}
