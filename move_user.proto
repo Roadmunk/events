@@ -7,4 +7,5 @@ message MoveUserRequest {
   string destination_role    = 3;
   string modified_by_user    = 4;
   string deployment          = 5;
+  string source              = 6;
 }
