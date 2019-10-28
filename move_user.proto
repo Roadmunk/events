@@ -1,0 +1,10 @@
+syntax = "proto3";
+package roadmunk;
+
+message MoveUserRequest {
+  string user_to_move        = 1;
+  string destination_account = 2;
+  string destination_role    = 3;
+  string modified_by_user    = 4;
+  string deployment          = 5;
+}
