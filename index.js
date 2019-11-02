@@ -9,6 +9,7 @@ const { InviteUserRequest } = require('./dist/invite_user_pb');
 const { CustomersCSVIngestionMessage } = require('./dist/customers_csv_ingestion_pb');
 const { MoveUserRequest } = require('./dist/move_user_pb');
 const { MergeAccountRequest } = require('./dist/merge_account_pb');
+const { SegmentEvent } = require('./dist/segment_event_pv');
 
 module.exports = {
   // Account Updated
@@ -71,4 +72,10 @@ module.exports = {
   MERGE_ACCOUNT_SUCCESS: 'merge-account-success',
   MERGE_ACCOUNT_FAILURE: 'merge-account-failure',
   MergeAccountRequest,
+
+  // Sync with segment event
+  SEGMENT_EVENT: 'segment-event',
+  SEGMENT_EVENT_SUCCESS: 'segment-event-success',
+  SEGMENT_EVENT_FAILURE: 'segment-event-failure',
+  SegmentEvent,
 };
