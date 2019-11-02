@@ -5,6 +5,7 @@ message SegmentEvent {
   string deployment = 1;
   string user_id    = 2;
   string account_id = 3;
+  string event_name = 4;
 
   enum EventTypes {
     identify = 0;
@@ -12,8 +13,8 @@ message SegmentEvent {
     group    = 2;
   }
 
-  EventTypes event_type = 4;
+  EventTypes event_type = 5;
 
   // JSON String containing any custom properties to track
-  string custom_properties = 5;
+  string custom_properties = 6;
 }
