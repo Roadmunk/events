@@ -9,7 +9,7 @@ const { InviteUserRequest } = require('./dist/invite_user_pb');
 const { CustomersCSVIngestionMessage } = require('./dist/customers_csv_ingestion_pb');
 const { MoveUserRequest } = require('./dist/move_user_pb');
 const { MergeAccountRequest } = require('./dist/merge_account_pb');
-const { SegmentEvent } = require('./dist/segment_event_pv');
+const { SegmentEvent } = require('./dist/segment_event_pb');
 
 module.exports = {
   // Account Updated
