@@ -1,0 +1,10 @@
+syntax = "proto3";
+package roadmunk;
+
+message FeedbackUpdatedMessage {
+	string feedback_id     = 1;
+	string status          = 2;
+	string product_area_id = 3;
+  string account_id      = 4;
+  string deployment      = 5;
+}
