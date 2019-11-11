@@ -11,10 +11,8 @@ const { MoveUserRequest } = require('./dist/move_user_pb');
 const { MergeAccountRequest } = require('./dist/merge_account_pb');
 const { FeedbackUpdatedMessage } = require('./dist/feedback_updated_pb');
 const { FeedbackCommentedMessage } = require('./dist/feedback_commented_pb');
-const { IdeaCommentedMessage } = require('./dist/idea_commented_pb');
 const { ProductAreaCollaboratorsAttachedMessage } = require('./dist/product_area_collaborators_attached_pb');
 const { ProductAreaCollaboratorsDetachedMessage } = require('./dist/product_area_collaborators_detached_pb');
-const { AnalysisCreatedMessage } = require('./dist/analysis_created_pb');
 
 module.exports = {
   // Account Updated
@@ -90,12 +88,6 @@ module.exports = {
   FEEDBACK_COMMENTED_FAILURE: 'feedback-commented-failure',
   FeedbackCommentedMessage,
 
-  // New comment on idea
-  IDEA_COMMENTED: 'idea-commented',
-  IDEA_COMMENTED_SUCCESS: 'idea-commented-success',
-  IDEA_COMMENTED_FAILURE: 'idea-commented-failure',
-  IdeaCommentedMessage,
-
   // New collaborators attached to product area
   PRODUCT_AREA_COLLABORATORS_ATTACHED: 'product-area-collaborators-attached',
   PRODUCT_AREA_COLLABORATORS_ATTACHED_SUCCESS: 'product-area-collaborators-attached-success',
@@ -107,10 +99,4 @@ module.exports = {
   PRODUCT_AREA_COLLABORATORS_DETACHED_SUCCESS: 'product-area-collaborators-detached-success',
   PRODUCT_AREA_COLLABORATORS_DETACHED_FAILURE: 'product-area-collaborators-detached-failure',
   ProductAreaCollaboratorsDetachedMessage,
-
-  // New analysis (aka idea board) is created
-  ANALYSIS_CREATED: 'analysis-created',
-  ANALYSIS_CREATED_SUCCESS: 'analysis-created-success',
-  ANALYSIS_CREATED_FAILURE: 'analysis-created-failure',
-  AnalysisCreatedMessage,
 };
