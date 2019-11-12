@@ -77,13 +77,12 @@ module.exports = {
   MERGE_ACCOUNT_FAILURE: 'merge-account-failure',
   MergeAccountRequest,
 
-<<<<<<< HEAD
   // Sync with segment event
   SEGMENT_EVENT: 'segment-event',
   SEGMENT_EVENT_SUCCESS: 'segment-event-success',
   SEGMENT_EVENT_FAILURE: 'segment-event-failure',
   SegmentEvent,
-=======
+
   // Feedback updated
   FEEDBACK_UPDATED: 'feedback-updated',
   FEEDBACK_UPDATED_SUCCESS: 'feedback-updated-success',
@@ -107,5 +106,4 @@ module.exports = {
   PRODUCT_AREA_COLLABORATORS_DETACHED_SUCCESS: 'product-area-collaborators-detached-success',
   PRODUCT_AREA_COLLABORATORS_DETACHED_FAILURE: 'product-area-collaborators-detached-failure',
   ProductAreaCollaboratorsDetachedMessage,
->>>>>>> master
 };
