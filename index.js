@@ -9,6 +9,7 @@ const { InviteUserRequest } = require('./dist/invite_user_pb');
 const { CustomersCSVIngestionMessage } = require('./dist/customers_csv_ingestion_pb');
 const { MoveUserRequest } = require('./dist/move_user_pb');
 const { MergeAccountRequest } = require('./dist/merge_account_pb');
+const { SegmentEvent } = require('./dist/segment_event_pb');
 const { FeedbackUpdatedMessage } = require('./dist/feedback_updated_pb');
 const { FeedbackCommentedMessage } = require('./dist/feedback_commented_pb');
 const { ProductAreaCollaboratorsAttachedMessage } = require('./dist/product_area_collaborators_attached_pb');
@@ -76,6 +77,13 @@ module.exports = {
   MERGE_ACCOUNT_FAILURE: 'merge-account-failure',
   MergeAccountRequest,
 
+<<<<<<< HEAD
+  // Sync with segment event
+  SEGMENT_EVENT: 'segment-event',
+  SEGMENT_EVENT_SUCCESS: 'segment-event-success',
+  SEGMENT_EVENT_FAILURE: 'segment-event-failure',
+  SegmentEvent,
+=======
   // Feedback updated
   FEEDBACK_UPDATED: 'feedback-updated',
   FEEDBACK_UPDATED_SUCCESS: 'feedback-updated-success',
@@ -99,4 +107,5 @@ module.exports = {
   PRODUCT_AREA_COLLABORATORS_DETACHED_SUCCESS: 'product-area-collaborators-detached-success',
   PRODUCT_AREA_COLLABORATORS_DETACHED_FAILURE: 'product-area-collaborators-detached-failure',
   ProductAreaCollaboratorsDetachedMessage,
+>>>>>>> master
 };
