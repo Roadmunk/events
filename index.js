@@ -10,6 +10,10 @@ const { CustomersCSVIngestionMessage } = require('./dist/customers_csv_ingestion
 const { MoveUserRequest } = require('./dist/move_user_pb');
 const { MergeAccountRequest } = require('./dist/merge_account_pb');
 const { SegmentEvent } = require('./dist/segment_event_pb');
+const { FeedbackUpdatedMessage } = require('./dist/feedback_updated_pb');
+const { FeedbackCommentedMessage } = require('./dist/feedback_commented_pb');
+const { ProductAreaCollaboratorsAttachedMessage } = require('./dist/product_area_collaborators_attached_pb');
+const { ProductAreaCollaboratorsDetachedMessage } = require('./dist/product_area_collaborators_detached_pb');
 
 module.exports = {
   // Account Updated
@@ -54,7 +58,7 @@ module.exports = {
   INVITE_USER_SUCCESS: 'invite-user-success',
   INVITE_USER_FAILURE: 'invite-user-failure',
   InviteUserRequest,
-  
+
   // Ingesting a CSV for new customers
   CUSTOMERS_CSV_INGESTION: 'customers-csv-ingestion',
   CUSTOMERS_CSV_INGESTION_SUCCESS: 'customers-csv-ingestion-success',
@@ -73,9 +77,35 @@ module.exports = {
   MERGE_ACCOUNT_FAILURE: 'merge-account-failure',
   MergeAccountRequest,
 
+<<<<<<< HEAD
   // Sync with segment event
   SEGMENT_EVENT: 'segment-event',
   SEGMENT_EVENT_SUCCESS: 'segment-event-success',
   SEGMENT_EVENT_FAILURE: 'segment-event-failure',
   SegmentEvent,
+=======
+  // Feedback updated
+  FEEDBACK_UPDATED: 'feedback-updated',
+  FEEDBACK_UPDATED_SUCCESS: 'feedback-updated-success',
+  FEEDBACK_UPDATED_FAILURE: 'feedback-updated-failure',
+  FeedbackUpdatedMessage,
+
+  // New comment on feedback
+  FEEDBACK_COMMENTED: 'feedback-commented',
+  FEEDBACK_COMMENTED_SUCCESS: 'feedback-commented-success',
+  FEEDBACK_COMMENTED_FAILURE: 'feedback-commented-failure',
+  FeedbackCommentedMessage,
+
+  // New collaborators attached to product area
+  PRODUCT_AREA_COLLABORATORS_ATTACHED: 'product-area-collaborators-attached',
+  PRODUCT_AREA_COLLABORATORS_ATTACHED_SUCCESS: 'product-area-collaborators-attached-success',
+  PRODUCT_AREA_COLLABORATORS_ATTACHED_FAILURE: 'product-area-collaborators-attached-failure',
+  ProductAreaCollaboratorsAttachedMessage,
+
+  // Collaborators detached from product area
+  PRODUCT_AREA_COLLABORATORS_DETACHED: 'product-area-collaborators-detached',
+  PRODUCT_AREA_COLLABORATORS_DETACHED_SUCCESS: 'product-area-collaborators-detached-success',
+  PRODUCT_AREA_COLLABORATORS_DETACHED_FAILURE: 'product-area-collaborators-detached-failure',
+  ProductAreaCollaboratorsDetachedMessage,
+>>>>>>> master
 };

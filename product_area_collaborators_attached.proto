@@ -1,0 +1,11 @@
+syntax = "proto3";
+package roadmunk;
+
+message ProductAreaCollaboratorsAttachedMessage {
+	string product_area_id           = 1;
+	string product_area_name         = 2;
+	repeated string collaborator_ids = 3;
+	string user_id                   = 4;
+	string account_id                = 5;
+	string deployment                = 6;
+}
