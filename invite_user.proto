@@ -7,4 +7,5 @@ message InviteUserRequest {
 	string email      = 3;
 	string deployment = 4;
 	string invited_by = 5;
+	string account_role = 6;
 }
