@@ -10,4 +10,5 @@ message SignupAccountRequest {
   string source       = 6;
   string hash         = 7;
   string google_id    = 8;
+  string hubspotutk   = 9;
 }
