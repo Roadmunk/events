@@ -1,0 +1,9 @@
+syntax = "proto3";
+package roadmunk;
+
+message UserAuthUpdatedRequest {
+  string email         = 1;
+  string auth_strategy = 2;
+  string action        = 3;
+  string deployment    = 4;
+}

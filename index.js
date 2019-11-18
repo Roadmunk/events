@@ -14,6 +14,7 @@ const { FeedbackUpdatedMessage } = require('./dist/feedback_updated_pb');
 const { FeedbackCommentedMessage } = require('./dist/feedback_commented_pb');
 const { ProductAreaCollaboratorsAttachedMessage } = require('./dist/product_area_collaborators_attached_pb');
 const { ProductAreaCollaboratorsDetachedMessage } = require('./dist/product_area_collaborators_detached_pb');
+const { UserAuthUpdatedRequest } = require('./dist/user_auth_updated_pb')
 
 module.exports = {
   // Account Updated
@@ -106,4 +107,10 @@ module.exports = {
   PRODUCT_AREA_COLLABORATORS_DETACHED_SUCCESS: 'product-area-collaborators-detached-success',
   PRODUCT_AREA_COLLABORATORS_DETACHED_FAILURE: 'product-area-collaborators-detached-failure',
   ProductAreaCollaboratorsDetachedMessage,
+
+  // User Auth methods updated
+  USER_AUTH_UPDATED: 'user-auth-updated',
+  USER_AUTH_UPDATED_SUCCESS: 'user-auth-updated-success',
+  USER_AUTH_UPDATED_FAILURE: 'user-auth-updated-failure',
+  UserAuthUpdatedRequest
 };
