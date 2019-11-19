@@ -70,7 +70,8 @@ proto.roadmunk.SignupAccountRequest.toObject = function(includeInstance, msg) {
     hubspotutk: jspb.Message.getFieldWithDefault(msg, 9, ""),
     newThing: jspb.Message.getFieldWithDefault(msg, 10, ""),
     testThis: jspb.Message.getFieldWithDefault(msg, 11, ""),
-    another: jspb.Message.getFieldWithDefault(msg, 12, "")
+    another: jspb.Message.getFieldWithDefault(msg, 12, ""),
+    commit: jspb.Message.getFieldWithDefault(msg, 13, "")
   };
 
   if (includeInstance) {
@@ -154,6 +155,10 @@ proto.roadmunk.SignupAccountRequest.deserializeBinaryFromReader = function(msg, 
     case 12:
       var value = /** @type {string} */ (reader.readString());
       msg.setAnother(value);
+      break;
+    case 13:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setCommit(value);
       break;
     default:
       reader.skipField();
@@ -265,6 +270,13 @@ proto.roadmunk.SignupAccountRequest.serializeBinaryToWriter = function(message, 
   if (f.length > 0) {
     writer.writeString(
       12,
+      f
+    );
+  }
+  f = message.getCommit();
+  if (f.length > 0) {
+    writer.writeString(
+      13,
       f
     );
   }
@@ -448,6 +460,21 @@ proto.roadmunk.SignupAccountRequest.prototype.getAnother = function() {
 /** @param {string} value */
 proto.roadmunk.SignupAccountRequest.prototype.setAnother = function(value) {
   jspb.Message.setField(this, 12, value);
+};
+
+
+/**
+ * optional string commit = 13;
+ * @return {string}
+ */
+proto.roadmunk.SignupAccountRequest.prototype.getCommit = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 13, ""));
+};
+
+
+/** @param {string} value */
+proto.roadmunk.SignupAccountRequest.prototype.setCommit = function(value) {
+  jspb.Message.setField(this, 13, value);
 };
 
 
