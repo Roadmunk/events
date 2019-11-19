@@ -1,6 +1,7 @@
 const { UserUpdatedMessage } = require('./dist/user_updated_pb');
 const { AccountUpdatedMessage } = require('./dist/account_updated_pb');
 const { SignupAccountRequest } = require('./dist/signup_account_pb');
+const { ResetPasswordRequest } = require('./dist/reset_password_pb');
 const { AccountSignupCompleted } = require('./dist/account_signup_pb');
 const { SendEmailRequest } = require('./dist/send_email_pb');
 const { IdeaRoadmapItemAttachMessage } = require('./dist/idea_roadmap_item_attach_pb');
@@ -34,6 +35,12 @@ module.exports = {
   SIGNUP_ACCOUNT_FAILURE: 'signup-account-failure',
   SignupAccountRequest,
   AccountSignupCompleted,
+
+  // Reset Password
+  RESET_PASSWORD: 'reset-password',
+  RESET_PASSWORD_SUCCESS: 'reset-password-success',
+  RESET_PASSWORD_FAILURE: 'reset-password-failure',
+  ResetPasswordRequest,
 
   // Send email
   SEND_EMAIL: 'send-email',
