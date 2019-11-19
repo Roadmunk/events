@@ -67,7 +67,9 @@ proto.roadmunk.SignupAccountRequest.toObject = function(includeInstance, msg) {
     source: jspb.Message.getFieldWithDefault(msg, 6, ""),
     hash: jspb.Message.getFieldWithDefault(msg, 7, ""),
     googleId: jspb.Message.getFieldWithDefault(msg, 8, ""),
-    hubspotutk: jspb.Message.getFieldWithDefault(msg, 9, "")
+    hubspotutk: jspb.Message.getFieldWithDefault(msg, 9, ""),
+    ip: jspb.Message.getFieldWithDefault(msg, 10, ""),
+    pageUrl: jspb.Message.getFieldWithDefault(msg, 11, "")
   };
 
   if (includeInstance) {
@@ -139,6 +141,14 @@ proto.roadmunk.SignupAccountRequest.deserializeBinaryFromReader = function(msg, 
     case 9:
       var value = /** @type {string} */ (reader.readString());
       msg.setHubspotutk(value);
+      break;
+    case 10:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setIp(value);
+      break;
+    case 11:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setPageUrl(value);
       break;
     default:
       reader.skipField();
@@ -229,6 +239,20 @@ proto.roadmunk.SignupAccountRequest.serializeBinaryToWriter = function(message, 
   if (f.length > 0) {
     writer.writeString(
       9,
+      f
+    );
+  }
+  f = message.getIp();
+  if (f.length > 0) {
+    writer.writeString(
+      10,
+      f
+    );
+  }
+  f = message.getPageUrl();
+  if (f.length > 0) {
+    writer.writeString(
+      11,
       f
     );
   }
@@ -367,6 +391,36 @@ proto.roadmunk.SignupAccountRequest.prototype.getHubspotutk = function() {
 /** @param {string} value */
 proto.roadmunk.SignupAccountRequest.prototype.setHubspotutk = function(value) {
   jspb.Message.setField(this, 9, value);
+};
+
+
+/**
+ * optional string ip = 10;
+ * @return {string}
+ */
+proto.roadmunk.SignupAccountRequest.prototype.getIp = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 10, ""));
+};
+
+
+/** @param {string} value */
+proto.roadmunk.SignupAccountRequest.prototype.setIp = function(value) {
+  jspb.Message.setField(this, 10, value);
+};
+
+
+/**
+ * optional string page_url = 11;
+ * @return {string}
+ */
+proto.roadmunk.SignupAccountRequest.prototype.getPageUrl = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 11, ""));
+};
+
+
+/** @param {string} value */
+proto.roadmunk.SignupAccountRequest.prototype.setPageUrl = function(value) {
+  jspb.Message.setField(this, 11, value);
 };
 
 
