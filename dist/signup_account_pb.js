@@ -67,7 +67,10 @@ proto.roadmunk.SignupAccountRequest.toObject = function(includeInstance, msg) {
     source: jspb.Message.getFieldWithDefault(msg, 6, ""),
     hash: jspb.Message.getFieldWithDefault(msg, 7, ""),
     googleId: jspb.Message.getFieldWithDefault(msg, 8, ""),
-    hubspotutk: jspb.Message.getFieldWithDefault(msg, 9, "")
+    hubspotutk: jspb.Message.getFieldWithDefault(msg, 9, ""),
+    newThing: jspb.Message.getFieldWithDefault(msg, 10, ""),
+    testThis: jspb.Message.getFieldWithDefault(msg, 11, ""),
+    another: jspb.Message.getFieldWithDefault(msg, 12, "")
   };
 
   if (includeInstance) {
@@ -139,6 +142,18 @@ proto.roadmunk.SignupAccountRequest.deserializeBinaryFromReader = function(msg, 
     case 9:
       var value = /** @type {string} */ (reader.readString());
       msg.setHubspotutk(value);
+      break;
+    case 10:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setNewThing(value);
+      break;
+    case 11:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setTestThis(value);
+      break;
+    case 12:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setAnother(value);
       break;
     default:
       reader.skipField();
@@ -229,6 +244,27 @@ proto.roadmunk.SignupAccountRequest.serializeBinaryToWriter = function(message, 
   if (f.length > 0) {
     writer.writeString(
       9,
+      f
+    );
+  }
+  f = message.getNewThing();
+  if (f.length > 0) {
+    writer.writeString(
+      10,
+      f
+    );
+  }
+  f = message.getTestThis();
+  if (f.length > 0) {
+    writer.writeString(
+      11,
+      f
+    );
+  }
+  f = message.getAnother();
+  if (f.length > 0) {
+    writer.writeString(
+      12,
       f
     );
   }
@@ -367,6 +403,51 @@ proto.roadmunk.SignupAccountRequest.prototype.getHubspotutk = function() {
 /** @param {string} value */
 proto.roadmunk.SignupAccountRequest.prototype.setHubspotutk = function(value) {
   jspb.Message.setField(this, 9, value);
+};
+
+
+/**
+ * optional string new_thing = 10;
+ * @return {string}
+ */
+proto.roadmunk.SignupAccountRequest.prototype.getNewThing = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 10, ""));
+};
+
+
+/** @param {string} value */
+proto.roadmunk.SignupAccountRequest.prototype.setNewThing = function(value) {
+  jspb.Message.setField(this, 10, value);
+};
+
+
+/**
+ * optional string test_this = 11;
+ * @return {string}
+ */
+proto.roadmunk.SignupAccountRequest.prototype.getTestThis = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 11, ""));
+};
+
+
+/** @param {string} value */
+proto.roadmunk.SignupAccountRequest.prototype.setTestThis = function(value) {
+  jspb.Message.setField(this, 11, value);
+};
+
+
+/**
+ * optional string another = 12;
+ * @return {string}
+ */
+proto.roadmunk.SignupAccountRequest.prototype.getAnother = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 12, ""));
+};
+
+
+/** @param {string} value */
+proto.roadmunk.SignupAccountRequest.prototype.setAnother = function(value) {
+  jspb.Message.setField(this, 12, value);
 };
 
 
