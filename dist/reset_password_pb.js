@@ -59,7 +59,11 @@ proto.roadmunk.ResetPasswordRequest.prototype.toObject = function(opt_includeIns
  */
 proto.roadmunk.ResetPasswordRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    email: jspb.Message.getFieldWithDefault(msg, 1, "")
+    deployment: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    email: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    hubspotutk: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    ip: jspb.Message.getFieldWithDefault(msg, 4, ""),
+    pageUrl: jspb.Message.getFieldWithDefault(msg, 5, "")
   };
 
   if (includeInstance) {
@@ -98,7 +102,23 @@ proto.roadmunk.ResetPasswordRequest.deserializeBinaryFromReader = function(msg, 
     switch (field) {
     case 1:
       var value = /** @type {string} */ (reader.readString());
+      msg.setDeployment(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
       msg.setEmail(value);
+      break;
+    case 3:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setHubspotutk(value);
+      break;
+    case 4:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setIp(value);
+      break;
+    case 5:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setPageUrl(value);
       break;
     default:
       reader.skipField();
@@ -129,10 +149,38 @@ proto.roadmunk.ResetPasswordRequest.prototype.serializeBinary = function() {
  */
 proto.roadmunk.ResetPasswordRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getEmail();
+  f = message.getDeployment();
   if (f.length > 0) {
     writer.writeString(
       1,
+      f
+    );
+  }
+  f = message.getEmail();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
+  f = message.getHubspotutk();
+  if (f.length > 0) {
+    writer.writeString(
+      3,
+      f
+    );
+  }
+  f = message.getIp();
+  if (f.length > 0) {
+    writer.writeString(
+      4,
+      f
+    );
+  }
+  f = message.getPageUrl();
+  if (f.length > 0) {
+    writer.writeString(
+      5,
       f
     );
   }
@@ -140,17 +188,77 @@ proto.roadmunk.ResetPasswordRequest.serializeBinaryToWriter = function(message, 
 
 
 /**
- * optional string email = 1;
+ * optional string deployment = 1;
  * @return {string}
  */
-proto.roadmunk.ResetPasswordRequest.prototype.getEmail = function() {
+proto.roadmunk.ResetPasswordRequest.prototype.getDeployment = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
 
 /** @param {string} value */
-proto.roadmunk.ResetPasswordRequest.prototype.setEmail = function(value) {
+proto.roadmunk.ResetPasswordRequest.prototype.setDeployment = function(value) {
   jspb.Message.setField(this, 1, value);
+};
+
+
+/**
+ * optional string email = 2;
+ * @return {string}
+ */
+proto.roadmunk.ResetPasswordRequest.prototype.getEmail = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/** @param {string} value */
+proto.roadmunk.ResetPasswordRequest.prototype.setEmail = function(value) {
+  jspb.Message.setField(this, 2, value);
+};
+
+
+/**
+ * optional string hubspotutk = 3;
+ * @return {string}
+ */
+proto.roadmunk.ResetPasswordRequest.prototype.getHubspotutk = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+};
+
+
+/** @param {string} value */
+proto.roadmunk.ResetPasswordRequest.prototype.setHubspotutk = function(value) {
+  jspb.Message.setField(this, 3, value);
+};
+
+
+/**
+ * optional string ip = 4;
+ * @return {string}
+ */
+proto.roadmunk.ResetPasswordRequest.prototype.getIp = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
+};
+
+
+/** @param {string} value */
+proto.roadmunk.ResetPasswordRequest.prototype.setIp = function(value) {
+  jspb.Message.setField(this, 4, value);
+};
+
+
+/**
+ * optional string page_url = 5;
+ * @return {string}
+ */
+proto.roadmunk.ResetPasswordRequest.prototype.getPageUrl = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
+};
+
+
+/** @param {string} value */
+proto.roadmunk.ResetPasswordRequest.prototype.setPageUrl = function(value) {
+  jspb.Message.setField(this, 5, value);
 };
 
 
