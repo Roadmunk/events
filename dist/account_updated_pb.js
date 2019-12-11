@@ -67,7 +67,8 @@ proto.roadmunk.AccountUpdatedMessage.toObject = function(includeInstance, msg) {
     defaultAuthenticationProviderType: jspb.Message.getFieldWithDefault(msg, 6, ""),
     shouldPublishRequireSso: jspb.Message.getFieldWithDefault(msg, 7, false),
     billingEmail: jspb.Message.getFieldWithDefault(msg, 8, ""),
-    deployment: jspb.Message.getFieldWithDefault(msg, 9, "")
+    deployment: jspb.Message.getFieldWithDefault(msg, 9, ""),
+    hasGoodStanding: jspb.Message.getFieldWithDefault(msg, 10, false)
   };
 
   if (includeInstance) {
@@ -139,6 +140,10 @@ proto.roadmunk.AccountUpdatedMessage.deserializeBinaryFromReader = function(msg,
     case 9:
       var value = /** @type {string} */ (reader.readString());
       msg.setDeployment(value);
+      break;
+    case 10:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setHasGoodStanding(value);
       break;
     default:
       reader.skipField();
@@ -229,6 +234,13 @@ proto.roadmunk.AccountUpdatedMessage.serializeBinaryToWriter = function(message,
   if (f.length > 0) {
     writer.writeString(
       9,
+      f
+    );
+  }
+  f = message.getHasGoodStanding();
+  if (f) {
+    writer.writeBool(
+      10,
       f
     );
   }
@@ -373,6 +385,23 @@ proto.roadmunk.AccountUpdatedMessage.prototype.getDeployment = function() {
 /** @param {string} value */
 proto.roadmunk.AccountUpdatedMessage.prototype.setDeployment = function(value) {
   jspb.Message.setField(this, 9, value);
+};
+
+
+/**
+ * optional bool has_good_standing = 10;
+ * Note that Boolean fields may be set to 0/1 when serialized from a Java server.
+ * You should avoid comparisons like {@code val === true/false} in those cases.
+ * @return {boolean}
+ */
+proto.roadmunk.AccountUpdatedMessage.prototype.getHasGoodStanding = function() {
+  return /** @type {boolean} */ (jspb.Message.getFieldWithDefault(this, 10, false));
+};
+
+
+/** @param {boolean} value */
+proto.roadmunk.AccountUpdatedMessage.prototype.setHasGoodStanding = function(value) {
+  jspb.Message.setField(this, 10, value);
 };
 
 

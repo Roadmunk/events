@@ -11,4 +11,5 @@ message AccountUpdatedMessage {
   bool should_publish_require_sso = 7;
   string billing_email = 8;
   string deployment = 9;
+  bool has_good_standing = 10;
 }
