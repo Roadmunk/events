@@ -15,7 +15,8 @@ const { FeedbackUpdatedMessage } = require('./dist/feedback_updated_pb');
 const { FeedbackCommentedMessage } = require('./dist/feedback_commented_pb');
 const { ProductAreaCollaboratorsAttachedMessage } = require('./dist/product_area_collaborators_attached_pb');
 const { ProductAreaCollaboratorsDetachedMessage } = require('./dist/product_area_collaborators_detached_pb');
-const { UserAuthUpdatedRequest } = require('./dist/user_auth_updated_pb')
+const { UserAuthUpdatedRequest } = require('./dist/user_auth_updated_pb');
+const { UserEmailUpdatedMessage } = require('./dist/user_email_updated_pb');
 const { UserLogout } = require('./dist/user_logout_pb');
 
 module.exports = {
@@ -121,6 +122,12 @@ module.exports = {
   USER_AUTH_UPDATED_SUCCESS: 'user-auth-updated-success',
   USER_AUTH_UPDATED_FAILURE: 'user-auth-updated-failure',
   UserAuthUpdatedRequest,
+
+  // User email verified/changed
+  USER_EMAIL_UPDATED: 'user-email-updated',
+  USER_EMAIL_UPDATED_SUCCESS: 'user-email-updated-success',
+  USER_EMAIL_UPDATED_FAILURE: 'user-email-updated-failure',
+  UserEmailUpdatedMessage,
 
 	// User Logging out
 	USER_LOGOUT: 'user-logout',
