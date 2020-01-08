@@ -62,7 +62,8 @@ proto.roadmunk.UserAuthUpdatedRequest.toObject = function(includeInstance, msg) 
     email: jspb.Message.getFieldWithDefault(msg, 1, ""),
     authStrategy: jspb.Message.getFieldWithDefault(msg, 2, ""),
     action: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    deployment: jspb.Message.getFieldWithDefault(msg, 4, "")
+    deployment: jspb.Message.getFieldWithDefault(msg, 4, ""),
+    googleEmail: jspb.Message.getFieldWithDefault(msg, 5, "")
   };
 
   if (includeInstance) {
@@ -114,6 +115,10 @@ proto.roadmunk.UserAuthUpdatedRequest.deserializeBinaryFromReader = function(msg
     case 4:
       var value = /** @type {string} */ (reader.readString());
       msg.setDeployment(value);
+      break;
+    case 5:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setGoogleEmail(value);
       break;
     default:
       reader.skipField();
@@ -169,6 +174,13 @@ proto.roadmunk.UserAuthUpdatedRequest.serializeBinaryToWriter = function(message
   if (f.length > 0) {
     writer.writeString(
       4,
+      f
+    );
+  }
+  f = message.getGoogleEmail();
+  if (f.length > 0) {
+    writer.writeString(
+      5,
       f
     );
   }
@@ -232,6 +244,21 @@ proto.roadmunk.UserAuthUpdatedRequest.prototype.getDeployment = function() {
 /** @param {string} value */
 proto.roadmunk.UserAuthUpdatedRequest.prototype.setDeployment = function(value) {
   jspb.Message.setField(this, 4, value);
+};
+
+
+/**
+ * optional string google_email = 5;
+ * @return {string}
+ */
+proto.roadmunk.UserAuthUpdatedRequest.prototype.getGoogleEmail = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
+};
+
+
+/** @param {string} value */
+proto.roadmunk.UserAuthUpdatedRequest.prototype.setGoogleEmail = function(value) {
+  jspb.Message.setField(this, 5, value);
 };
 
 

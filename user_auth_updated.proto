@@ -6,4 +6,5 @@ message UserAuthUpdatedRequest {
   string auth_strategy = 2;
   string action        = 3;
   string deployment    = 4;
+  string google_email  = 5;
 }
