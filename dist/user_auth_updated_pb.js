@@ -63,7 +63,8 @@ proto.roadmunk.UserAuthUpdatedRequest.toObject = function(includeInstance, msg) 
     authStrategy: jspb.Message.getFieldWithDefault(msg, 2, ""),
     action: jspb.Message.getFieldWithDefault(msg, 3, ""),
     deployment: jspb.Message.getFieldWithDefault(msg, 4, ""),
-    googleEmail: jspb.Message.getFieldWithDefault(msg, 5, "")
+    googleEmail: jspb.Message.getFieldWithDefault(msg, 5, ""),
+    googleId: jspb.Message.getFieldWithDefault(msg, 6, "")
   };
 
   if (includeInstance) {
@@ -119,6 +120,10 @@ proto.roadmunk.UserAuthUpdatedRequest.deserializeBinaryFromReader = function(msg
     case 5:
       var value = /** @type {string} */ (reader.readString());
       msg.setGoogleEmail(value);
+      break;
+    case 6:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setGoogleId(value);
       break;
     default:
       reader.skipField();
@@ -181,6 +186,13 @@ proto.roadmunk.UserAuthUpdatedRequest.serializeBinaryToWriter = function(message
   if (f.length > 0) {
     writer.writeString(
       5,
+      f
+    );
+  }
+  f = message.getGoogleId();
+  if (f.length > 0) {
+    writer.writeString(
+      6,
       f
     );
   }
@@ -259,6 +271,21 @@ proto.roadmunk.UserAuthUpdatedRequest.prototype.getGoogleEmail = function() {
 /** @param {string} value */
 proto.roadmunk.UserAuthUpdatedRequest.prototype.setGoogleEmail = function(value) {
   jspb.Message.setField(this, 5, value);
+};
+
+
+/**
+ * optional string google_id = 6;
+ * @return {string}
+ */
+proto.roadmunk.UserAuthUpdatedRequest.prototype.getGoogleId = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 6, ""));
+};
+
+
+/** @param {string} value */
+proto.roadmunk.UserAuthUpdatedRequest.prototype.setGoogleId = function(value) {
+  jspb.Message.setField(this, 6, value);
 };
 
 
