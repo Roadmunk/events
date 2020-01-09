@@ -13,4 +13,6 @@ message SignupAccountRequest {
   string hubspotutk   = 9;
   string ip           = 10;
   string page_url     = 11;
+  string first_name   = 12;
+  string last_name    = 13;
 }

@@ -69,7 +69,9 @@ proto.roadmunk.SignupAccountRequest.toObject = function(includeInstance, msg) {
     googleId: jspb.Message.getFieldWithDefault(msg, 8, ""),
     hubspotutk: jspb.Message.getFieldWithDefault(msg, 9, ""),
     ip: jspb.Message.getFieldWithDefault(msg, 10, ""),
-    pageUrl: jspb.Message.getFieldWithDefault(msg, 11, "")
+    pageUrl: jspb.Message.getFieldWithDefault(msg, 11, ""),
+    firstName: jspb.Message.getFieldWithDefault(msg, 12, ""),
+    lastName: jspb.Message.getFieldWithDefault(msg, 13, "")
   };
 
   if (includeInstance) {
@@ -149,6 +151,14 @@ proto.roadmunk.SignupAccountRequest.deserializeBinaryFromReader = function(msg, 
     case 11:
       var value = /** @type {string} */ (reader.readString());
       msg.setPageUrl(value);
+      break;
+    case 12:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setFirstName(value);
+      break;
+    case 13:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setLastName(value);
       break;
     default:
       reader.skipField();
@@ -253,6 +263,20 @@ proto.roadmunk.SignupAccountRequest.serializeBinaryToWriter = function(message, 
   if (f.length > 0) {
     writer.writeString(
       11,
+      f
+    );
+  }
+  f = message.getFirstName();
+  if (f.length > 0) {
+    writer.writeString(
+      12,
+      f
+    );
+  }
+  f = message.getLastName();
+  if (f.length > 0) {
+    writer.writeString(
+      13,
       f
     );
   }
@@ -421,6 +445,36 @@ proto.roadmunk.SignupAccountRequest.prototype.getPageUrl = function() {
 /** @param {string} value */
 proto.roadmunk.SignupAccountRequest.prototype.setPageUrl = function(value) {
   jspb.Message.setField(this, 11, value);
+};
+
+
+/**
+ * optional string first_name = 12;
+ * @return {string}
+ */
+proto.roadmunk.SignupAccountRequest.prototype.getFirstName = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 12, ""));
+};
+
+
+/** @param {string} value */
+proto.roadmunk.SignupAccountRequest.prototype.setFirstName = function(value) {
+  jspb.Message.setField(this, 12, value);
+};
+
+
+/**
+ * optional string last_name = 13;
+ * @return {string}
+ */
+proto.roadmunk.SignupAccountRequest.prototype.getLastName = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 13, ""));
+};
+
+
+/** @param {string} value */
+proto.roadmunk.SignupAccountRequest.prototype.setLastName = function(value) {
+  jspb.Message.setField(this, 13, value);
 };
 
 
