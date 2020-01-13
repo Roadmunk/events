@@ -61,7 +61,7 @@ proto.roadmunk.FeedbackUpdatedMessage.toObject = function(includeInstance, msg) 
   var f, obj = {
     feedbackId: jspb.Message.getFieldWithDefault(msg, 1, ""),
     feedbackOwnerId: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    newStatus: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    newIsProcessed: jspb.Message.getFieldWithDefault(msg, 3, ""),
     newProductAreaId: jspb.Message.getFieldWithDefault(msg, 4, ""),
     productAreaName: jspb.Message.getFieldWithDefault(msg, 5, ""),
     customerId: jspb.Message.getFieldWithDefault(msg, 6, ""),
@@ -114,8 +114,8 @@ proto.roadmunk.FeedbackUpdatedMessage.deserializeBinaryFromReader = function(msg
       msg.setFeedbackOwnerId(value);
       break;
     case 3:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setNewStatus(value);
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.SetNewIsProcessed(value);
       break;
     case 4:
       var value = /** @type {string} */ (reader.readString());
@@ -188,7 +188,7 @@ proto.roadmunk.FeedbackUpdatedMessage.serializeBinaryToWriter = function(message
       f
     );
   }
-  f = message.getNewStatus();
+  f = message.getNewIsProcessed();
   if (f.length > 0) {
     writer.writeString(
       3,
@@ -278,16 +278,16 @@ proto.roadmunk.FeedbackUpdatedMessage.prototype.setFeedbackOwnerId = function(va
 
 
 /**
- * optional string new_status = 3;
- * @return {string}
+ * optional string new_is_processed = 3;
+ * @return {boolean}
  */
-proto.roadmunk.FeedbackUpdatedMessage.prototype.getNewStatus = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+proto.roadmunk.FeedbackUpdatedMessage.prototype.getNewIsProcessed = function() {
+  return /** @type {boolean} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
 };
 
 
-/** @param {string} value */
-proto.roadmunk.FeedbackUpdatedMessage.prototype.setNewStatus = function(value) {
+/** @param {boolean} value */
+proto.roadmunk.FeedbackUpdatedMessage.prototype.setNewIsProcessed = function(value) {
   jspb.Message.setField(this, 3, value);
 };
 
