@@ -4,7 +4,7 @@ package roadmunk;
 message FeedbackUpdatedMessage {
 	string feedback_id         = 1;
 	string feedback_owner_id   = 2;
-	string new_status          = 3;
+	bool new_is_processed      = 3;
 	string new_product_area_id = 4;
 	string product_area_name   = 5;
 	string customer_id         = 6;
