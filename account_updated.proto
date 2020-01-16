@@ -12,4 +12,5 @@ message AccountUpdatedMessage {
   string billing_email = 8;
   string deployment = 9;
   bool has_good_standing = 10;
+  bool is_trial = 11;
 }

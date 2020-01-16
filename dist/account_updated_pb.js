@@ -68,7 +68,8 @@ proto.roadmunk.AccountUpdatedMessage.toObject = function(includeInstance, msg) {
     shouldPublishRequireSso: jspb.Message.getFieldWithDefault(msg, 7, false),
     billingEmail: jspb.Message.getFieldWithDefault(msg, 8, ""),
     deployment: jspb.Message.getFieldWithDefault(msg, 9, ""),
-    hasGoodStanding: jspb.Message.getFieldWithDefault(msg, 10, false)
+    hasGoodStanding: jspb.Message.getFieldWithDefault(msg, 10, false),
+    isTrial: jspb.Message.getFieldWithDefault(msg, 11, false)
   };
 
   if (includeInstance) {
@@ -144,6 +145,10 @@ proto.roadmunk.AccountUpdatedMessage.deserializeBinaryFromReader = function(msg,
     case 10:
       var value = /** @type {boolean} */ (reader.readBool());
       msg.setHasGoodStanding(value);
+      break;
+    case 11:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setIsTrial(value);
       break;
     default:
       reader.skipField();
@@ -241,6 +246,13 @@ proto.roadmunk.AccountUpdatedMessage.serializeBinaryToWriter = function(message,
   if (f) {
     writer.writeBool(
       10,
+      f
+    );
+  }
+  f = message.getIsTrial();
+  if (f) {
+    writer.writeBool(
+      11,
       f
     );
   }
@@ -402,6 +414,23 @@ proto.roadmunk.AccountUpdatedMessage.prototype.getHasGoodStanding = function() {
 /** @param {boolean} value */
 proto.roadmunk.AccountUpdatedMessage.prototype.setHasGoodStanding = function(value) {
   jspb.Message.setField(this, 10, value);
+};
+
+
+/**
+ * optional bool is_trial = 11;
+ * Note that Boolean fields may be set to 0/1 when serialized from a Java server.
+ * You should avoid comparisons like {@code val === true/false} in those cases.
+ * @return {boolean}
+ */
+proto.roadmunk.AccountUpdatedMessage.prototype.getIsTrial = function() {
+  return /** @type {boolean} */ (jspb.Message.getFieldWithDefault(this, 11, false));
+};
+
+
+/** @param {boolean} value */
+proto.roadmunk.AccountUpdatedMessage.prototype.setIsTrial = function(value) {
+  jspb.Message.setField(this, 11, value);
 };
 
 
