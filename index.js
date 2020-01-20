@@ -18,6 +18,8 @@ const { ProductAreaCollaboratorsDetachedMessage } = require('./dist/product_area
 const { UserAuthUpdatedRequest } = require('./dist/user_auth_updated_pb');
 const { UserEmailUpdatedMessage } = require('./dist/user_email_updated_pb');
 const { UserLogout } = require('./dist/user_logout_pb');
+const { TopologyRegionUpdatedMessage } = require('./dist/topology_region_updated_pb');
+const { TopologyDeploymentUpdatedMessage } = require('./dist/topology_deployment_updated_pb');
 
 module.exports = {
   // Account Updated
@@ -132,4 +134,16 @@ module.exports = {
 	// User Logging out
 	USER_LOGOUT: 'user-logout',
 	UserLogout,
+
+	// Topology region updated
+	TOPOLOGY_REGION_UPDATED : 'topology-region-upated',
+	TOPOLOGY_REGION_UPDATED_SUCCESS : 'topology-region-upated-success',
+	TOPOLOGY_REGION_UPDATED_FAILURE : 'topology-region-upated-failure',
+	TopologyRegionUpdatedMessage,
+
+	// topology deployment updated
+	TOPOLOGY_DEPLOYMENT_UPDATED : 'topology-deployment-upated',
+	TOPOLOGY_DEPLOYMENT_UPDATED_SUCCESS : 'topology-deployment-upated-success',
+	TOPOLOGY_DEPLOYMENT_UPDATED_FAILURE : 'topology-deployment-upated-failure',
+	TopologyDeploymentUpdatedMessage,
 };

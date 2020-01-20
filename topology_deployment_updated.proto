@@ -1,0 +1,11 @@
+syntax = "proto3";
+package roadmunk;
+
+message TopologyDeploymentUpdatedMessage {
+	string id = 1;
+	string ideas_ui = 2;
+	string ideas_api = 3;
+	string roadmapping_ui = 4;
+	string topology = 5;
+	string region_id = 6;
+}

@@ -1,0 +1,12 @@
+syntax = "proto3";
+package roadmunk;
+
+message TopologyRegionUpdatedMessage {
+	string id = 1;
+	string auth_ui = 2;
+	string auth_api = 3;
+	repeated string kafka = 4;
+	string topology = 5;
+	string public_key = 6;
+	string default_deployment = 7;
+}
