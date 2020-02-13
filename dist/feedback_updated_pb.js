@@ -61,7 +61,7 @@ proto.roadmunk.FeedbackUpdatedMessage.toObject = function(includeInstance, msg) 
   var f, obj = {
     feedbackId: jspb.Message.getFieldWithDefault(msg, 1, ""),
     feedbackOwnerId: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    newIsProcessed: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    newIsProcessed: jspb.Message.getFieldWithDefault(msg, 3, false),
     newProductAreaId: jspb.Message.getFieldWithDefault(msg, 4, ""),
     productAreaName: jspb.Message.getFieldWithDefault(msg, 5, ""),
     customerId: jspb.Message.getFieldWithDefault(msg, 6, ""),
@@ -115,7 +115,7 @@ proto.roadmunk.FeedbackUpdatedMessage.deserializeBinaryFromReader = function(msg
       break;
     case 3:
       var value = /** @type {boolean} */ (reader.readBool());
-      msg.SetNewIsProcessed(value);
+      msg.setNewIsProcessed(value);
       break;
     case 4:
       var value = /** @type {string} */ (reader.readString());
@@ -189,8 +189,8 @@ proto.roadmunk.FeedbackUpdatedMessage.serializeBinaryToWriter = function(message
     );
   }
   f = message.getNewIsProcessed();
-  if (f.length > 0) {
-    writer.writeString(
+  if (f) {
+    writer.writeBool(
       3,
       f
     );
@@ -278,11 +278,13 @@ proto.roadmunk.FeedbackUpdatedMessage.prototype.setFeedbackOwnerId = function(va
 
 
 /**
- * optional string new_is_processed = 3;
+ * optional bool new_is_processed = 3;
+ * Note that Boolean fields may be set to 0/1 when serialized from a Java server.
+ * You should avoid comparisons like {@code val === true/false} in those cases.
  * @return {boolean}
  */
 proto.roadmunk.FeedbackUpdatedMessage.prototype.getNewIsProcessed = function() {
-  return /** @type {boolean} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+  return /** @type {boolean} */ (jspb.Message.getFieldWithDefault(this, 3, false));
 };
 
 
