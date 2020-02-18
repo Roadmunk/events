@@ -5,6 +5,5 @@ message UserLoginMessage {
 	string deployment = 1;
 	string user_id = 2;
 	string account_id = 3;
-	string event_name = 4;
-	string login_type = 5;
+	string login_type = 4;
 }

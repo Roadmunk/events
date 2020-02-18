@@ -62,8 +62,7 @@ proto.roadmunk.UserLoginMessage.toObject = function(includeInstance, msg) {
     deployment: jspb.Message.getFieldWithDefault(msg, 1, ""),
     userId: jspb.Message.getFieldWithDefault(msg, 2, ""),
     accountId: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    eventName: jspb.Message.getFieldWithDefault(msg, 4, ""),
-    loginType: jspb.Message.getFieldWithDefault(msg, 5, "")
+    loginType: jspb.Message.getFieldWithDefault(msg, 4, "")
   };
 
   if (includeInstance) {
@@ -113,10 +112,6 @@ proto.roadmunk.UserLoginMessage.deserializeBinaryFromReader = function(msg, read
       msg.setAccountId(value);
       break;
     case 4:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setEventName(value);
-      break;
-    case 5:
       var value = /** @type {string} */ (reader.readString());
       msg.setLoginType(value);
       break;
@@ -170,17 +165,10 @@ proto.roadmunk.UserLoginMessage.serializeBinaryToWriter = function(message, writ
       f
     );
   }
-  f = message.getEventName();
-  if (f.length > 0) {
-    writer.writeString(
-      4,
-      f
-    );
-  }
   f = message.getLoginType();
   if (f.length > 0) {
     writer.writeString(
-      5,
+      4,
       f
     );
   }
@@ -233,32 +221,17 @@ proto.roadmunk.UserLoginMessage.prototype.setAccountId = function(value) {
 
 
 /**
- * optional string event_name = 4;
+ * optional string login_type = 4;
  * @return {string}
  */
-proto.roadmunk.UserLoginMessage.prototype.getEventName = function() {
+proto.roadmunk.UserLoginMessage.prototype.getLoginType = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
 };
 
 
 /** @param {string} value */
-proto.roadmunk.UserLoginMessage.prototype.setEventName = function(value) {
-  jspb.Message.setField(this, 4, value);
-};
-
-
-/**
- * optional string login_type = 5;
- * @return {string}
- */
-proto.roadmunk.UserLoginMessage.prototype.getLoginType = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
-};
-
-
-/** @param {string} value */
 proto.roadmunk.UserLoginMessage.prototype.setLoginType = function(value) {
-  jspb.Message.setField(this, 5, value);
+  jspb.Message.setField(this, 4, value);
 };
 
 
