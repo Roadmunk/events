@@ -1,0 +1,8 @@
+syntax = "proto3";
+package roadmunk;
+
+message ConfigureSAML {
+  string strategy_id = 1;
+  string account_id  = 2;
+  string topology = 3;
+}

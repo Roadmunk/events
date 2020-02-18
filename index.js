@@ -20,6 +20,7 @@ const { UserEmailUpdatedMessage } = require('./dist/user_email_updated_pb');
 const { UserLogout } = require('./dist/user_logout_pb');
 const { TopologyRegionUpdatedMessage } = require('./dist/topology_region_updated_pb');
 const { TopologyDeploymentUpdatedMessage } = require('./dist/topology_deployment_updated_pb');
+const { ConfigureSAML } = require('./dist/configure_saml_pb');
 
 module.exports = {
   // Account Updated
@@ -146,4 +147,10 @@ module.exports = {
 	TOPOLOGY_DEPLOYMENT_UPDATED_SUCCESS : 'topology-deployment-upated-success',
 	TOPOLOGY_DEPLOYMENT_UPDATED_FAILURE : 'topology-deployment-upated-failure',
 	TopologyDeploymentUpdatedMessage,
+
+	// configure saml
+	CONFIGURE_SAML : 'configure-saml',
+	CONFIGURE_SAML_SUCCESS : 'configure-saml-success',
+	CONFIGURE_SAML_FAILURE : 'configure-saml-failure',
+	ConfigureSAML,
 };
