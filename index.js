@@ -21,6 +21,7 @@ const { UserLogout } = require('./dist/user_logout_pb');
 const { TopologyRegionUpdatedMessage } = require('./dist/topology_region_updated_pb');
 const { TopologyDeploymentUpdatedMessage } = require('./dist/topology_deployment_updated_pb');
 const { ConfigureSAML } = require('./dist/configure_saml_pb');
+const { UserLogin } = require('./dist/user_login_pb');
 
 module.exports = {
   // Account Updated
@@ -135,6 +136,10 @@ module.exports = {
 	// User Logging out
 	USER_LOGOUT: 'user-logout',
 	UserLogout,
+
+	// User Logging in
+	USER_LOGIN: 'user-login',
+	UserLogin,
 
 	// Topology region updated
 	TOPOLOGY_REGION_UPDATED : 'topology-region-upated',
