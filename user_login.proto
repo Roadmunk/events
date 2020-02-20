@@ -1,0 +1,9 @@
+syntax = "proto3";
+package roadmunk;
+
+message UserLoginMessage {
+	string deployment = 1;
+	string user_id = 2;
+	string account_id = 3;
+	string login_type = 4;
+}
