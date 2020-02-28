@@ -1,7 +1,7 @@
 syntax = "proto3";
 package roadmunk;
 
-message DeleteUserMessage {
+message UserDeleted {
 	string deployment = 1;
 	string account_id = 2;
 	string user_id = 3;
