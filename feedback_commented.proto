@@ -11,4 +11,5 @@ message FeedbackCommentedMessage {
   string user_id             = 7;
   string account_id          = 8;
   string deployment          = 9;
+  string feedback_title      = 10;
 }
