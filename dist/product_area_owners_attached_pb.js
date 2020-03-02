@@ -118,7 +118,7 @@ proto.roadmunk.ProductAreaOwnersAttachedMessage.deserializeBinaryFromReader = fu
       break;
     case 3:
       var value = /** @type {string} */ (reader.readString());
-      msg.addCollaboratorIds(value);
+      msg.addOwnerIds(value);
       break;
     case 4:
       var value = /** @type {string} */ (reader.readString());
@@ -175,7 +175,7 @@ proto.roadmunk.ProductAreaOwnersAttachedMessage.serializeBinaryToWriter = functi
       f
     );
   }
-  f = message.getCollaboratorIdsList();
+  f = message.getOwnerIdsList();
   if (f.length > 0) {
     writer.writeRepeatedString(
       3,
@@ -240,13 +240,13 @@ proto.roadmunk.ProductAreaOwnersAttachedMessage.prototype.setProductAreaName = f
  * repeated string owner_ids = 3;
  * @return {!Array.<string>}
  */
-proto.roadmunk.ProductAreaOwnersAttachedMessage.prototype.getCollaboratorIdsList = function() {
+proto.roadmunk.ProductAreaOwnersAttachedMessage.prototype.getOwnerIdsList = function() {
   return /** @type {!Array.<string>} */ (jspb.Message.getRepeatedField(this, 3));
 };
 
 
 /** @param {!Array.<string>} value */
-proto.roadmunk.ProductAreaOwnersAttachedMessage.prototype.setCollaboratorIdsList = function(value) {
+proto.roadmunk.ProductAreaOwnersAttachedMessage.prototype.setOwnerIdsList = function(value) {
   jspb.Message.setField(this, 3, value || []);
 };
 
@@ -255,13 +255,13 @@ proto.roadmunk.ProductAreaOwnersAttachedMessage.prototype.setCollaboratorIdsList
  * @param {!string} value
  * @param {number=} opt_index
  */
-proto.roadmunk.ProductAreaOwnersAttachedMessage.prototype.addCollaboratorIds = function(value, opt_index) {
+proto.roadmunk.ProductAreaOwnersAttachedMessage.prototype.addOwnerIds = function(value, opt_index) {
   jspb.Message.addToRepeatedField(this, 3, value, opt_index);
 };
 
 
-proto.roadmunk.ProductAreaOwnersAttachedMessage.prototype.clearCollaboratorIdsList = function() {
-  this.setCollaboratorIdsList([]);
+proto.roadmunk.ProductAreaOwnersAttachedMessage.prototype.clearOwnerIdsList = function() {
+  this.setOwnerIdsList([]);
 };
 
 
