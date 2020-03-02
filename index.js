@@ -13,8 +13,8 @@ const { MergeAccountRequest } = require('./dist/merge_account_pb');
 const { SegmentEvent } = require('./dist/segment_event_pb');
 const { FeedbackUpdatedMessage } = require('./dist/feedback_updated_pb');
 const { FeedbackCommentedMessage } = require('./dist/feedback_commented_pb');
-const { ProductAreaOwnerAttachedMessage } = require('./dist/product_area_owners_attached_pb');
-const { ProductAreaOwnerDetachedMessage } = require('./dist/product_area_owners_detached_pb');
+const { ProductAreaOwnersAttachedMessage } = require('./dist/product_area_owners_attached_pb');
+const { ProductAreaOwnersDetachedMessage } = require('./dist/product_area_owners_detached_pb');
 const { UserAuthUpdatedRequest } = require('./dist/user_auth_updated_pb');
 const { UserEmailUpdatedMessage } = require('./dist/user_email_updated_pb');
 const { UserLogout } = require('./dist/user_logout_pb');
@@ -110,16 +110,16 @@ module.exports = {
   FeedbackCommentedMessage,
 
   // New owners attached to product area
-  PRODUCT_AREA_COLLABORATORS_ATTACHED: 'product-area-owners-attached',
-  PRODUCT_AREA_COLLABORATORS_ATTACHED_SUCCESS: 'product-area-owners-attached-success',
-  PRODUCT_AREA_COLLABORATORS_ATTACHED_FAILURE: 'product-area-owners-attached-failure',
-  ProductAreaOwnerAttachedMessage,
+  PRODUCT_AREA_OWNERS_ATTACHED: 'product-area-owners-attached',
+  PRODUCT_AREA_OWNERS_ATTACHED_SUCCESS: 'product-area-owners-attached-success',
+  PRODUCT_AREA_OWNERS_ATTACHED_FAILURE: 'product-area-owners-attached-failure',
+  ProductAreaOwnersAttachedMessage,
 
-  // Owner detached from product area
-  PRODUCT_AREA_COLLABORATORS_DETACHED: 'product-area-owners-detached',
-  PRODUCT_AREA_COLLABORATORS_DETACHED_SUCCESS: 'product-area-owners-detached-success',
-  PRODUCT_AREA_COLLABORATORS_DETACHED_FAILURE: 'product-area-owners-detached-failure',
-  ProductAreaOwnerDetachedMessage,
+  // Owners detached from product area
+  PRODUCT_AREA_OWNERS_DETACHED: 'product-area-owners-detached',
+  PRODUCT_AREA_OWNERS_DETACHED_SUCCESS: 'product-area-owners-detached-success',
+  PRODUCT_AREA_OWNERS_DETACHED_FAILURE: 'product-area-owners-detached-failure',
+  ProductAreaOwnersDetachedMessage,
 
   // User Auth methods updated
   USER_AUTH_UPDATED: 'user-auth-updated',
