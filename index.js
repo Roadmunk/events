@@ -13,8 +13,8 @@ const { MergeAccountRequest } = require('./dist/merge_account_pb');
 const { SegmentEvent } = require('./dist/segment_event_pb');
 const { FeedbackUpdatedMessage } = require('./dist/feedback_updated_pb');
 const { FeedbackCommentedMessage } = require('./dist/feedback_commented_pb');
-const { ProductAreaCollaboratorsAttachedMessage } = require('./dist/product_area_collaborators_attached_pb');
-const { ProductAreaCollaboratorsDetachedMessage } = require('./dist/product_area_collaborators_detached_pb');
+const { ProductAreaOwnerAttachedMessage } = require('./dist/product_area_owners_attached_pb');
+const { ProductAreaOwnerDetachedMessage } = require('./dist/product_area_owners_detached_pb');
 const { UserAuthUpdatedRequest } = require('./dist/user_auth_updated_pb');
 const { UserEmailUpdatedMessage } = require('./dist/user_email_updated_pb');
 const { UserLogout } = require('./dist/user_logout_pb');
@@ -109,17 +109,17 @@ module.exports = {
   FEEDBACK_COMMENTED_FAILURE: 'feedback-commented-failure',
   FeedbackCommentedMessage,
 
-  // New collaborators attached to product area
-  PRODUCT_AREA_COLLABORATORS_ATTACHED: 'product-area-collaborators-attached',
-  PRODUCT_AREA_COLLABORATORS_ATTACHED_SUCCESS: 'product-area-collaborators-attached-success',
-  PRODUCT_AREA_COLLABORATORS_ATTACHED_FAILURE: 'product-area-collaborators-attached-failure',
-  ProductAreaCollaboratorsAttachedMessage,
+  // New owners attached to product area
+  PRODUCT_AREA_COLLABORATORS_ATTACHED: 'product-area-owners-attached',
+  PRODUCT_AREA_COLLABORATORS_ATTACHED_SUCCESS: 'product-area-owners-attached-success',
+  PRODUCT_AREA_COLLABORATORS_ATTACHED_FAILURE: 'product-area-owners-attached-failure',
+  ProductAreaOwnerAttachedMessage,
 
-  // Collaborators detached from product area
-  PRODUCT_AREA_COLLABORATORS_DETACHED: 'product-area-collaborators-detached',
-  PRODUCT_AREA_COLLABORATORS_DETACHED_SUCCESS: 'product-area-collaborators-detached-success',
-  PRODUCT_AREA_COLLABORATORS_DETACHED_FAILURE: 'product-area-collaborators-detached-failure',
-  ProductAreaCollaboratorsDetachedMessage,
+  // Owner detached from product area
+  PRODUCT_AREA_COLLABORATORS_DETACHED: 'product-area-owners-detached',
+  PRODUCT_AREA_COLLABORATORS_DETACHED_SUCCESS: 'product-area-owners-detached-success',
+  PRODUCT_AREA_COLLABORATORS_DETACHED_FAILURE: 'product-area-owners-detached-failure',
+  ProductAreaOwnerDetachedMessage,
 
   // User Auth methods updated
   USER_AUTH_UPDATED: 'user-auth-updated',
