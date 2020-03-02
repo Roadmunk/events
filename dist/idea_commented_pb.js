@@ -61,12 +61,11 @@ proto.roadmunk.IdeaCommentedMessage.toObject = function(includeInstance, msg) {
   var f, obj = {
     ideaCommentId: jspb.Message.getFieldWithDefault(msg, 1, ""),
     ideaId: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    ideaOwnerId: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    commentText: jspb.Message.getFieldWithDefault(msg, 4, ""),
-    userId: jspb.Message.getFieldWithDefault(msg, 5, ""),
-    accountId: jspb.Message.getFieldWithDefault(msg, 6, ""),
-    ideaName: jspb.Message.getFieldWithDefault(msg, 7, ""),
-    deployment: jspb.Message.getFieldWithDefault(msg, 8, "")
+    commentText: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    userId: jspb.Message.getFieldWithDefault(msg, 4, ""),
+    accountId: jspb.Message.getFieldWithDefault(msg, 5, ""),
+    ideaTitle: jspb.Message.getFieldWithDefault(msg, 6, ""),
+    deployment: jspb.Message.getFieldWithDefault(msg, 7, "")
   };
 
   if (includeInstance) {
@@ -113,25 +112,21 @@ proto.roadmunk.IdeaCommentedMessage.deserializeBinaryFromReader = function(msg, 
       break;
     case 3:
       var value = /** @type {string} */ (reader.readString());
-      msg.setIdeaOwnerId(value);
+      msg.setCommentText(value);
       break;
     case 4:
       var value = /** @type {string} */ (reader.readString());
-      msg.setCommentText(value);
+      msg.setUserId(value);
       break;
     case 5:
       var value = /** @type {string} */ (reader.readString());
-      msg.setUserId(value);
+      msg.setAccountId(value);
       break;
     case 6:
       var value = /** @type {string} */ (reader.readString());
-      msg.setAccountId(value);
+      msg.setIdeaTitle(value);
       break;
     case 7:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setIdeaName(value);
-      break;
-    case 8:
       var value = /** @type {string} */ (reader.readString());
       msg.setDeployment(value);
       break;
@@ -178,45 +173,38 @@ proto.roadmunk.IdeaCommentedMessage.serializeBinaryToWriter = function(message, 
       f
     );
   }
-  f = message.getIdeaOwnerId();
+  f = message.getCommentText();
   if (f.length > 0) {
     writer.writeString(
       3,
       f
     );
   }
-  f = message.getCommentText();
+  f = message.getUserId();
   if (f.length > 0) {
     writer.writeString(
       4,
       f
     );
   }
-  f = message.getUserId();
+  f = message.getAccountId();
   if (f.length > 0) {
     writer.writeString(
       5,
       f
     );
   }
-  f = message.getAccountId();
+  f = message.getIdeaTitle();
   if (f.length > 0) {
     writer.writeString(
       6,
       f
     );
   }
-  f = message.getIdeaName();
-  if (f.length > 0) {
-    writer.writeString(
-      7,
-      f
-    );
-  }
   f = message.getDeployment();
   if (f.length > 0) {
     writer.writeString(
-      8,
+      7,
       f
     );
   }
@@ -254,92 +242,77 @@ proto.roadmunk.IdeaCommentedMessage.prototype.setIdeaId = function(value) {
 
 
 /**
- * optional string idea_owner_id = 3;
+ * optional string comment_text = 3;
  * @return {string}
  */
-proto.roadmunk.IdeaCommentedMessage.prototype.getIdeaOwnerId = function() {
+proto.roadmunk.IdeaCommentedMessage.prototype.getCommentText = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
 };
 
 
 /** @param {string} value */
-proto.roadmunk.IdeaCommentedMessage.prototype.setIdeaOwnerId = function(value) {
+proto.roadmunk.IdeaCommentedMessage.prototype.setCommentText = function(value) {
   jspb.Message.setField(this, 3, value);
 };
 
 
 /**
- * optional string comment_text = 4;
+ * optional string user_id = 4;
  * @return {string}
  */
-proto.roadmunk.IdeaCommentedMessage.prototype.getCommentText = function() {
+proto.roadmunk.IdeaCommentedMessage.prototype.getUserId = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
 };
 
 
 /** @param {string} value */
-proto.roadmunk.IdeaCommentedMessage.prototype.setCommentText = function(value) {
+proto.roadmunk.IdeaCommentedMessage.prototype.setUserId = function(value) {
   jspb.Message.setField(this, 4, value);
 };
 
 
 /**
- * optional string user_id = 5;
+ * optional string account_id = 5;
  * @return {string}
  */
-proto.roadmunk.IdeaCommentedMessage.prototype.getUserId = function() {
+proto.roadmunk.IdeaCommentedMessage.prototype.getAccountId = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
 };
 
 
 /** @param {string} value */
-proto.roadmunk.IdeaCommentedMessage.prototype.setUserId = function(value) {
+proto.roadmunk.IdeaCommentedMessage.prototype.setAccountId = function(value) {
   jspb.Message.setField(this, 5, value);
 };
 
 
 /**
- * optional string account_id = 6;
+ * optional string idea_title = 6;
  * @return {string}
  */
-proto.roadmunk.IdeaCommentedMessage.prototype.getAccountId = function() {
+proto.roadmunk.IdeaCommentedMessage.prototype.getIdeaTitle = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 6, ""));
 };
 
 
 /** @param {string} value */
-proto.roadmunk.IdeaCommentedMessage.prototype.setAccountId = function(value) {
+proto.roadmunk.IdeaCommentedMessage.prototype.setIdeaTitle = function(value) {
   jspb.Message.setField(this, 6, value);
 };
 
 
 /**
- * optional string idea_name = 7;
+ * optional string deployment = 7;
  * @return {string}
  */
-proto.roadmunk.IdeaCommentedMessage.prototype.getIdeaName = function() {
+proto.roadmunk.IdeaCommentedMessage.prototype.getDeployment = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 7, ""));
 };
 
 
 /** @param {string} value */
-proto.roadmunk.IdeaCommentedMessage.prototype.setIdeaName = function(value) {
-  jspb.Message.setField(this, 7, value);
-};
-
-
-/**
- * optional string deployment = 8;
- * @return {string}
- */
-proto.roadmunk.IdeaCommentedMessage.prototype.getDeployment = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 8, ""));
-};
-
-
-/** @param {string} value */
 proto.roadmunk.IdeaCommentedMessage.prototype.setDeployment = function(value) {
-  jspb.Message.setField(this, 8, value);
+  jspb.Message.setField(this, 7, value);
 };
 
 
