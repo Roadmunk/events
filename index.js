@@ -15,6 +15,8 @@ const { FeedbackUpdatedMessage } = require('./dist/feedback_updated_pb');
 const { FeedbackCommentedMessage } = require('./dist/feedback_commented_pb');
 const { ProductAreaCollaboratorsAttachedMessage } = require('./dist/product_area_collaborators_attached_pb');
 const { ProductAreaCollaboratorsDetachedMessage } = require('./dist/product_area_collaborators_detached_pb');
+const { ProductAreaOwnersAttachedMessage } = require('./dist/product_area_owners_attached_pb');
+const { ProductAreaOwnersDetachedMessage } = require('./dist/product_area_owners_detached_pb');
 const { UserAuthUpdatedRequest } = require('./dist/user_auth_updated_pb');
 const { UserEmailUpdatedMessage } = require('./dist/user_email_updated_pb');
 const { UserLogout } = require('./dist/user_logout_pb');
@@ -121,6 +123,18 @@ module.exports = {
   PRODUCT_AREA_COLLABORATORS_DETACHED_SUCCESS: 'product-area-collaborators-detached-success',
   PRODUCT_AREA_COLLABORATORS_DETACHED_FAILURE: 'product-area-collaborators-detached-failure',
   ProductAreaCollaboratorsDetachedMessage,
+
+  // New owners attached to product area
+  PRODUCT_AREA_OWNERS_ATTACHED: 'product-area-owners-attached',
+  PRODUCT_AREA_OWNERS_ATTACHED_SUCCESS: 'product-area-owners-attached-success',
+  PRODUCT_AREA_OWNERS_ATTACHED_FAILURE: 'product-area-owners-attached-failure',
+  ProductAreaOwnersAttachedMessage,
+
+    // New owners detached to product area
+  PRODUCT_AREA_OWNERS_DETACHED: 'product-area-owners-detached',
+  PRODUCT_AREA_OWNERS_DETACHED_SUCCESS: 'product-area-owners-detached-success',
+  PRODUCT_AREA_OWNERS_DETACHED_FAILURE: 'product-area-owners-detached-failure',
+  ProductAreaOwnersDetachedMessage,
 
   // User Auth methods updated
   USER_AUTH_UPDATED: 'user-auth-updated',

@@ -67,7 +67,8 @@ proto.roadmunk.FeedbackCommentedMessage.toObject = function(includeInstance, msg
     customerName: jspb.Message.getFieldWithDefault(msg, 6, ""),
     userId: jspb.Message.getFieldWithDefault(msg, 7, ""),
     accountId: jspb.Message.getFieldWithDefault(msg, 8, ""),
-    deployment: jspb.Message.getFieldWithDefault(msg, 9, "")
+    deployment: jspb.Message.getFieldWithDefault(msg, 9, ""),
+    feedbackTitle: jspb.Message.getFieldWithDefault(msg, 10, "")
   };
 
   if (includeInstance) {
@@ -139,6 +140,10 @@ proto.roadmunk.FeedbackCommentedMessage.deserializeBinaryFromReader = function(m
     case 9:
       var value = /** @type {string} */ (reader.readString());
       msg.setDeployment(value);
+      break;
+    case 10:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setFeedbackTitle(value);
       break;
     default:
       reader.skipField();
@@ -229,6 +234,13 @@ proto.roadmunk.FeedbackCommentedMessage.serializeBinaryToWriter = function(messa
   if (f.length > 0) {
     writer.writeString(
       9,
+      f
+    );
+  }
+  f = message.getFeedbackTitle();
+  if (f.length > 0) {
+    writer.writeString(
+      10,
       f
     );
   }
@@ -367,6 +379,21 @@ proto.roadmunk.FeedbackCommentedMessage.prototype.getDeployment = function() {
 /** @param {string} value */
 proto.roadmunk.FeedbackCommentedMessage.prototype.setDeployment = function(value) {
   jspb.Message.setField(this, 9, value);
+};
+
+
+/**
+ * optional string feedback_title = 10;
+ * @return {string}
+ */
+proto.roadmunk.FeedbackCommentedMessage.prototype.getFeedbackTitle = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 10, ""));
+};
+
+
+/** @param {string} value */
+proto.roadmunk.FeedbackCommentedMessage.prototype.setFeedbackTitle = function(value) {
+  jspb.Message.setField(this, 10, value);
 };
 
 

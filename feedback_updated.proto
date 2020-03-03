@@ -12,4 +12,5 @@ message FeedbackUpdatedMessage {
 	string user_id             = 8;
 	string account_id          = 9;
 	string deployment          = 10;
+	string feedback_title      = 11;
 }
