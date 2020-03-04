@@ -2,10 +2,11 @@ syntax = "proto3";
 package roadmunk;
 
 message SegmentEvent {
-  string deployment = 1;
-  string user_id    = 2;
-  string account_id = 3;
-  string event_name = 4;
+  string deployment   = 1;
+  string user_id      = 2;
+  string account_id   = 3;
+  string event_name   = 4;
+  string package_name = 5;
 
   enum EventTypes {
     identify = 0;
@@ -13,8 +14,8 @@ message SegmentEvent {
     group    = 2;
   }
 
-  EventTypes event_type = 5;
+  EventTypes event_type = 6;
 
   // JSON String containing any custom properties to track
-  string custom_properties = 6;
+  string custom_properties = 7;
 }

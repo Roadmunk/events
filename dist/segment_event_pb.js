@@ -64,8 +64,9 @@ proto.roadmunk.SegmentEvent.toObject = function(includeInstance, msg) {
     userId: jspb.Message.getFieldWithDefault(msg, 2, ""),
     accountId: jspb.Message.getFieldWithDefault(msg, 3, ""),
     eventName: jspb.Message.getFieldWithDefault(msg, 4, ""),
-    eventType: jspb.Message.getFieldWithDefault(msg, 5, 0),
-    customProperties: jspb.Message.getFieldWithDefault(msg, 6, "")
+    packageName: jspb.Message.getFieldWithDefault(msg, 5, ""),
+    eventType: jspb.Message.getFieldWithDefault(msg, 6, 0),
+    customProperties: jspb.Message.getFieldWithDefault(msg, 7, "")
   };
 
   if (includeInstance) {
@@ -119,10 +120,14 @@ proto.roadmunk.SegmentEvent.deserializeBinaryFromReader = function(msg, reader) 
       msg.setEventName(value);
       break;
     case 5:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setPackageName(value);
+      break;
+    case 6:
       var value = /** @type {!proto.roadmunk.SegmentEvent.EventTypes} */ (reader.readEnum());
       msg.setEventType(value);
       break;
-    case 6:
+    case 7:
       var value = /** @type {string} */ (reader.readString());
       msg.setCustomProperties(value);
       break;
@@ -183,17 +188,24 @@ proto.roadmunk.SegmentEvent.serializeBinaryToWriter = function(message, writer) 
       f
     );
   }
+  f = message.getPackageName();
+  if (f.length > 0) {
+    writer.writeString(
+      5,
+      f
+    );
+  }
   f = message.getEventType();
   if (f !== 0.0) {
     writer.writeEnum(
-      5,
+      6,
       f
     );
   }
   f = message.getCustomProperties();
   if (f.length > 0) {
     writer.writeString(
-      6,
+      7,
       f
     );
   }
@@ -270,32 +282,47 @@ proto.roadmunk.SegmentEvent.prototype.setEventName = function(value) {
 
 
 /**
- * optional EventTypes event_type = 5;
- * @return {!proto.roadmunk.SegmentEvent.EventTypes}
+ * optional string package_name = 5;
+ * @return {string}
  */
-proto.roadmunk.SegmentEvent.prototype.getEventType = function() {
-  return /** @type {!proto.roadmunk.SegmentEvent.EventTypes} */ (jspb.Message.getFieldWithDefault(this, 5, 0));
+proto.roadmunk.SegmentEvent.prototype.getPackageName = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
 };
 
 
-/** @param {!proto.roadmunk.SegmentEvent.EventTypes} value */
-proto.roadmunk.SegmentEvent.prototype.setEventType = function(value) {
+/** @param {string} value */
+proto.roadmunk.SegmentEvent.prototype.setPackageName = function(value) {
   jspb.Message.setField(this, 5, value);
 };
 
 
 /**
- * optional string custom_properties = 6;
+ * optional EventTypes event_type = 6;
+ * @return {!proto.roadmunk.SegmentEvent.EventTypes}
+ */
+proto.roadmunk.SegmentEvent.prototype.getEventType = function() {
+  return /** @type {!proto.roadmunk.SegmentEvent.EventTypes} */ (jspb.Message.getFieldWithDefault(this, 6, 0));
+};
+
+
+/** @param {!proto.roadmunk.SegmentEvent.EventTypes} value */
+proto.roadmunk.SegmentEvent.prototype.setEventType = function(value) {
+  jspb.Message.setField(this, 6, value);
+};
+
+
+/**
+ * optional string custom_properties = 7;
  * @return {string}
  */
 proto.roadmunk.SegmentEvent.prototype.getCustomProperties = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 6, ""));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 7, ""));
 };
 
 
 /** @param {string} value */
 proto.roadmunk.SegmentEvent.prototype.setCustomProperties = function(value) {
-  jspb.Message.setField(this, 6, value);
+  jspb.Message.setField(this, 7, value);
 };
 
 
