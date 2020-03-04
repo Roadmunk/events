@@ -24,6 +24,7 @@ const { TopologyRegionUpdatedMessage } = require('./dist/topology_region_updated
 const { TopologyDeploymentUpdatedMessage } = require('./dist/topology_deployment_updated_pb');
 const { ConfigureSAML } = require('./dist/configure_saml_pb');
 const { UserLoginMessage } = require('./dist/user_login_pb');
+const { UserDeleted } = require('./dist/user_deleted_pb');
 
 module.exports = {
   // Account Updated
@@ -172,4 +173,9 @@ module.exports = {
 	CONFIGURE_SAML_SUCCESS : 'configure-saml-success',
 	CONFIGURE_SAML_FAILURE : 'configure-saml-failure',
 	ConfigureSAML,
+
+	// user deleted
+	USER_DELETED : 'user-deleted',
+	USER_DELETED_FAILURE : 'user-deleted-failure',
+	UserDeleted,
 };
