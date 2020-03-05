@@ -22,6 +22,7 @@ const { TopologyRegionUpdatedMessage } = require('./dist/topology_region_updated
 const { TopologyDeploymentUpdatedMessage } = require('./dist/topology_deployment_updated_pb');
 const { ConfigureSAML } = require('./dist/configure_saml_pb');
 const { UserLoginMessage } = require('./dist/user_login_pb');
+const { UserDeleted } = require('./dist/user_deleted_pb');
 
 module.exports = {
   // Account Updated
@@ -121,6 +122,18 @@ module.exports = {
   PRODUCT_AREA_OWNERS_DETACHED_FAILURE: 'product-area-owners-detached-failure',
   ProductAreaOwnersDetachedMessage,
 
+  // New owners attached to product area
+  PRODUCT_AREA_OWNERS_ATTACHED: 'product-area-owners-attached',
+  PRODUCT_AREA_OWNERS_ATTACHED_SUCCESS: 'product-area-owners-attached-success',
+  PRODUCT_AREA_OWNERS_ATTACHED_FAILURE: 'product-area-owners-attached-failure',
+  ProductAreaOwnersAttachedMessage,
+
+    // New owners detached to product area
+  PRODUCT_AREA_OWNERS_DETACHED: 'product-area-owners-detached',
+  PRODUCT_AREA_OWNERS_DETACHED_SUCCESS: 'product-area-owners-detached-success',
+  PRODUCT_AREA_OWNERS_DETACHED_FAILURE: 'product-area-owners-detached-failure',
+  ProductAreaOwnersDetachedMessage,
+
   // User Auth methods updated
   USER_AUTH_UPDATED: 'user-auth-updated',
   USER_AUTH_UPDATED_SUCCESS: 'user-auth-updated-success',
@@ -158,4 +171,9 @@ module.exports = {
 	CONFIGURE_SAML_SUCCESS : 'configure-saml-success',
 	CONFIGURE_SAML_FAILURE : 'configure-saml-failure',
 	ConfigureSAML,
+
+	// user deleted
+	USER_DELETED : 'user-deleted',
+	USER_DELETED_FAILURE : 'user-deleted-failure',
+	UserDeleted,
 };
