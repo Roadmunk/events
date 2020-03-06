@@ -1,0 +1,12 @@
+syntax = "proto3";
+package roadmunk;
+
+message IdeaCommentedMessage {
+	string idea_comment_id = 1;
+	string idea_id         = 2;
+	string comment_text    = 3;
+	string user_id         = 4;
+	string account_id      = 5;
+	string idea_title      = 6;
+	string deployment      = 7;
+}
