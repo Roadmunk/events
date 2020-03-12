@@ -7,4 +7,5 @@ message IdeaRoadmapItemAttachMessage {
   string user_id         = 3;
   string account_id      = 4;
   string deployment      = 5;
+  string identity_type   = 6;
 }

@@ -63,7 +63,8 @@ proto.roadmunk.IdeaRoadmapItemAttachMessage.toObject = function(includeInstance,
     roadmapItemId: jspb.Message.getFieldWithDefault(msg, 2, ""),
     userId: jspb.Message.getFieldWithDefault(msg, 3, ""),
     accountId: jspb.Message.getFieldWithDefault(msg, 4, ""),
-    deployment: jspb.Message.getFieldWithDefault(msg, 5, "")
+    deployment: jspb.Message.getFieldWithDefault(msg, 5, ""),
+    identity_type: jspb.Message.getFieldWithDefault(msg, 6, "")
   };
 
   if (includeInstance) {
@@ -119,7 +120,11 @@ proto.roadmunk.IdeaRoadmapItemAttachMessage.deserializeBinaryFromReader = functi
     case 5:
       var value = /** @type {string} */ (reader.readString());
       msg.setDeployment(value);
-      break;
+	  break;
+    case 6:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setIdentityType(value);
+	  break;
     default:
       reader.skipField();
       break;
@@ -181,6 +186,13 @@ proto.roadmunk.IdeaRoadmapItemAttachMessage.serializeBinaryToWriter = function(m
   if (f.length > 0) {
     writer.writeString(
       5,
+      f
+    );
+  }
+  f = message.getIdentityType();
+  if (f.length > 0) {
+    writer.writeString(
+      6,
       f
     );
   }
@@ -259,6 +271,20 @@ proto.roadmunk.IdeaRoadmapItemAttachMessage.prototype.getDeployment = function()
 /** @param {string} value */
 proto.roadmunk.IdeaRoadmapItemAttachMessage.prototype.setDeployment = function(value) {
   jspb.Message.setField(this, 5, value);
+};
+
+/**
+ * optional string deployment = 5;
+ * @return {string}
+ */
+proto.roadmunk.IdeaRoadmapItemAttachMessage.prototype.getIdentityType = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 6, ""));
+};
+
+
+/** @param {string} value */
+proto.roadmunk.IdeaRoadmapItemAttachMessage.prototype.setIdentityType = function(value) {
+  jspb.Message.setField(this, 6, value);
 };
 
 
