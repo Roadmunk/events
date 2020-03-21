@@ -1,0 +1,7 @@
+syntax = "proto3";
+package roadmunk;
+
+message AccountPackageUpdated {
+    string account_id            = 1;
+    int32  max_num_products      = 2;
+}

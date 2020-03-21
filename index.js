@@ -24,6 +24,7 @@ const { ConfigureSAML } = require('./dist/configure_saml_pb');
 const { UserLoginMessage } = require('./dist/user_login_pb');
 const { UserDeleted } = require('./dist/user_deleted_pb');
 const { IdeaCommentedMessage } = require('./dist/idea_commented_pb');
+const { AccountPackageUpdated } = require('./dist/account_package_updated_pb')
 
 module.exports = {
   // Account Updated
@@ -31,6 +32,11 @@ module.exports = {
   ACCOUNT_UPDATED_SUCCESS: 'account-updated-success',
   ACCOUNT_UPDATED_FAILURE: 'account-updated-failure',
   AccountUpdatedMessage,
+
+  // Account Package updated
+  ACCOUNT_PACKAGE_UPDATED: 'account-package-updated',
+  ACCOUNT_PACKAGE_UPDATED_FAILURE: 'account-package-updated-failure',
+  AccountPackageUpdated,
 
   // User Updated
   USER_UPDATED: 'user-updated',
