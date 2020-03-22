@@ -60,9 +60,7 @@ proto.roadmunk.AccountPackageUpdated.prototype.toObject = function(opt_includeIn
 proto.roadmunk.AccountPackageUpdated.toObject = function(includeInstance, msg) {
   var f, obj = {
     accountId: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    maxNumProducts: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    maxNumCustomFactors: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    customIdeaViews: jspb.Message.getFieldWithDefault(msg, 4, false)
+    maxNumProducts: jspb.Message.getFieldWithDefault(msg, 2, 0)
   };
 
   if (includeInstance) {
@@ -107,14 +105,6 @@ proto.roadmunk.AccountPackageUpdated.deserializeBinaryFromReader = function(msg,
       var value = /** @type {number} */ (reader.readInt32());
       msg.setMaxNumProducts(value);
       break;
-    case 3:
-      var value = /** @type {number} */ (reader.readInt32());
-      msg.setMaxNumCustomFactors(value);
-      break;
-    case 4:
-      var value = /** @type {boolean} */ (reader.readBool());
-      msg.setCustomIdeaViews(value);
-      break;
     default:
       reader.skipField();
       break;
@@ -158,20 +148,6 @@ proto.roadmunk.AccountPackageUpdated.serializeBinaryToWriter = function(message,
       f
     );
   }
-  f = message.getMaxNumCustomFactors();
-  if (f !== 0) {
-    writer.writeInt32(
-      3,
-      f
-    );
-  }
-  f = message.getCustomIdeaViews();
-  if (f) {
-    writer.writeBool(
-      4,
-      f
-    );
-  }
 };
 
 
@@ -202,38 +178,6 @@ proto.roadmunk.AccountPackageUpdated.prototype.getMaxNumProducts = function() {
 /** @param {number} value */
 proto.roadmunk.AccountPackageUpdated.prototype.setMaxNumProducts = function(value) {
   jspb.Message.setField(this, 2, value);
-};
-
-
-/**
- * optional int32 max_num_custom_factors = 3;
- * @return {number}
- */
-proto.roadmunk.AccountPackageUpdated.prototype.getMaxNumCustomFactors = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
-};
-
-
-/** @param {number} value */
-proto.roadmunk.AccountPackageUpdated.prototype.setMaxNumCustomFactors = function(value) {
-  jspb.Message.setField(this, 3, value);
-};
-
-
-/**
- * optional bool custom_idea_views = 4;
- * Note that Boolean fields may be set to 0/1 when serialized from a Java server.
- * You should avoid comparisons like {@code val === true/false} in those cases.
- * @return {boolean}
- */
-proto.roadmunk.AccountPackageUpdated.prototype.getCustomIdeaViews = function() {
-  return /** @type {boolean} */ (jspb.Message.getFieldWithDefault(this, 4, false));
-};
-
-
-/** @param {boolean} value */
-proto.roadmunk.AccountPackageUpdated.prototype.setCustomIdeaViews = function(value) {
-  jspb.Message.setField(this, 4, value);
 };
 
 
