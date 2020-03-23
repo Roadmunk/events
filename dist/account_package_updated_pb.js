@@ -60,7 +60,8 @@ proto.roadmunk.AccountPackageUpdated.prototype.toObject = function(opt_includeIn
 proto.roadmunk.AccountPackageUpdated.toObject = function(includeInstance, msg) {
   var f, obj = {
     accountId: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    maxNumProducts: jspb.Message.getFieldWithDefault(msg, 2, 0)
+    maxNumProducts: jspb.Message.getFieldWithDefault(msg, 2, 0),
+    maxNumCustomFactors: jspb.Message.getFieldWithDefault(msg, 3, 0)
   };
 
   if (includeInstance) {
@@ -105,6 +106,10 @@ proto.roadmunk.AccountPackageUpdated.deserializeBinaryFromReader = function(msg,
       var value = /** @type {number} */ (reader.readInt32());
       msg.setMaxNumProducts(value);
       break;
+    case 3:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setMaxNumCustomFactors(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -148,6 +153,13 @@ proto.roadmunk.AccountPackageUpdated.serializeBinaryToWriter = function(message,
       f
     );
   }
+  f = message.getMaxNumCustomFactors();
+  if (f !== 0) {
+    writer.writeInt32(
+      3,
+      f
+    );
+  }
 };
 
 
@@ -178,6 +190,21 @@ proto.roadmunk.AccountPackageUpdated.prototype.getMaxNumProducts = function() {
 /** @param {number} value */
 proto.roadmunk.AccountPackageUpdated.prototype.setMaxNumProducts = function(value) {
   jspb.Message.setField(this, 2, value);
+};
+
+
+/**
+ * optional int32 max_num_custom_factors = 3;
+ * @return {number}
+ */
+proto.roadmunk.AccountPackageUpdated.prototype.getMaxNumCustomFactors = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
+};
+
+
+/** @param {number} value */
+proto.roadmunk.AccountPackageUpdated.prototype.setMaxNumCustomFactors = function(value) {
+  jspb.Message.setField(this, 3, value);
 };
 
 
