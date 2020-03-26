@@ -23,6 +23,7 @@ const { TopologyDeploymentUpdatedMessage } = require('./dist/topology_deployment
 const { ConfigureSAML } = require('./dist/configure_saml_pb');
 const { UserLoginMessage } = require('./dist/user_login_pb');
 const { UserDeleted } = require('./dist/user_deleted_pb');
+const { AccountDeleted } = require('./dist/account_deleted_pb');
 const { IdeaCommentedMessage } = require('./dist/idea_commented_pb');
 const { AccountPackageUpdated } = require('./dist/account_package_updated_pb')
 
@@ -182,7 +183,11 @@ module.exports = {
 	// user deleted
 	USER_DELETED : 'user-deleted',
 	USER_DELETED_FAILURE : 'user-deleted-failure',
-	UserDeleted,
+  UserDeleted,
+  
+  ACCOUNT_DELETED : 'account-deleted',
+  ACCOUNT_DELETED_FAILURE : 'account-deleted-failure',
+  AccountDeleted,
 
   // New comment on idea
   IDEA_COMMENTED: 'idea-commented',
