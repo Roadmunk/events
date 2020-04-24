@@ -12,4 +12,5 @@ message FeedbackCommentedMessage {
   string account_id          = 8;
   string deployment          = 9;
   string feedback_title      = 10;
+  bool customer_is_internal  = 11;
 }

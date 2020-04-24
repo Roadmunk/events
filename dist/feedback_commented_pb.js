@@ -68,7 +68,8 @@ proto.roadmunk.FeedbackCommentedMessage.toObject = function(includeInstance, msg
     userId: jspb.Message.getFieldWithDefault(msg, 7, ""),
     accountId: jspb.Message.getFieldWithDefault(msg, 8, ""),
     deployment: jspb.Message.getFieldWithDefault(msg, 9, ""),
-    feedbackTitle: jspb.Message.getFieldWithDefault(msg, 10, "")
+    feedbackTitle: jspb.Message.getFieldWithDefault(msg, 10, ""),
+    customerIsInternal: jspb.Message.getFieldWithDefault(msg, 11, false)
   };
 
   if (includeInstance) {
@@ -144,6 +145,10 @@ proto.roadmunk.FeedbackCommentedMessage.deserializeBinaryFromReader = function(m
     case 10:
       var value = /** @type {string} */ (reader.readString());
       msg.setFeedbackTitle(value);
+      break;
+    case 11:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setCustomerIsInternal(value);
       break;
     default:
       reader.skipField();
@@ -241,6 +246,13 @@ proto.roadmunk.FeedbackCommentedMessage.serializeBinaryToWriter = function(messa
   if (f.length > 0) {
     writer.writeString(
       10,
+      f
+    );
+  }
+  f = message.getCustomerIsInternal();
+  if (f) {
+    writer.writeBool(
+      11,
       f
     );
   }
@@ -394,6 +406,23 @@ proto.roadmunk.FeedbackCommentedMessage.prototype.getFeedbackTitle = function() 
 /** @param {string} value */
 proto.roadmunk.FeedbackCommentedMessage.prototype.setFeedbackTitle = function(value) {
   jspb.Message.setField(this, 10, value);
+};
+
+
+/**
+ * optional bool customer_is_internal = 11;
+ * Note that Boolean fields may be set to 0/1 when serialized from a Java server.
+ * You should avoid comparisons like {@code val === true/false} in those cases.
+ * @return {boolean}
+ */
+proto.roadmunk.FeedbackCommentedMessage.prototype.getCustomerIsInternal = function() {
+  return /** @type {boolean} */ (jspb.Message.getFieldWithDefault(this, 11, false));
+};
+
+
+/** @param {boolean} value */
+proto.roadmunk.FeedbackCommentedMessage.prototype.setCustomerIsInternal = function(value) {
+  jspb.Message.setField(this, 11, value);
 };
 
 
