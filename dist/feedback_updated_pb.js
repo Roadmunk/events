@@ -69,7 +69,8 @@ proto.roadmunk.FeedbackUpdatedMessage.toObject = function(includeInstance, msg) 
     userId: jspb.Message.getFieldWithDefault(msg, 8, ""),
     accountId: jspb.Message.getFieldWithDefault(msg, 9, ""),
     deployment: jspb.Message.getFieldWithDefault(msg, 10, ""),
-    feedbackTitle: jspb.Message.getFieldWithDefault(msg, 11, "")
+    feedbackTitle: jspb.Message.getFieldWithDefault(msg, 11, ""),
+    customerIsInternal: jspb.Message.getFieldWithDefault(msg, 12, false)
   };
 
   if (includeInstance) {
@@ -149,6 +150,10 @@ proto.roadmunk.FeedbackUpdatedMessage.deserializeBinaryFromReader = function(msg
     case 11:
       var value = /** @type {string} */ (reader.readString());
       msg.setFeedbackTitle(value);
+      break;
+    case 12:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setCustomerIsInternal(value);
       break;
     default:
       reader.skipField();
@@ -253,6 +258,13 @@ proto.roadmunk.FeedbackUpdatedMessage.serializeBinaryToWriter = function(message
   if (f.length > 0) {
     writer.writeString(
       11,
+      f
+    );
+  }
+  f = message.getCustomerIsInternal();
+  if (f) {
+    writer.writeBool(
+      12,
       f
     );
   }
@@ -423,6 +435,23 @@ proto.roadmunk.FeedbackUpdatedMessage.prototype.getFeedbackTitle = function() {
 /** @param {string} value */
 proto.roadmunk.FeedbackUpdatedMessage.prototype.setFeedbackTitle = function(value) {
   jspb.Message.setField(this, 11, value);
+};
+
+
+/**
+ * optional bool customer_is_internal = 12;
+ * Note that Boolean fields may be set to 0/1 when serialized from a Java server.
+ * You should avoid comparisons like {@code val === true/false} in those cases.
+ * @return {boolean}
+ */
+proto.roadmunk.FeedbackUpdatedMessage.prototype.getCustomerIsInternal = function() {
+  return /** @type {boolean} */ (jspb.Message.getFieldWithDefault(this, 12, false));
+};
+
+
+/** @param {boolean} value */
+proto.roadmunk.FeedbackUpdatedMessage.prototype.setCustomerIsInternal = function(value) {
+  jspb.Message.setField(this, 12, value);
 };
 
 
