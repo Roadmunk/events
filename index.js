@@ -1,3 +1,6 @@
+const fs = require('fs');
+const path = require('path');
+const OptionalFieldsPatcher = require('./OptionalFieldsPatcher');
 const { UserUpdatedMessage } = require('./dist/user_updated_pb');
 const { AccountUpdatedMessage } = require('./dist/account_updated_pb');
 const { SignupAccountRequest } = require('./dist/signup_account_pb');
@@ -25,173 +28,175 @@ const { UserLoginMessage } = require('./dist/user_login_pb');
 const { UserDeleted } = require('./dist/user_deleted_pb');
 const { AccountDeleted } = require('./dist/account_deleted_pb');
 const { IdeaCommentedMessage } = require('./dist/idea_commented_pb');
-const { AccountPackageUpdated } = require('./dist/account_package_updated_pb')
+const { AccountPackageUpdated } = require('./dist/account_package_updated_pb');
+
+const patcher = new OptionalFieldsPatcher(fs.readFileSync(path.join(__dirname, '/dist/descriptors.msg')));
 
 module.exports = {
   // Account Updated
   ACCOUNT_UPDATED: 'account-updated',
   ACCOUNT_UPDATED_SUCCESS: 'account-updated-success',
   ACCOUNT_UPDATED_FAILURE: 'account-updated-failure',
-  AccountUpdatedMessage,
+  AccountUpdatedMessage : patcher.patch('AccountUpdatedMessage', AccountUpdatedMessage),
 
   // Account Package updated
   ACCOUNT_PACKAGE_UPDATED: 'account-package-updated',
   ACCOUNT_PACKAGE_UPDATED_FAILURE: 'account-package-updated-failure',
-  AccountPackageUpdated,
+  AccountPackageUpdated : patcher.patch('AccountPackageUpdated', AccountPackageUpdated),
 
   // User Updated
   USER_UPDATED: 'user-updated',
   USER_UPDATED_SUCCESS: 'user-updated-success',
   USER_UPDATED_FAILURE: 'user-updated-failure',
-  UserUpdatedMessage,
+  UserUpdatedMessage : patcher.patch('UserUpdatedMessage', UserUpdatedMessage),
 
   // Signup Account
   SIGNUP_ACCOUNT: 'signup-account',
   SIGNUP_ACCOUNT_SUCCESS: 'signup-account-success',
   SIGNUP_ACCOUNT_FAILURE: 'signup-account-failure',
-  SignupAccountRequest,
-  AccountSignupCompleted,
+  SignupAccountRequest : patcher.patch('SignupAccountRequest', SignupAccountRequest),
+  AccountSignupCompleted : patcher.patch('AccountSignupCompleted', AccountSignupCompleted),
 
   // Reset Password
   RESET_PASSWORD: 'reset-password',
   RESET_PASSWORD_SUCCESS: 'reset-password-success',
   RESET_PASSWORD_FAILURE: 'reset-password-failure',
-  ResetPasswordRequest,
+  ResetPasswordRequest : patcher.patch('ResetPasswordRequest', ResetPasswordRequest),
 
   // Send email
   SEND_EMAIL: 'send-email',
   SEND_EMAIL_SUCCESS: 'send-email-success',
   SEND_EMAIL_FAILURE: 'send-email-failure',
-  SendEmailRequest,
+  SendEmailRequest : patcher.patch('SendEmailRequest', SendEmailRequest),
 
   // Attach an idea to a roadmap item
   IDEA_ROADMAP_ITEM_ATTACH: 'idea-roadmap-item-attach',
   IDEA_ROADMAP_ITEM_ATTACH_SUCCESS: 'idea-roadmap-item-attach-success',
   IDEA_ROADMAP_ITEM_ATTACH_FAILURE: 'idea-roadmap-item-attach-failure',
-  IdeaRoadmapItemAttachMessage,
+  IdeaRoadmapItemAttachMessage : patcher.patch('IdeaRoadmapItemAttachMessage', IdeaRoadmapItemAttachMessage),
 
   // Detach an idea from a roadmap item
   IDEA_ROADMAP_ITEM_DETACH: 'idea-roadmap-item-detach',
   IDEA_ROADMAP_ITEM_DETACH_SUCCESS: 'idea-roadmap-item-detach-success',
   IDEA_ROADMAP_ITEM_DETACH_FAILURE: 'idea-roadmap-item-detach-failure',
-  IdeaRoadmapItemDetachMessage,
+  IdeaRoadmapItemDetachMessage : patcher.patch('IdeaRoadmapItemDetachMessage', IdeaRoadmapItemDetachMessage),
 
   // Invite a user
   INVITE_USER: 'invite-user',
   INVITE_USER_SUCCESS: 'invite-user-success',
   INVITE_USER_FAILURE: 'invite-user-failure',
-  InviteUserRequest,
+  InviteUserRequest : patcher.patch('InviteUserRequest', InviteUserRequest),
 
   // Ingesting a CSV for new customers
   CUSTOMERS_CSV_INGESTION: 'customers-csv-ingestion',
   CUSTOMERS_CSV_INGESTION_SUCCESS: 'customers-csv-ingestion-success',
   CUSTOMERS_CSV_INGESTION_FAILURE: 'customers-csv-ingestion-failure',
-  CustomersCSVIngestionMessage,
+  CustomersCSVIngestionMessage : patcher.patch('CustomersCSVIngestionMessage', CustomersCSVIngestionMessage),
 
   // Moving a user to a new account
   MOVE_USER: 'move-user',
   MOVE_USER_SUCCESS: 'move-user-success',
   MOVE_USER_FAILURE: 'move-user-failure',
-  MoveUserRequest,
+  MoveUserRequest : patcher.patch('MoveUserRequest', MoveUserRequest),
 
   // Merge two accounts
   MERGE_ACCOUNT: 'merge-account',
   MERGE_ACCOUNT_SUCCESS: 'merge-account-success',
   MERGE_ACCOUNT_FAILURE: 'merge-account-failure',
-  MergeAccountRequest,
+  MergeAccountRequest : patcher.patch('MergeAccountRequest', MergeAccountRequest),
 
   // Sync with segment event
   SEGMENT_EVENT: 'segment-event',
   SEGMENT_EVENT_SUCCESS: 'segment-event-success',
   SEGMENT_EVENT_FAILURE: 'segment-event-failure',
-  SegmentEvent,
+  SegmentEvent : patcher.patch('SegmentEvent', SegmentEvent),
 
   // Feedback updated
   FEEDBACK_UPDATED: 'feedback-updated',
   FEEDBACK_UPDATED_SUCCESS: 'feedback-updated-success',
   FEEDBACK_UPDATED_FAILURE: 'feedback-updated-failure',
-  FeedbackUpdatedMessage,
+  FeedbackUpdatedMessage : patcher.patch('FeedbackUpdatedMessage', FeedbackUpdatedMessage),
 
   // New comment on feedback
   FEEDBACK_COMMENTED: 'feedback-commented',
   FEEDBACK_COMMENTED_SUCCESS: 'feedback-commented-success',
   FEEDBACK_COMMENTED_FAILURE: 'feedback-commented-failure',
-  FeedbackCommentedMessage,
+  FeedbackCommentedMessage : patcher.patch('FeedbackCommentedMessage', FeedbackCommentedMessage),
 
   // New owners attached to product area
   PRODUCT_AREA_OWNERS_ATTACHED: 'product-area-owners-attached',
   PRODUCT_AREA_OWNERS_ATTACHED_SUCCESS: 'product-area-owners-attached-success',
   PRODUCT_AREA_OWNERS_ATTACHED_FAILURE: 'product-area-owners-attached-failure',
-  ProductAreaOwnersAttachedMessage,
+  ProductAreaOwnersAttachedMessage : patcher.patch('ProductAreaOwnersAttachedMessage', ProductAreaOwnersAttachedMessage),
 
     // New owners detached to product area
   PRODUCT_AREA_OWNERS_DETACHED: 'product-area-owners-detached',
   PRODUCT_AREA_OWNERS_DETACHED_SUCCESS: 'product-area-owners-detached-success',
   PRODUCT_AREA_OWNERS_DETACHED_FAILURE: 'product-area-owners-detached-failure',
-  ProductAreaOwnersDetachedMessage,
+  ProductAreaOwnersDetachedMessage : patcher.patch('ProductAreaOwnersDetachedMessage', ProductAreaOwnersDetachedMessage),
 
   // New owners attached to product area
   PRODUCT_AREA_OWNERS_ATTACHED: 'product-area-owners-attached',
   PRODUCT_AREA_OWNERS_ATTACHED_SUCCESS: 'product-area-owners-attached-success',
   PRODUCT_AREA_OWNERS_ATTACHED_FAILURE: 'product-area-owners-attached-failure',
-  ProductAreaOwnersAttachedMessage,
+  ProductAreaOwnersAttachedMessage : patcher.patch('ProductAreaOwnersAttachedMessage', ProductAreaOwnersAttachedMessage),
 
     // New owners detached to product area
   PRODUCT_AREA_OWNERS_DETACHED: 'product-area-owners-detached',
   PRODUCT_AREA_OWNERS_DETACHED_SUCCESS: 'product-area-owners-detached-success',
   PRODUCT_AREA_OWNERS_DETACHED_FAILURE: 'product-area-owners-detached-failure',
-  ProductAreaOwnersDetachedMessage,
+  ProductAreaOwnersDetachedMessage : patcher.patch('ProductAreaOwnersDetachedMessage', ProductAreaOwnersDetachedMessage),
 
   // User Auth methods updated
   USER_AUTH_UPDATED: 'user-auth-updated',
   USER_AUTH_UPDATED_SUCCESS: 'user-auth-updated-success',
   USER_AUTH_UPDATED_FAILURE: 'user-auth-updated-failure',
-  UserAuthUpdatedRequest,
+  UserAuthUpdatedRequest : patcher.patch('UserAuthUpdatedRequest', UserAuthUpdatedRequest),
 
   // User email verified/changed
   USER_EMAIL_UPDATED: 'user-email-updated',
   USER_EMAIL_UPDATED_SUCCESS: 'user-email-updated-success',
   USER_EMAIL_UPDATED_FAILURE: 'user-email-updated-failure',
-  UserEmailUpdatedMessage,
+  UserEmailUpdatedMessage : patcher.patch('UserEmailUpdatedMessage', UserEmailUpdatedMessage),
 
 	// User Logging out
 	USER_LOGOUT: 'user-logout',
-	UserLogout,
+	UserLogout : patcher.patch('UserLogout', UserLogout),
 
 	// User Logging in
 	USER_LOGIN: 'user-login',
-	UserLoginMessage,
+	UserLoginMessage : patcher.patch('UserLoginMessage', UserLoginMessage),
 
 	// Topology region updated
 	TOPOLOGY_REGION_UPDATED : 'topology-region-upated',
 	TOPOLOGY_REGION_UPDATED_SUCCESS : 'topology-region-upated-success',
 	TOPOLOGY_REGION_UPDATED_FAILURE : 'topology-region-upated-failure',
-	TopologyRegionUpdatedMessage,
+	TopologyRegionUpdatedMessage : patcher.patch('TopologyRegionUpdatedMessage', TopologyRegionUpdatedMessage),
 
 	// topology deployment updated
 	TOPOLOGY_DEPLOYMENT_UPDATED : 'topology-deployment-upated',
 	TOPOLOGY_DEPLOYMENT_UPDATED_SUCCESS : 'topology-deployment-upated-success',
 	TOPOLOGY_DEPLOYMENT_UPDATED_FAILURE : 'topology-deployment-upated-failure',
-	TopologyDeploymentUpdatedMessage,
+	TopologyDeploymentUpdatedMessage : patcher.patch('TopologyDeploymentUpdatedMessage', TopologyDeploymentUpdatedMessage),
 
 	// configure saml
 	CONFIGURE_SAML : 'configure-saml',
 	CONFIGURE_SAML_SUCCESS : 'configure-saml-success',
 	CONFIGURE_SAML_FAILURE : 'configure-saml-failure',
-	ConfigureSAML,
+	ConfigureSAML : patcher.patch('ConfigureSAML', ConfigureSAML),
 
 	// user deleted
 	USER_DELETED : 'user-deleted',
 	USER_DELETED_FAILURE : 'user-deleted-failure',
-  UserDeleted,
+  UserDeleted : patcher.patch('UserDeleted', UserDeleted),
   
   ACCOUNT_DELETED : 'account-deleted',
   ACCOUNT_DELETED_FAILURE : 'account-deleted-failure',
-  AccountDeleted,
+  AccountDeleted : patcher.patch('AccountDeleted', AccountDeleted),
 
   // New comment on idea
   IDEA_COMMENTED: 'idea-commented',
   IDEA_COMMENTED_SUCCESS: 'idea-commented-success',
   IDEA_COMMENTED_FAILURE: 'idea-commented-failure',
-  IdeaCommentedMessage,
+  IdeaCommentedMessage : patcher.patch('IdeaCommentedMessage', IdeaCommentedMessage),
 };
