@@ -1,6 +1,8 @@
 syntax = "proto3";
 package roadmunk;
 
+import "google/protobuf/wrappers.proto";
+
 message SignupAccountRequest {
   string email        = 1;
   string user_id      = 2;
@@ -15,4 +17,12 @@ message SignupAccountRequest {
   string page_url     = 11;
   string first_name   = 12;
   string last_name    = 13;
+
+  // Reserve 14 & 15 for future required fields since they take less space to encode
+
+  // Optional fields
+  google.protobuf.StringValue company_name = 16;
+  google.protobuf.StringValue company_size = 17;
+  google.protobuf.Int32Value trial_length_weeks = 18;
+  google.protobuf.BoolValue subscribe_to_newsletters = 19;
 }

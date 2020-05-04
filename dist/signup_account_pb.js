@@ -11,6 +11,7 @@ var jspb = require('google-protobuf');
 var goog = jspb;
 var global = Function('return this')();
 
+var google_protobuf_wrappers_pb = require('google-protobuf/google/protobuf/wrappers_pb.js');
 goog.exportSymbol('proto.roadmunk.SignupAccountRequest', null, global);
 
 /**
@@ -71,7 +72,11 @@ proto.roadmunk.SignupAccountRequest.toObject = function(includeInstance, msg) {
     ip: jspb.Message.getFieldWithDefault(msg, 10, ""),
     pageUrl: jspb.Message.getFieldWithDefault(msg, 11, ""),
     firstName: jspb.Message.getFieldWithDefault(msg, 12, ""),
-    lastName: jspb.Message.getFieldWithDefault(msg, 13, "")
+    lastName: jspb.Message.getFieldWithDefault(msg, 13, ""),
+    companyName: (f = msg.getCompanyName()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
+    companySize: (f = msg.getCompanySize()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
+    trialLengthWeeks: (f = msg.getTrialLengthWeeks()) && google_protobuf_wrappers_pb.Int32Value.toObject(includeInstance, f),
+    subscribeToNewsletters: (f = msg.getSubscribeToNewsletters()) && google_protobuf_wrappers_pb.BoolValue.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -159,6 +164,26 @@ proto.roadmunk.SignupAccountRequest.deserializeBinaryFromReader = function(msg, 
     case 13:
       var value = /** @type {string} */ (reader.readString());
       msg.setLastName(value);
+      break;
+    case 16:
+      var value = new google_protobuf_wrappers_pb.StringValue;
+      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
+      msg.setCompanyName(value);
+      break;
+    case 17:
+      var value = new google_protobuf_wrappers_pb.StringValue;
+      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
+      msg.setCompanySize(value);
+      break;
+    case 18:
+      var value = new google_protobuf_wrappers_pb.Int32Value;
+      reader.readMessage(value,google_protobuf_wrappers_pb.Int32Value.deserializeBinaryFromReader);
+      msg.setTrialLengthWeeks(value);
+      break;
+    case 19:
+      var value = new google_protobuf_wrappers_pb.BoolValue;
+      reader.readMessage(value,google_protobuf_wrappers_pb.BoolValue.deserializeBinaryFromReader);
+      msg.setSubscribeToNewsletters(value);
       break;
     default:
       reader.skipField();
@@ -278,6 +303,38 @@ proto.roadmunk.SignupAccountRequest.serializeBinaryToWriter = function(message, 
     writer.writeString(
       13,
       f
+    );
+  }
+  f = message.getCompanyName();
+  if (f != null) {
+    writer.writeMessage(
+      16,
+      f,
+      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
+    );
+  }
+  f = message.getCompanySize();
+  if (f != null) {
+    writer.writeMessage(
+      17,
+      f,
+      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
+    );
+  }
+  f = message.getTrialLengthWeeks();
+  if (f != null) {
+    writer.writeMessage(
+      18,
+      f,
+      google_protobuf_wrappers_pb.Int32Value.serializeBinaryToWriter
+    );
+  }
+  f = message.getSubscribeToNewsletters();
+  if (f != null) {
+    writer.writeMessage(
+      19,
+      f,
+      google_protobuf_wrappers_pb.BoolValue.serializeBinaryToWriter
     );
   }
 };
@@ -475,6 +532,126 @@ proto.roadmunk.SignupAccountRequest.prototype.getLastName = function() {
 /** @param {string} value */
 proto.roadmunk.SignupAccountRequest.prototype.setLastName = function(value) {
   jspb.Message.setField(this, 13, value);
+};
+
+
+/**
+ * optional google.protobuf.StringValue company_name = 16;
+ * @return {?proto.google.protobuf.StringValue}
+ */
+proto.roadmunk.SignupAccountRequest.prototype.getCompanyName = function() {
+  return /** @type{?proto.google.protobuf.StringValue} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 16));
+};
+
+
+/** @param {?proto.google.protobuf.StringValue|undefined} value */
+proto.roadmunk.SignupAccountRequest.prototype.setCompanyName = function(value) {
+  jspb.Message.setWrapperField(this, 16, value);
+};
+
+
+proto.roadmunk.SignupAccountRequest.prototype.clearCompanyName = function() {
+  this.setCompanyName(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {!boolean}
+ */
+proto.roadmunk.SignupAccountRequest.prototype.hasCompanyName = function() {
+  return jspb.Message.getField(this, 16) != null;
+};
+
+
+/**
+ * optional google.protobuf.StringValue company_size = 17;
+ * @return {?proto.google.protobuf.StringValue}
+ */
+proto.roadmunk.SignupAccountRequest.prototype.getCompanySize = function() {
+  return /** @type{?proto.google.protobuf.StringValue} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 17));
+};
+
+
+/** @param {?proto.google.protobuf.StringValue|undefined} value */
+proto.roadmunk.SignupAccountRequest.prototype.setCompanySize = function(value) {
+  jspb.Message.setWrapperField(this, 17, value);
+};
+
+
+proto.roadmunk.SignupAccountRequest.prototype.clearCompanySize = function() {
+  this.setCompanySize(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {!boolean}
+ */
+proto.roadmunk.SignupAccountRequest.prototype.hasCompanySize = function() {
+  return jspb.Message.getField(this, 17) != null;
+};
+
+
+/**
+ * optional google.protobuf.Int32Value trial_length_weeks = 18;
+ * @return {?proto.google.protobuf.Int32Value}
+ */
+proto.roadmunk.SignupAccountRequest.prototype.getTrialLengthWeeks = function() {
+  return /** @type{?proto.google.protobuf.Int32Value} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.Int32Value, 18));
+};
+
+
+/** @param {?proto.google.protobuf.Int32Value|undefined} value */
+proto.roadmunk.SignupAccountRequest.prototype.setTrialLengthWeeks = function(value) {
+  jspb.Message.setWrapperField(this, 18, value);
+};
+
+
+proto.roadmunk.SignupAccountRequest.prototype.clearTrialLengthWeeks = function() {
+  this.setTrialLengthWeeks(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {!boolean}
+ */
+proto.roadmunk.SignupAccountRequest.prototype.hasTrialLengthWeeks = function() {
+  return jspb.Message.getField(this, 18) != null;
+};
+
+
+/**
+ * optional google.protobuf.BoolValue subscribe_to_newsletters = 19;
+ * @return {?proto.google.protobuf.BoolValue}
+ */
+proto.roadmunk.SignupAccountRequest.prototype.getSubscribeToNewsletters = function() {
+  return /** @type{?proto.google.protobuf.BoolValue} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.BoolValue, 19));
+};
+
+
+/** @param {?proto.google.protobuf.BoolValue|undefined} value */
+proto.roadmunk.SignupAccountRequest.prototype.setSubscribeToNewsletters = function(value) {
+  jspb.Message.setWrapperField(this, 19, value);
+};
+
+
+proto.roadmunk.SignupAccountRequest.prototype.clearSubscribeToNewsletters = function() {
+  this.setSubscribeToNewsletters(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {!boolean}
+ */
+proto.roadmunk.SignupAccountRequest.prototype.hasSubscribeToNewsletters = function() {
+  return jspb.Message.getField(this, 19) != null;
 };
 
 
