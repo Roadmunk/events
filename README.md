@@ -80,3 +80,6 @@ msg.toObject();     // {
                     //  lastName  : 'Smith',
                     // }
 ```
+
+#### Limitations
+At this time, `repeated` fields using the optional wrapper types accessors are **not** patched and will behave like any other `repeated` message type field.
