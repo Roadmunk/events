@@ -1,31 +1,31 @@
-const { UserUpdatedMessage } = require('./dist/user_updated_pb');
-const { AccountUpdatedMessage } = require('./dist/account_updated_pb');
-const { SignupAccountRequest } = require('./dist/signup_account_pb');
-const { ResetPasswordRequest } = require('./dist/reset_password_pb');
-const { AccountSignupCompleted } = require('./dist/account_signup_pb');
-const { SendEmailRequest } = require('./dist/send_email_pb');
-const { IdeaRoadmapItemAttachMessage } = require('./dist/idea_roadmap_item_attach_pb');
-const { IdeaRoadmapItemDetachMessage } = require('./dist/idea_roadmap_item_detach_pb');
-const { InviteUserRequest } = require('./dist/invite_user_pb');
-const { CustomersCSVIngestionMessage } = require('./dist/customers_csv_ingestion_pb');
-const { MoveUserRequest } = require('./dist/move_user_pb');
-const { MergeAccountRequest } = require('./dist/merge_account_pb');
-const { SegmentEvent } = require('./dist/segment_event_pb');
-const { FeedbackUpdatedMessage } = require('./dist/feedback_updated_pb');
-const { FeedbackCommentedMessage } = require('./dist/feedback_commented_pb');
-const { ProductAreaOwnersAttachedMessage } = require('./dist/product_area_owners_attached_pb');
-const { ProductAreaOwnersDetachedMessage } = require('./dist/product_area_owners_detached_pb');
-const { UserAuthUpdatedRequest } = require('./dist/user_auth_updated_pb');
-const { UserEmailUpdatedMessage } = require('./dist/user_email_updated_pb');
-const { UserLogout } = require('./dist/user_logout_pb');
-const { TopologyRegionUpdatedMessage } = require('./dist/topology_region_updated_pb');
-const { TopologyDeploymentUpdatedMessage } = require('./dist/topology_deployment_updated_pb');
-const { ConfigureSAML } = require('./dist/configure_saml_pb');
-const { UserLoginMessage } = require('./dist/user_login_pb');
-const { UserDeleted } = require('./dist/user_deleted_pb');
-const { AccountDeleted } = require('./dist/account_deleted_pb');
-const { IdeaCommentedMessage } = require('./dist/idea_commented_pb');
-const { AccountPackageUpdated } = require('./dist/account_package_updated_pb')
+const { UserUpdatedMessage } = require('./dist/protos/user_updated_pb');
+const { AccountUpdatedMessage } = require('./dist/protos/account_updated_pb');
+const { SignupAccountRequest } = require('./dist/protos/signup_account_pb');
+const { ResetPasswordRequest } = require('./dist/protos/reset_password_pb');
+const { AccountSignupCompleted } = require('./dist/protos/account_signup_pb');
+const { SendEmailRequest } = require('./dist/protos/send_email_pb');
+const { IdeaRoadmapItemAttachMessage } = require('./dist/protos/idea_roadmap_item_attach_pb');
+const { IdeaRoadmapItemDetachMessage } = require('./dist/protos/idea_roadmap_item_detach_pb');
+const { InviteUserRequest } = require('./dist/protos/invite_user_pb');
+const { CustomersCSVIngestionMessage } = require('./dist/protos/customers_csv_ingestion_pb');
+const { MoveUserRequest } = require('./dist/protos/move_user_pb');
+const { MergeAccountRequest } = require('./dist/protos/merge_account_pb');
+const { SegmentEvent } = require('./dist/protos/segment_event_pb');
+const { FeedbackUpdatedMessage } = require('./dist/protos/feedback_updated_pb');
+const { FeedbackCommentedMessage } = require('./dist/protos/feedback_commented_pb');
+const { ProductAreaOwnersAttachedMessage } = require('./dist/protos/product_area_owners_attached_pb');
+const { ProductAreaOwnersDetachedMessage } = require('./dist/protos/product_area_owners_detached_pb');
+const { UserAuthUpdatedRequest } = require('./dist/protos/user_auth_updated_pb');
+const { UserEmailUpdatedMessage } = require('./dist/protos/user_email_updated_pb');
+const { UserLogout } = require('./dist/protos/user_logout_pb');
+const { TopologyRegionUpdatedMessage } = require('./dist/protos/topology_region_updated_pb');
+const { TopologyDeploymentUpdatedMessage } = require('./dist/protos/topology_deployment_updated_pb');
+const { ConfigureSAML } = require('./dist/protos/configure_saml_pb');
+const { UserLoginMessage } = require('./dist/protos/user_login_pb');
+const { UserDeleted } = require('./dist/protos/user_deleted_pb');
+const { AccountDeleted } = require('./dist/protos/account_deleted_pb');
+const { IdeaCommentedMessage } = require('./dist/protos/idea_commented_pb');
+const { AccountPackageUpdated } = require('./dist/protos/account_package_updated_pb')
 
 module.exports = {
   // Account Updated
@@ -117,18 +117,6 @@ module.exports = {
   FEEDBACK_COMMENTED_SUCCESS: 'feedback-commented-success',
   FEEDBACK_COMMENTED_FAILURE: 'feedback-commented-failure',
   FeedbackCommentedMessage,
-
-  // New owners attached to product area
-  PRODUCT_AREA_OWNERS_ATTACHED: 'product-area-owners-attached',
-  PRODUCT_AREA_OWNERS_ATTACHED_SUCCESS: 'product-area-owners-attached-success',
-  PRODUCT_AREA_OWNERS_ATTACHED_FAILURE: 'product-area-owners-attached-failure',
-  ProductAreaOwnersAttachedMessage,
-
-    // New owners detached to product area
-  PRODUCT_AREA_OWNERS_DETACHED: 'product-area-owners-detached',
-  PRODUCT_AREA_OWNERS_DETACHED_SUCCESS: 'product-area-owners-detached-success',
-  PRODUCT_AREA_OWNERS_DETACHED_FAILURE: 'product-area-owners-detached-failure',
-  ProductAreaOwnersDetachedMessage,
 
   // New owners attached to product area
   PRODUCT_AREA_OWNERS_ATTACHED: 'product-area-owners-attached',
