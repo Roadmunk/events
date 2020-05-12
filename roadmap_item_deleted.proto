@@ -1,0 +1,7 @@
+syntax = "proto3";
+package roadmunk;
+
+message RoadmapItemDeleted {
+  string roadmap_item_id = 1;
+  string deployment      = 2;
+}

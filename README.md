@@ -1,6 +1,6 @@
 # Protobuf Events
 
-Generated protobuf files. 
+Generated protobuf files.
 
 ### Install
 
