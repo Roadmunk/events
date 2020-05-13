@@ -1,4 +1,6 @@
 const events = require('./src/event-map')
+const createOn = require('./src/on')
+const createPublish = require('./src/publish')
 
 const eventNameMappings = Array.from(Object.keys(events))
 	.reduce( (map, key) => {
@@ -16,6 +18,7 @@ const eventTypeMappings = Object.keys(events)
 		results[newKey] = events[key]
 		return results
 	}, {})
+
 
 	module.exports = {
 		...eventNameMappings,

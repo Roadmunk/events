@@ -1,6 +1,8 @@
-function createActions({eventMap}) {
+const eventMap = require('./event-map')
+
+function createActions() {
     function deserialize(eventName, data) {
-        const bytes = Buffer.from(data, 'base64')
+        const bytes = Buffer.from(data || '==', 'base64')
         return eventMap[eventName].deserializeBinary(bytes)
     }
 
@@ -23,10 +25,9 @@ function createHandlers({deserialize}) {
         }
     }
 
-    async function onMessage(cb) {
+    function onMessage(eventName, cb) {
         return function (message) {
-            console.log(`Message received: `, message)
-            const data = deserialize(message.Body)
+            const data = deserialize(eventName, message.Body)
             cb(data)
         }
     }
@@ -38,12 +39,10 @@ function createHandlers({deserialize}) {
     }
 }
 
-let subscriptions = new Set()
-
-function createOn({Consumer, eventMap, region, account, service, deployment}) {
+function createOn({Consumer, region, account, service, deployment, subscriptions = new Set()}) {
     const {
         deserialize
-    } = createActions({eventMap})
+    } = createActions()
 
     const {
         onError,
@@ -51,16 +50,16 @@ function createOn({Consumer, eventMap, region, account, service, deployment}) {
         onMessage,
     } = createHandlers({deserialize})
 
-    function On(eventName, callback) {
+    async function On(eventName, callback) {
         if( subscriptions.has(eventName) ) {
             console.error(`Can only listen to an event once. Create a new SQS queue to listen to the same event.`)
             return false;
         }
 
-        // const queueUrl = `https://sqs.${region}.amazonaws.com/${account}/${service}-${deployment}-${eventName}`
+        const queueUrl = `https://sqs.${region}.amazonaws.com/${account}/${service}-${deployment}-${eventName}`
         const app = Consumer.create({
             queueUrl,
-            handleMessage: onMessage(callback)
+            handleMessage: onMessage(eventName, callback)
         })
 
         app.on('error', onError(eventName))
@@ -68,10 +67,12 @@ function createOn({Consumer, eventMap, region, account, service, deployment}) {
 
         subscriptions.add(eventName)
         app.start()
+        return true;
     }
 
     return {
-        On
+        On,
+        onMessage,
     }
 }
 
