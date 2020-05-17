@@ -1,17 +1,21 @@
-# Protobuf Events
+# PubSub Events
 
-Generated protobuf files. 
+This is the PubSub. The two functions we use are `Publish` and `On`.
 
 ### Install
 
 `npm install --save @roadmunk/events`
-
 
 ### Build
 
 `npm run build`
 
 This will use docker to build and update required changes in `dist`. We _do_ commit these files so we can add a link to the github for testing.
+
+### Usage
+
+Clone the repo and run `npm run docs`. This will create the documentation and tutorials in the `docs` directory. You can 
+also check out `tutorials/on-tutorial.md` or `tutorials/publish-tutorial.md`.
 
 ### Testing out our changes
 
