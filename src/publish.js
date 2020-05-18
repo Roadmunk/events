@@ -71,7 +71,7 @@ function createPublish({lambda, functionName, deployment, region, service, date 
 		const params = {
 			FunctionName: functionName,
 			InvocationType: 'RequestResponse',
-			Payload: {
+			Payload: JSON.stringify({
 				EventName: eventName,
 				EventTypeVersion: 'v1',
 				Data : serialize(event),
@@ -79,7 +79,7 @@ function createPublish({lambda, functionName, deployment, region, service, date 
 				Deployment : deployment,
 				Region : region,
 				Service : service,
-			}
+			})
 		}
 
 		await lambda.invoke(params).promise()
