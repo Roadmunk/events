@@ -3,5 +3,6 @@ package roadmunk;
 
 message RoadmapItemDeleted {
   string roadmap_item_id = 1;
-  string deployment      = 2;
+  string account_id      = 2;
+  string deployment      = 3;
 }

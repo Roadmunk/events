@@ -60,7 +60,8 @@ proto.roadmunk.RoadmapItemDeleted.prototype.toObject = function(opt_includeInsta
 proto.roadmunk.RoadmapItemDeleted.toObject = function(includeInstance, msg) {
   var f, obj = {
     roadmapItemId: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    deployment: jspb.Message.getFieldWithDefault(msg, 2, "")
+    accountId: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    deployment: jspb.Message.getFieldWithDefault(msg, 3, "")
   };
 
   if (includeInstance) {
@@ -103,6 +104,10 @@ proto.roadmunk.RoadmapItemDeleted.deserializeBinaryFromReader = function(msg, re
       break;
     case 2:
       var value = /** @type {string} */ (reader.readString());
+      msg.setAccountId(value);
+      break;
+    case 3:
+      var value = /** @type {string} */ (reader.readString());
       msg.setDeployment(value);
       break;
     default:
@@ -141,10 +146,17 @@ proto.roadmunk.RoadmapItemDeleted.serializeBinaryToWriter = function(message, wr
       f
     );
   }
-  f = message.getDeployment();
+  f = message.getAccountId();
   if (f.length > 0) {
     writer.writeString(
       2,
+      f
+    );
+  }
+  f = message.getDeployment();
+  if (f.length > 0) {
+    writer.writeString(
+      3,
       f
     );
   }
@@ -167,17 +179,32 @@ proto.roadmunk.RoadmapItemDeleted.prototype.setRoadmapItemId = function(value) {
 
 
 /**
- * optional string deployment = 2;
+ * optional string account_id = 2;
  * @return {string}
  */
-proto.roadmunk.RoadmapItemDeleted.prototype.getDeployment = function() {
+proto.roadmunk.RoadmapItemDeleted.prototype.getAccountId = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
 
 /** @param {string} value */
-proto.roadmunk.RoadmapItemDeleted.prototype.setDeployment = function(value) {
+proto.roadmunk.RoadmapItemDeleted.prototype.setAccountId = function(value) {
   jspb.Message.setField(this, 2, value);
+};
+
+
+/**
+ * optional string deployment = 3;
+ * @return {string}
+ */
+proto.roadmunk.RoadmapItemDeleted.prototype.getDeployment = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+};
+
+
+/** @param {string} value */
+proto.roadmunk.RoadmapItemDeleted.prototype.setDeployment = function(value) {
+  jspb.Message.setField(this, 3, value);
 };
 
 
