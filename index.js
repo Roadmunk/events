@@ -1,31 +1,32 @@
-const { UserUpdatedMessage } = require('./dist/user_updated_pb');
-const { AccountUpdatedMessage } = require('./dist/account_updated_pb');
-const { SignupAccountRequest } = require('./dist/signup_account_pb');
-const { ResetPasswordRequest } = require('./dist/reset_password_pb');
+const { AccountDeleted } = require('./dist/account_deleted_pb');
+const { AccountPackageUpdated } = require('./dist/account_package_updated_pb');
 const { AccountSignupCompleted } = require('./dist/account_signup_pb');
-const { SendEmailRequest } = require('./dist/send_email_pb');
+const { AccountUpdatedMessage } = require('./dist/account_updated_pb');
+const { ConfigureSAML } = require('./dist/configure_saml_pb');
+const { CustomersCSVIngestionMessage } = require('./dist/customers_csv_ingestion_pb');
+const { FeedbackCommentedMessage } = require('./dist/feedback_commented_pb');
+const { FeedbackUpdatedMessage } = require('./dist/feedback_updated_pb');
+const { IdeaCommentedMessage } = require('./dist/idea_commented_pb');
 const { IdeaRoadmapItemAttachMessage } = require('./dist/idea_roadmap_item_attach_pb');
 const { IdeaRoadmapItemDetachMessage } = require('./dist/idea_roadmap_item_detach_pb');
 const { InviteUserRequest } = require('./dist/invite_user_pb');
-const { CustomersCSVIngestionMessage } = require('./dist/customers_csv_ingestion_pb');
-const { MoveUserRequest } = require('./dist/move_user_pb');
 const { MergeAccountRequest } = require('./dist/merge_account_pb');
-const { SegmentEvent } = require('./dist/segment_event_pb');
-const { FeedbackUpdatedMessage } = require('./dist/feedback_updated_pb');
-const { FeedbackCommentedMessage } = require('./dist/feedback_commented_pb');
+const { MoveUserRequest } = require('./dist/move_user_pb');
 const { ProductAreaOwnersAttachedMessage } = require('./dist/product_area_owners_attached_pb');
 const { ProductAreaOwnersDetachedMessage } = require('./dist/product_area_owners_detached_pb');
-const { UserAuthUpdatedRequest } = require('./dist/user_auth_updated_pb');
-const { UserEmailUpdatedMessage } = require('./dist/user_email_updated_pb');
-const { UserLogout } = require('./dist/user_logout_pb');
-const { TopologyRegionUpdatedMessage } = require('./dist/topology_region_updated_pb');
+const { ResetPasswordRequest } = require('./dist/reset_password_pb');
+const { RoadmapItemDeleted } = require('./dist/roadmap_item_deleted_pb');
+const { SegmentEvent } = require('./dist/segment_event_pb');
+const { SendEmailRequest } = require('./dist/send_email_pb');
+const { SignupAccountRequest } = require('./dist/signup_account_pb');
 const { TopologyDeploymentUpdatedMessage } = require('./dist/topology_deployment_updated_pb');
-const { ConfigureSAML } = require('./dist/configure_saml_pb');
-const { UserLoginMessage } = require('./dist/user_login_pb');
+const { TopologyRegionUpdatedMessage } = require('./dist/topology_region_updated_pb');
+const { UserAuthUpdatedRequest } = require('./dist/user_auth_updated_pb');
 const { UserDeleted } = require('./dist/user_deleted_pb');
-const { AccountDeleted } = require('./dist/account_deleted_pb');
-const { IdeaCommentedMessage } = require('./dist/idea_commented_pb');
-const { AccountPackageUpdated } = require('./dist/account_package_updated_pb')
+const { UserEmailUpdatedMessage } = require('./dist/user_email_updated_pb');
+const { UserLoginMessage } = require('./dist/user_login_pb');
+const { UserLogout } = require('./dist/user_logout_pb');
+const { UserUpdatedMessage } = require('./dist/user_updated_pb');
 
 module.exports = {
   // Account Updated
@@ -57,6 +58,11 @@ module.exports = {
   RESET_PASSWORD_SUCCESS: 'reset-password-success',
   RESET_PASSWORD_FAILURE: 'reset-password-failure',
   ResetPasswordRequest,
+
+  // Delete Roadmap Item
+  ROADMAP_ITEM_DELETED : 'roadmap-item-deleted',
+  ROADMAP_ITEM_DELETED_FAILURE : 'roadmap-item-deleted-failure',
+  RoadmapItemDeleted,
 
   // Send email
   SEND_EMAIL: 'send-email',
@@ -184,7 +190,7 @@ module.exports = {
 	USER_DELETED : 'user-deleted',
 	USER_DELETED_FAILURE : 'user-deleted-failure',
   UserDeleted,
-  
+
   ACCOUNT_DELETED : 'account-deleted',
   ACCOUNT_DELETED_FAILURE : 'account-deleted-failure',
   AccountDeleted,
