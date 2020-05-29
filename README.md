@@ -1,6 +1,6 @@
 # Protobuf Events
 
-Generated protobuf files. 
+Generated protobuf files.
 
 ### Install
 
@@ -21,7 +21,8 @@ npm install
 npm run test
 ```
 
-Create a branch with your changes and push it to github. In the repo you want to test with, update the `package.json` to point to the github URL plus branch. You may also need to remove package-lock.json to pick up any additional changes.
+Create a branch with your changes and push it to github. In the repo you want to test with, update the `package.json` to point to the github URL plus branch. You may also need to remove package-lock.json to pick up any additional changes. If you need to iterate on changes to that branch, make sure not to use git --amend, or the new
+commit may not find its way into your docker containers.
 
 ```
 {
