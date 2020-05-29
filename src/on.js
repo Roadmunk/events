@@ -12,8 +12,6 @@ function createActions() {
      * @param {String} data Base64 encoded binary for the event protobuf
      */
     function deserialize(eventName, data) {
-        console.log(eventName);
-        
         const bytes = Buffer.from(data || '==', 'base64')
         return eventMap[eventName].deserializeBinary(bytes)
     }
@@ -37,8 +35,7 @@ function createActions() {
         service,
         deployment,
     }) {
-        // return `https://sqs.${region}.amazonaws.com/${account}/${service}-${deployment}-${eventName}`
-        return `https://sqs.us-east-1.amazonaws.com/133556070500/test-consumer-queue-jared`
+        return `https://sqs.${region}.amazonaws.com/${account}/${service}-${deployment}-${eventName}`
     }
     return {
         deserialize,
@@ -149,6 +146,8 @@ function createOn({Consumer, region, account, service, deployment, subscriptions
         }
 
         const queueUrl = buildQueueUrl({eventName: key, region, account, service, deployment})
+
+        console.log(`Listener setup for ${queueUrl}`)
 
         const app = Consumer.create({
             queueUrl,

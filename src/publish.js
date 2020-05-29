@@ -65,12 +65,12 @@ function createPublish({lambda, functionName, deployment, region, service, date 
 	 * 
 	 * @returns {Promise<Object>} The results of a lambda call
 	 */
-	async function Publish(event) {
+	function Publish(event) {
 		const eventName = getEventName(event)
 
 		const params = {
 			FunctionName: functionName,
-			InvocationType: 'RequestResponse',
+			InvocationType: 'Event',
 			Payload: JSON.stringify({
 				EventName: eventName,
 				EventTypeVersion: 'v1',
@@ -82,7 +82,7 @@ function createPublish({lambda, functionName, deployment, region, service, date 
 			})
 		}
 
-		await lambda.invoke(params).promise()
+		return lambda.invoke(params).promise()
 	}
 
 	return {

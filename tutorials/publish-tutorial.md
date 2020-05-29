@@ -16,17 +16,17 @@ try to deserialize the data.
 
 #### Example
 
-This will publish a UserUpdatedMessage event. It's important to note that there is no automatic
+This will publish a UserUpdated event. It's important to note that there is no automatic
 retry mechanism for publishing events that fail. You can and should catch any errors that occur
 and log / handle them.
 
 ```
-const {Publish, UserUpdatedMessage} = require('@roadmunk/events');
+const {Publish, UserUpdated} = require('@roadmunk/events');
 
-const userUpdatedData = new UserUpdatedMessage();
-userUpdatedData.setUserId('abcd');
+const userUpdatedData = new UserUpdated();
+userUpdatedData.setId('abcd');
 
 Publish(userUpdatedData)
-	.then(() => console.log('user updated message sent successfully))
-	.catch(err => console.log('Error publishing user updated message', { err }));
+	.then(() => console.log('user updated event sent successfully))
+	.catch(err => console.log('Error publishing user updated event', { err }));
 ```

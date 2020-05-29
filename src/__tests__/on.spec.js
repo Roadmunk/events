@@ -86,9 +86,8 @@ describe('subscribe', () => {
 			.forEach(([eventName, type]) => {
 			it(`deserialize ${eventName} events`, () => {
 				const d = new type()
-				
 				onMessage(eventName, event => {
-					expect(event).toBeInstanceOf(type)
+					expect(event).toEqual(d.toObject())
 				})(Buffer.from(d.serializeBinary()).toString('base64'))
 			})
 		})

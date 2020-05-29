@@ -25,7 +25,7 @@ const { UserLoginMessage } = require('../dist/protos/user_login_pb');
 const { UserDeleted } = require('../dist/protos/user_deleted_pb');
 const { AccountDeleted } = require('../dist/protos/account_deleted_pb');
 const { IdeaCommentedMessage } = require('../dist/protos/idea_commented_pb');
-const { AccountPackageUpdated } = require('../dist/protos/account_package_updated_pb')
+const { AccountPackageUpdated } = require('../dist/protos/account_package_updated_pb');
 
 module.exports = {
 	'account-updated': AccountUpdatedMessage,

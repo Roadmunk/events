@@ -28,6 +28,7 @@ describe('publish', () => {
 	beforeEach(() => {
 		mockInvoke.mockClear()
 	})
+
 	Object.entries(events)
 	.map( ([eventName, type]) => {
 		it(`properly work with ${eventName}`, async () => {
@@ -38,16 +39,16 @@ describe('publish', () => {
 			expect(mockInvoke).toHaveBeenCalledTimes(1)
 			expect(mockInvoke).toHaveBeenCalledWith({
 				FunctionName: LAMBDA_TO_CALL,
-				InvocationType: 'RequestResponse',
-				Payload: {
+				InvocationType: 'Event',
+				Payload: JSON.stringify({
+					EventName: eventName,
+					EventTypeVersion: "v1",
 					Data : Buffer.from(data.serializeBinary()).toString('base64'),
 					DateTime : '1',
 					Deployment: DEPLOYMENT,
-					EventName: eventName,
-					EventTypeVersion: "v1",
 					Region: REGION,
 					Service: SERVICE,
-				}
+				})
 			})
 		})
 	})
