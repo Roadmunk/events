@@ -24,5 +24,5 @@ message SignupAccountRequest {
   google.protobuf.StringValue company_name = 16;
   google.protobuf.StringValue company_size = 17;
   google.protobuf.Int32Value trial_length_weeks = 18;
-  google.protobuf.BoolValue subscribe_to_newsletters = 19;
+  google.protobuf.BoolValue subscribed_to_newsletters = 19;
 }
