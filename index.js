@@ -3,6 +3,7 @@ const { AccountPackageUpdated } = require('./dist/account_package_updated_pb');
 const { AccountSignupCompleted } = require('./dist/account_signup_pb');
 const { AccountUpdatedMessage } = require('./dist/account_updated_pb');
 const { ConfigureSAML } = require('./dist/configure_saml_pb');
+const { CSVImportTask } = require('./dist/csv_import_pb');
 const { CustomersCSVIngestionMessage } = require('./dist/customers_csv_ingestion_pb');
 const { FeedbackCommentedMessage } = require('./dist/feedback_commented_pb');
 const { FeedbackUpdatedMessage } = require('./dist/feedback_updated_pb');
@@ -87,6 +88,10 @@ module.exports = {
   INVITE_USER_SUCCESS: 'invite-user-success',
   INVITE_USER_FAILURE: 'invite-user-failure',
   InviteUserRequest,
+
+  // CSV Import task event
+  CSV_IMPORT_TASK: 'csv-import-task',
+  CSVImportTask,
 
   // Ingesting a CSV for new customers
   CUSTOMERS_CSV_INGESTION: 'customers-csv-ingestion',

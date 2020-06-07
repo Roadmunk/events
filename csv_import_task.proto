@@ -1,0 +1,9 @@
+syntax = "proto3";
+package roadmunk;
+
+message CSVImportTask {
+  string account_id = 1;
+  string type = 2;
+  string event = 3;
+  string task_id = 4;
+}
