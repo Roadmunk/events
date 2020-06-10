@@ -3,9 +3,9 @@ const { AccountPackageUpdated } = require('./dist/account_package_updated_pb');
 const { AccountSignupCompleted } = require('./dist/account_signup_pb');
 const { AccountUpdatedMessage } = require('./dist/account_updated_pb');
 const { ConfigureSAML } = require('./dist/configure_saml_pb');
-const { CSVImportTask } = require('./dist/csv_import_task_pb');
 const { CustomersCSVIngestionMessage } = require('./dist/customers_csv_ingestion_pb');
 const { FeedbackCommentedMessage } = require('./dist/feedback_commented_pb');
+const { FeedbackCSVImportTask } = require('./dist/feedback_csv_import_task_pb.js');
 const { FeedbackUpdatedMessage } = require('./dist/feedback_updated_pb');
 const { IdeaCommentedMessage } = require('./dist/idea_commented_pb');
 const { IdeaRoadmapItemAttachMessage } = require('./dist/idea_roadmap_item_attach_pb');
@@ -89,10 +89,6 @@ module.exports = {
   INVITE_USER_FAILURE: 'invite-user-failure',
   InviteUserRequest,
 
-  // CSV Import task event
-  CSV_IMPORT_TASK: 'csv-import-task',
-  CSVImportTask,
-
   // Ingesting a CSV for new customers
   CUSTOMERS_CSV_INGESTION: 'customers-csv-ingestion',
   CUSTOMERS_CSV_INGESTION_SUCCESS: 'customers-csv-ingestion-success',
@@ -116,6 +112,10 @@ module.exports = {
   SEGMENT_EVENT_SUCCESS: 'segment-event-success',
   SEGMENT_EVENT_FAILURE: 'segment-event-failure',
   SegmentEvent,
+
+  // Feedback CSV Import task event
+  FEEDBACK_CSV_IMPORT_TASK: 'feedback-csv-import-task',
+  FeedbackCSVImportTask,
 
   // Feedback updated
   FEEDBACK_UPDATED: 'feedback-updated',
