@@ -7,8 +7,8 @@ required. This will subscribe to our regional SNS Topic. All events go through a
 single SNS topic so each SQS queue applies filters to get the specific event they
 want. More on this below.
 
-Second, we need to require the `On` method out of `@roadmunk/events` and use it
-to subscribe to our queue. `On` will only let us subscribe to an event _once_ per
+Second, we need to require the `on` method out of `@roadmunk/events` and use it
+to subscribe to our queue. `on` will only let us subscribe to an event _once_ per
 `queueGroup`. We need a new SQS queue for each `eventName` + `queueGroup`. This
 effort pays off in how we handle failures. When we read off our SQS queue, the
 event is changed to invisible for a configurable amount of time. If the message
@@ -27,16 +27,16 @@ to handle themselves. The suggested way is to use [terraform](https://www.terraf
 We need an SQS queue for every `eventName` + `queueGroup` we are listening to. This
 lets every handler have a way to retry failed events independently of other handlers.
 
-### Require `On` and listen to our SQS Queue
+### Require `on` and listen to our SQS Queue
 
-To listen for events we need to require our `On` method from `@roadmunk/events`. We
+To listen for events we need to require our `on` method from `@roadmunk/events`. We
 also need to make sure the following environment variables are set:
 - REGION - This is the AWS region our service is operating in
 - ACCOUNT - The AWS account number we are using
 - DEPLOYMENT - The deployment we are part of
 - SERVICE - The name of our service
 
-The `On` method takes an `eventName`, a handler, and an optional object with `queueGroup`
+The `on` method takes an `eventName`, a handler, and an optional object with `queueGroup`
 in it. Since we use protobufs it's important we keep our them in sync with our event
 names. For example, `user-updated` is the event name for `UserUpdatedMessage`. This
 lets the PubSub SDK know how to deserialize events (and the event name to publish
@@ -49,9 +49,9 @@ This will listen for events from `${service}-${deployment}-${eventName}`, deseri
 the events and hand them to the handler.
 
 ```
-const {On, USER_UPDATED} = require('@roadmunk/events');
+const {on, USER_UPDATED} = require('@roadmunk/events');
 
-On(USER_UPDATED, async (userUpdatedData) => {
+on(USER_UPDATED, async (userUpdatedData) => {
 	
 })
 ```
@@ -62,9 +62,9 @@ This will listen for events from `${service}-${deployment}-${eventName}-${queueG
 deserialize the events and hand them to the handler.
 
 ```
-const {On, USER_UPDATED} = require('@roadmunk/events');
+const {on, USER_UPDATED} = require('@roadmunk/events');
 
-On(USER_UPDATED, async (userUpdatedData) => {
+on(USER_UPDATED, async (userUpdatedData) => {
 	
 }, { queueGroup: 'mongoUpdates' })
 ```
@@ -76,9 +76,9 @@ It will also allow the event to get retried. The invisible time, retry count, an
 dead letter queue are all controlled via the SQS configuration (terraform).
 
 ```
-const {On, USER_UPDATED} = require('@roadmunk/events');
+const {on, USER_UPDATED} = require('@roadmunk/events');
 
-On(USER_UPDATED, async (userUpdatedData) => {
+on(USER_UPDATED, async (userUpdatedData) => {
 	throw Error('Oh snap. We should retry this event.')
 })
 ```
@@ -90,13 +90,13 @@ and `B` will be retried after X amount of time. In this way we can maintain retr
 per subscription basis.
 
 ```
-const {On, USER_UPDATED} = require('@roadmunk/events');
+const {on, USER_UPDATED} = require('@roadmunk/events');
 
-On(USER_UPDATED, async (userUpdatedData) => {
+on(USER_UPDATED, async (userUpdatedData) => {
 	console.log('No error here')
 }, {queueGroup: 'A'})
 
-On(USER_UPDATED, async (userUpdatedData) => {
+on(USER_UPDATED, async (userUpdatedData) => {
 	throw Error('Oh snap. We should retry this event.')
 }, {queueGroup: 'B'})
 ```

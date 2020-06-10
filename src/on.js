@@ -1,7 +1,7 @@
 const eventMap = require('./event-map')
 
 /**
- * Creates all actions for the On function
+ * Creates all actions for the on function
  */
 function createActions() {
 
@@ -44,7 +44,7 @@ function createActions() {
 }
 
 /**
- * Creates all handlers with injected dependencies for the On function
+ * Creates all handlers with injected dependencies for the on function
  * 
  * @param {Object} config The injected dependencies
  * @param {Function} config.deserialize A function that will deserialize any known event based on the eventName 
@@ -135,7 +135,7 @@ function createOn({Consumer, region, account, service, deployment, subscriptions
      * 
      * @return {Promise<boolean>} true if the listener is setup, false if the listener failed to listen
      */
-    async function On(eventName, callback, {queueGroup} = {}) {
+    async function on(eventName, callback, {queueGroup} = {}) {
         const key = queueGroup
             ? `${eventName}-${queueGroup}`
             : eventName
@@ -163,7 +163,7 @@ function createOn({Consumer, region, account, service, deployment, subscriptions
     }
 
     return {
-        On,
+        on,
         onMessage,
     }
 }

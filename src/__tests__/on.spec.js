@@ -16,7 +16,7 @@ const mockConsumer = {
 }
 
 let subscriptions = new Set()
-const {On, onMessage} = createOn({
+const {on, onMessage} = createOn({
 	Consumer: mockConsumer,
 	region: REGION,
 	deployment: DEPLOYMENT,
@@ -29,7 +29,7 @@ const NOOP = () => {}
 
 describe('subscribe', () => {
 
-	describe('On', () => {
+	describe('on', () => {
 		beforeEach(() => {
 			subscriptions.clear()
 			mockCreate.mockClear()
@@ -38,7 +38,7 @@ describe('subscribe', () => {
 		it('should build the correct queueUrl', () => {
 			const eventName = 'user-updated'
 
-			On(eventName, NOOP)
+			on(eventName, NOOP)
 
 			expect(mockConsumer.create).toHaveBeenCalledTimes(1)
 			expect(mockConsumer.create).toHaveBeenCalledWith(expect.objectContaining({
@@ -50,7 +50,7 @@ describe('subscribe', () => {
 			const eventName = 'user-updated'
 			const queueGroup = 'for-emails'
 
-			On(eventName, NOOP, { queueGroup })
+			on(eventName, NOOP, { queueGroup })
 
 			expect(mockConsumer.create).toHaveBeenCalledTimes(1)
 			expect(mockConsumer.create).toHaveBeenCalledWith(expect.objectContaining({
@@ -62,8 +62,8 @@ describe('subscribe', () => {
 			const eventName = 'user-updated'
 			const queueGroup = 'for-emails'
 
-			On(eventName, NOOP)
-			On(eventName, NOOP, { queueGroup })
+			on(eventName, NOOP)
+			on(eventName, NOOP, { queueGroup })
 
 			expect(mockConsumer.create).toHaveBeenCalledTimes(2)
 			expect(mockConsumer.create).toHaveBeenCalledWith(expect.objectContaining({
@@ -76,8 +76,8 @@ describe('subscribe', () => {
 
 		//! TODO: Throw or Log Error?
 		it('should not be possible to subscribe to something twice', async () => {
-			expect(await On('user-updated', NOOP)).toBe(true)
-			expect(await On('user-updated', NOOP)).toBe(false)
+			expect(await on('user-updated', NOOP)).toBe(true)
+			expect(await on('user-updated', NOOP)).toBe(false)
 		})
 	})
 

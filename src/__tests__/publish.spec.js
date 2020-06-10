@@ -12,7 +12,7 @@ const REGION = 'us-east-1'
 const DEPLOYMENT = 'app-test'
 const SERVICE = 'bifrost-unit-test'
 
-const {Publish} = createPublish({
+const {publish} = createPublish({
 	lambda: {
 		invoke: mockInvoke
 	},
@@ -34,7 +34,7 @@ describe('publish', () => {
 		it(`properly work with ${eventName}`, async () => {
 			const data = new type()
 
-			await Publish(data)
+			await publish(data)
 
 			expect(mockInvoke).toHaveBeenCalledTimes(1)
 			expect(mockInvoke).toHaveBeenCalledWith({

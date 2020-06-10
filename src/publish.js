@@ -1,7 +1,7 @@
 const eventMap = require('./event-map')
 
 /**
- * Creates all actions for the Publish function
+ * Creates all actions for the publish function
  */
 function createActions() {
 	/**
@@ -47,8 +47,8 @@ function createPublish({lambda, functionName, deployment, region, service, date 
 	const {getEventName, serialize} = createActions()
 
 	/**
-	 * Fires the event into the PubSub. `Publish` will use type inference to figure out what event name to use.
-	 * These line up with the events that can be imported. E.g calling `Publish(userUpdatedMessage)` will be
+	 * Fires the event into the PubSub. `publish` will use type inference to figure out what event name to use.
+	 * These line up with the events that can be imported. E.g calling `publish(userUpdatedMessage)` will be
 	 * fired with `user-updated` event name. [The On function](/module-On.html) will listen for `user-updated` which will deserialize
 	 * `userUpdatedMessage` in the callback.
 	 * 
@@ -65,7 +65,7 @@ function createPublish({lambda, functionName, deployment, region, service, date 
 	 * 
 	 * @returns {Promise<Object>} The results of a lambda call
 	 */
-	function Publish(event) {
+	function publish(event) {
 		const eventName = getEventName(event)
 
 		const params = {
@@ -86,7 +86,7 @@ function createPublish({lambda, functionName, deployment, region, service, date 
 	}
 
 	return {
-		Publish,
+		publish,
 		getEventName
 	}
 }
