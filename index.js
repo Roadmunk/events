@@ -30,4 +30,6 @@ module.exports    = {
 	...eventTypeMappings,
 	On,
 	Publish,
+	createOn,
+	createPublish,
 };
