@@ -75,9 +75,8 @@ describe('subscribe', () => {
 		});
 
 		it('should not be possible to subscribe to something twice', async () => {
-			expect.assertions(1);
-			expect(on('user-updated', NOOP)).resolves.toMatch(true);
-			expect(on('user-updated', NOOP)).rejects.toThrow('Cannot subscribe to the same event multiple times. Check out how to add a queueGroup in the docs.');
+			await expect(on('user-updated', NOOP)).resolves.toEqual(true);
+			await expect(on('user-updated', NOOP)).rejects.toThrow('Cannot subscribe to the same event multiple times. Check out how to add a queueGroup in the docs.');
 		});
 	});
 

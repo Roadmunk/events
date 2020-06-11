@@ -16,7 +16,7 @@ jobs:
           name: Compile protobufs
           command: |
             mkdir -p $HOME/proto/dist
-            protoc --js_out=import_style=commonjs,binary:dist *.proto
+            protoc --js_out=import_style=commonjs,binary:dist -I . protos/*.proto
 
       # As an early step, we'll save artifacts instead
       # of pushing them to npm.
@@ -27,6 +27,32 @@ jobs:
           root: .
           paths:
             - .
+
+  lint:
+    <<: *defaults
+    docker:
+      - image: circleci/node:11
+
+    steps:
+      - attach_workspace:
+          at: ~/proto
+
+      - run:
+          name: Lint
+          command: npm run lint
+
+  test:
+    <<: *defaults
+    docker:
+      - image: circleci/node:11
+
+    steps:
+      - attach_workspace:
+          at: ~/proto
+
+      - run:
+          name: Test
+          command: npm run lint
 
   publish:
     <<: *defaults
@@ -49,6 +75,8 @@ workflows:
   version: 2
   build:
     jobs:
+      - lint
+      - test
       - compile:
           filters:
             tags:
