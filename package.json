@@ -6,6 +6,8 @@
   "scripts": {
     "test": "jest --watchAll",
     "build": "mkdir -p ./dist && docker run --rm -v $(pwd):$(pwd) -w $(pwd) znly/protoc --js_out=import_style=commonjs,binary:dist -I . protos/*.proto",
+    "lint": "eslint ./src",
+    "lint:fix": "eslint --fix ./src",
     "docs": "jsdoc -c .jsdoc.js",
     "docs:watch": "nodemon --exec 'npx jsdoc -c .jsdoc.js' --watch ./src ./tutorials"
   },
@@ -25,6 +27,7 @@
     "sqs-consumer": "^5.4.0"
   },
   "devDependencies": {
+    "@roadmunk/eslint-config-roadmunk": "^3.17.1",
     "better-docs": "^2.0.1",
     "eslint": "^7.0.0",
     "jest": "^26.0.1",

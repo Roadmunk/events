@@ -1,55 +1,55 @@
-const events = require('../event-map')
+const events = require('../event-map');
 
-const mockInvoke = jest.fn().mockImplementation(() => ({ promise : () => new Promise(resolve => resolve()) }));
-const createPublish = require('../publish')
+const mockInvoke    = jest.fn().mockImplementation(() => ({ promise : () => new Promise(resolve => resolve()) }));
+const createPublish = require('../publish');
 
 const mockDate = {
-	now : () => 1000
-}
+	now : () => 1000,
+};
 
-const LAMBDA_TO_CALL = 'us-east-1-event-bus'
-const REGION = 'us-east-1'
-const DEPLOYMENT = 'app-test'
-const SERVICE = 'bifrost-unit-test'
+const LAMBDA_TO_CALL = 'us-east-1-event-bus';
+const REGION         = 'us-east-1';
+const DEPLOYMENT     = 'app-test';
+const SERVICE        = 'bifrost-unit-test';
 
-const {publish} = createPublish({
-	lambda: {
-		invoke: mockInvoke
+const { publish } = createPublish({
+	lambda : {
+		invoke : mockInvoke,
 	},
-	functionName: LAMBDA_TO_CALL,
-	date: mockDate,
-	service: SERVICE,
-	deployment: DEPLOYMENT,
-	region: REGION
-})
+	functionName : LAMBDA_TO_CALL,
+	date         : mockDate,
+	service      : SERVICE,
+	deployment   : DEPLOYMENT,
+	region       : REGION,
+});
 
 describe('publish', () => {
 
 	beforeEach(() => {
-		mockInvoke.mockClear()
-	})
+		mockInvoke.mockClear();
+	});
 
 	Object.entries(events)
-	.map( ([eventName, type]) => {
-		it(`properly work with ${eventName}`, async () => {
-			const data = new type()
+		.map(([ eventName, type ]) => {
+			it(`properly work with ${eventName}`, async () => {
+				const data = new type();
 
-			await publish(data)
+				await publish(data);
 
-			expect(mockInvoke).toHaveBeenCalledTimes(1)
-			expect(mockInvoke).toHaveBeenCalledWith({
-				FunctionName: LAMBDA_TO_CALL,
-				InvocationType: 'Event',
-				Payload: JSON.stringify({
-					EventName: eventName,
-					EventTypeVersion: "v1",
-					Data : Buffer.from(data.serializeBinary()).toString('base64'),
-					DateTime : '1',
-					Deployment: DEPLOYMENT,
-					Region: REGION,
-					Service: SERVICE,
-				})
-			})
-		})
-	})
-})
+				expect(mockInvoke).toHaveBeenCalledTimes(1);
+				expect(mockInvoke).toHaveBeenCalledWith({
+					FunctionName   : LAMBDA_TO_CALL,
+					InvocationType : 'Event',
+					Payload        : JSON.stringify({
+						EventName        : eventName,
+						EventTypeVersion : 'v1',
+						Data             : Buffer.from(data.serializeBinary()).toString('base64'),
+						DateTime         : '1',
+						Deployment       : DEPLOYMENT,
+						Region           : REGION,
+						Service          : SERVICE,
+					}),
+				});
+			});
+		});
+});
