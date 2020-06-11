@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
+    "test:ci": "jest --ci --reporters=default --reporters=jest-junit",
     "test:watch": "jest --watchAll",
     "build": "mkdir -p ./dist && docker run --rm -v $(pwd):$(pwd) -w $(pwd) znly/protoc --js_out=import_style=commonjs,binary:dist -I . protos/*.proto",
     "lint": "eslint ./src",
