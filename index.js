@@ -13,7 +13,6 @@ const eventNameMappings = Array.from(Object.keys(events))
 
 const eventTypeMappings = Object.keys(events)
 	.reduce((results, key) => {
-		// console.log(events[key])
 		const newKey = key.split('-')
 			.map(el => el[0].toUpperCase() + el.slice(1))
 			.join('');
