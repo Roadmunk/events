@@ -1,3 +1,4 @@
+const AWS          = require('aws-sdk');
 const { Consumer } = require('sqs-consumer');
 const eventMap     = require('./event-map');
 
@@ -107,6 +108,7 @@ function createOn({ region, service, account, deployment, subscriptions = new Se
 		buildQueueUrl,
 	} = createActions();
 
+	AWS.config.update({ region });
 	const {
 		onError,
 		onProcessingError,

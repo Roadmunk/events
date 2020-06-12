@@ -24,7 +24,6 @@
   },
   "homepage": "https://github.com/Roadmunk/events#readme",
   "dependencies": {
-    "dotenv": "^8.2.0",
     "google-protobuf": "^3.9.1",
     "sqs-consumer": "^5.4.0"
   },

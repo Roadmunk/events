@@ -45,6 +45,7 @@ function createActions() {
  * @returns {Object} A reference to Publish and getEventNAme
  */
 function createPublish({ deployment, region, service, date = Date }, lambda = new AWS.Lambda({ apiVersion : '2015-03-31' })) {
+	AWS.config.update({ region });
 	const { getEventName, serialize } = createActions();
 
 	/**

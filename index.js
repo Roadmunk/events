@@ -1,6 +1,4 @@
-const AWS           = require('aws-sdk');
 const events        = require('./src/event-map');
-const env           = require('./src/config');
 const createOn      = require('./src/on');
 const createPublish = require('./src/publish');
 
@@ -20,15 +18,9 @@ const eventTypeMappings = Object.keys(events)
 		return results;
 	}, {});
 
-AWS.config.update({ region : env.region });
-
-const { On }      = createOn({ ...env });
-const { Publish } = createPublish({ ...env });
-module.exports    = {
+module.exports = {
 	...eventNameMappings,
 	...eventTypeMappings,
-	On,
-	Publish,
 	createOn,
 	createPublish,
 };
