@@ -1,4 +1,6 @@
-const eventMap = require('./event-map');
+const AWS          = require('aws-sdk');
+const { Consumer } = require('sqs-consumer');
+const eventMap     = require('./event-map');
 
 /**
  * Creates all actions for the on function
@@ -100,12 +102,13 @@ function createHandlers({ deserialize }) {
  *
  * @returns {Object} A reference to On and onMessage.
  */
-function createOn({ Consumer, region, account, service, deployment, subscriptions = new Set() }) {
+function createOn({ region, service, account, deployment, subscriptions = new Set() }, consumer = Consumer) {
 	const {
 		deserialize,
 		buildQueueUrl,
 	} = createActions();
 
+	AWS.config.update({ region });
 	const {
 		onError,
 		onProcessingError,
@@ -149,7 +152,7 @@ function createOn({ Consumer, region, account, service, deployment, subscription
 
 		console.log(`Listener setup for ${queueUrl}`);
 
-		const app = Consumer.create({
+		const app = consumer.create({
 			queueUrl,
 			handleMessage : onMessage(eventName, callback),
 		});

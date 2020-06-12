@@ -1,3 +1,4 @@
+const AWS      = require('aws-sdk');
 const eventMap = require('./event-map');
 
 /**
@@ -43,7 +44,8 @@ function createActions() {
  *
  * @returns {Object} A reference to Publish and getEventNAme
  */
-function createPublish({ lambda, functionName, deployment, region, service, date = Date }) {
+function createPublish({ deployment, region, service, date = Date }, lambda = new AWS.Lambda({ apiVersion : '2015-03-31' })) {
+	AWS.config.update({ region });
 	const { getEventName, serialize } = createActions();
 
 	/**
@@ -56,7 +58,6 @@ function createPublish({ lambda, functionName, deployment, region, service, date
 	 *
 	 * ### Required Environment Variables
    * - REGION - This is the AWS region our service is operating in
-   * - ACCOUNT - The AWS account number we are using
    * - DEPLOYMENT - The deployment we are part of
    * - SERVICE - The name of our service
 	 *
@@ -69,7 +70,7 @@ function createPublish({ lambda, functionName, deployment, region, service, date
 		const eventName = getEventName(event);
 
 		const params = {
-			FunctionName   : functionName,
+			FunctionName   : `event-bus-filter_${region}`,
 			InvocationType : 'Event',
 			Payload        : JSON.stringify({
 				EventName        : eventName,
