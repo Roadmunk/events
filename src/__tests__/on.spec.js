@@ -17,13 +17,12 @@ const mockConsumer = {
 
 const subscriptions     = new Set();
 const { on, onMessage } = createOn({
-	Consumer   : mockConsumer,
 	region     : REGION,
 	deployment : DEPLOYMENT,
 	service    : SERVICE,
 	account    : ACCOUNT,
 	subscriptions,
-});
+}, mockConsumer);
 
 const NOOP = () => {};
 

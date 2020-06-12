@@ -7,20 +7,18 @@ const mockDate = {
 	now : () => 1000,
 };
 
-const LAMBDA_TO_CALL = 'us-east-1-event-bus';
 const REGION         = 'us-east-1';
+const LAMBDA_TO_CALL = `event-bus-filter_${REGION}`;
 const DEPLOYMENT     = 'app-test';
 const SERVICE        = 'bifrost-unit-test';
 
 const { publish } = createPublish({
-	lambda : {
-		invoke : mockInvoke,
-	},
-	functionName : LAMBDA_TO_CALL,
-	date         : mockDate,
-	service      : SERVICE,
-	deployment   : DEPLOYMENT,
-	region       : REGION,
+	date       : mockDate,
+	service    : SERVICE,
+	deployment : DEPLOYMENT,
+	region     : REGION,
+}, {
+	invoke : mockInvoke,
 });
 
 describe('publish', () => {
