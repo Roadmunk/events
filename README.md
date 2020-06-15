@@ -39,3 +39,15 @@ commit may not find its way into your docker containers.
   }
 }
 ```
+
+### SQS Queue Convention
+
+The PubSub `on` function subscribes to SQS Queues under the covers. These queues are managed by each individual service. We use a convention to simplify our `on` functions by naming our SQS Queues with a few parameters. 
+
+With no Queue Group:
+`https://sqs.${region}.amazonaws.com/${account}/${service}-${deployment}-${eventName}`
+
+With a Queue Group:
+`https://sqs.${region}.amazonaws.com/${account}/${service}-${deployment}-${eventName}-${queueGroup}`
+
+Each service is expected to follow this naming convention so that we can abstract the internals away from each service. IE, Roadmapping doesn't need to know that it is subscribing to an SQS Queue, Kafka, or any other messaging client. It only needs to know that when an event is fired, it will receive that event. This should give us the option to switch messaging providers if we need to and simplifies the entire event system.
