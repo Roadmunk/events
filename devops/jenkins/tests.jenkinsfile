@@ -1,0 +1,129 @@
+#!groovy
+void setBuildStatus(String context, String message, String state) {
+  step([
+      $class: "GitHubCommitStatusSetter",
+      reposSource: [$class: "ManuallyEnteredRepositorySource", url: "https://github.com/Roadmunk/events/"],
+      contextSource: [$class: "ManuallyEnteredCommitContextSource", context: context],
+      errorHandlers: [[$class: "ChangingBuildStatusErrorHandler", result: "UNSTABLE"]],
+      statusResultSource: [ $class: "ConditionalStatusResultSource", results: [[$class: "AnyBuildResult", message: message, state: state]] ]
+  ]);
+}
+
+pipeline {
+    agent any
+    // set properties for the job
+    options {
+        buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '30'))
+    }
+    parameters{
+        booleanParam(name: 'PRIME', defaultValue: false, description: 'Detect code changes in pipeline but perform NO OPERATIONS')
+    }
+    stages {
+        stage('Setup') {
+            when { equals expected: false, actual: params.PRIME }
+            options { retry(3) }
+            steps {
+                script {
+                    deleteDir()
+                }
+            }
+        }
+
+        stage('Set Build Name') {
+            options { retry(3) }
+            steps {
+                script {
+                    if ( params.PRIME == false ) {
+		                currentBuild.displayName = "$env.ghprbSourceBranch"
+                    } else {
+                        currentBuild.displayName = "$env.ghprbSourceBranch" + " - PRIME"
+                    }
+                }
+            }
+        }
+
+        stage('Checkout') {
+            when { equals expected: false, actual: params.PRIME }
+            options { retry(3) }
+            steps {
+                checkout([
+                    $class                            : 'GitSCM',
+                    branches                          : [[name: "${env.ghprbActualCommit}"]],
+                    doGenerateSubmoduleConfigurations : false,
+                    extensions                        : [[$class: 'CloneOption', depth: 1, noTags: false, reference: '', shallow: true, timeout: 10]],
+                    submoduleCfg                      : [],
+                    userRemoteConfigs                 : [[refspec: "+refs/pull/${ghprbPullId}/*:refs/remotes/origin/pr/${ghprbPullId}/*", credentialsId: '525a99e4-474e-4481-a580-116f4357d434', url: 'git@github.com:Roadmunk/events.git']]
+                ])
+            }
+        }
+
+        stage('npm install') {
+            when { equals expected: false, actual: params.PRIME }
+            options { retry(3) }
+            steps {
+               nvm('v12.10.0') {
+                    sh script: """
+                        npm install
+                    """
+                }
+            }
+        }
+
+        stage('Tests') {
+            when { equals expected: false, actual: params.PRIME }
+            parallel {
+                stage('Lint') {
+                    steps {
+                        setBuildStatus("Lint", "Lint started", "PENDING");
+                        script {
+                            try {
+                                nvm('v12.10.0') {
+                                    sh script: """
+                                        node_modules/.bin/eslint --ext .js . -f junit > lintResults.xml
+                                    """
+                                }
+                                setBuildStatus("Lint", "Lint passed", "SUCCESS");
+                            } catch (Exception e) {
+                                echo "lint failed"
+                                setBuildStatus("Lint", "Lint failed", "FAILURE");
+                            }
+                        }
+                    }
+                }
+                stage('Unit') {
+                    steps {
+                        setBuildStatus("Unit Tests", "Unit tests started", "PENDING");
+                        script {
+                            try {
+                                nvm('v12.10.0') {
+                                    sh script: """
+                                        cat package.json
+                                        npm run test:ci
+                                    """
+                                }
+                                setBuildStatus("Unit Tests", "Unit tests passed", "SUCCESS");
+                            } catch (Exception e) {
+                                echo "tests failed"
+                                setBuildStatus("Unit Tests", "Unit tests failed", "FAILURE");
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            script {
+	            if ( params.PRIME == false ) {
+                    junit 'lintResults.xml, junit.xml'
+	            }
+            }
+        }
+        aborted {
+            setBuildStatus("Lint", "tests aborted", "ABORTED");
+            setBuildStatus("Unit Tests", "tests aborted", "ABORTED");
+        }
+    }
+}

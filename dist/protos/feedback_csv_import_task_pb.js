@@ -59,10 +59,11 @@ proto.roadmunk.FeedbackCSVImportTask.prototype.toObject = function(opt_includeIn
  */
 proto.roadmunk.FeedbackCSVImportTask.toObject = function(includeInstance, msg) {
   var f, obj = {
-    accountId: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    type: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    event: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    taskId: jspb.Message.getFieldWithDefault(msg, 4, "")
+    deployment: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    accountId: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    taskId: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    oldStatus: jspb.Message.getFieldWithDefault(msg, 4, ""),
+    newStatus: jspb.Message.getFieldWithDefault(msg, 5, "")
   };
 
   if (includeInstance) {
@@ -101,19 +102,23 @@ proto.roadmunk.FeedbackCSVImportTask.deserializeBinaryFromReader = function(msg,
     switch (field) {
     case 1:
       var value = /** @type {string} */ (reader.readString());
-      msg.setAccountId(value);
+      msg.setDeployment(value);
       break;
     case 2:
       var value = /** @type {string} */ (reader.readString());
-      msg.setType(value);
+      msg.setAccountId(value);
       break;
     case 3:
       var value = /** @type {string} */ (reader.readString());
-      msg.setEvent(value);
+      msg.setTaskId(value);
       break;
     case 4:
       var value = /** @type {string} */ (reader.readString());
-      msg.setTaskId(value);
+      msg.setOldStatus(value);
+      break;
+    case 5:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setNewStatus(value);
       break;
     default:
       reader.skipField();
@@ -144,31 +149,38 @@ proto.roadmunk.FeedbackCSVImportTask.prototype.serializeBinary = function() {
  */
 proto.roadmunk.FeedbackCSVImportTask.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getAccountId();
+  f = message.getDeployment();
   if (f.length > 0) {
     writer.writeString(
       1,
       f
     );
   }
-  f = message.getType();
+  f = message.getAccountId();
   if (f.length > 0) {
     writer.writeString(
       2,
       f
     );
   }
-  f = message.getEvent();
+  f = message.getTaskId();
   if (f.length > 0) {
     writer.writeString(
       3,
       f
     );
   }
-  f = message.getTaskId();
+  f = message.getOldStatus();
   if (f.length > 0) {
     writer.writeString(
       4,
+      f
+    );
+  }
+  f = message.getNewStatus();
+  if (f.length > 0) {
+    writer.writeString(
+      5,
       f
     );
   }
@@ -176,62 +188,77 @@ proto.roadmunk.FeedbackCSVImportTask.serializeBinaryToWriter = function(message,
 
 
 /**
- * optional string account_id = 1;
+ * optional string deployment = 1;
  * @return {string}
  */
-proto.roadmunk.FeedbackCSVImportTask.prototype.getAccountId = function() {
+proto.roadmunk.FeedbackCSVImportTask.prototype.getDeployment = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
 
 /** @param {string} value */
-proto.roadmunk.FeedbackCSVImportTask.prototype.setAccountId = function(value) {
+proto.roadmunk.FeedbackCSVImportTask.prototype.setDeployment = function(value) {
   jspb.Message.setField(this, 1, value);
 };
 
 
 /**
- * optional string type = 2;
+ * optional string account_id = 2;
  * @return {string}
  */
-proto.roadmunk.FeedbackCSVImportTask.prototype.getType = function() {
+proto.roadmunk.FeedbackCSVImportTask.prototype.getAccountId = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
 
 /** @param {string} value */
-proto.roadmunk.FeedbackCSVImportTask.prototype.setType = function(value) {
+proto.roadmunk.FeedbackCSVImportTask.prototype.setAccountId = function(value) {
   jspb.Message.setField(this, 2, value);
 };
 
 
 /**
- * optional string event = 3;
+ * optional string task_id = 3;
  * @return {string}
  */
-proto.roadmunk.FeedbackCSVImportTask.prototype.getEvent = function() {
+proto.roadmunk.FeedbackCSVImportTask.prototype.getTaskId = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
 };
 
 
 /** @param {string} value */
-proto.roadmunk.FeedbackCSVImportTask.prototype.setEvent = function(value) {
+proto.roadmunk.FeedbackCSVImportTask.prototype.setTaskId = function(value) {
   jspb.Message.setField(this, 3, value);
 };
 
 
 /**
- * optional string task_id = 4;
+ * optional string old_status = 4;
  * @return {string}
  */
-proto.roadmunk.FeedbackCSVImportTask.prototype.getTaskId = function() {
+proto.roadmunk.FeedbackCSVImportTask.prototype.getOldStatus = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
 };
 
 
 /** @param {string} value */
-proto.roadmunk.FeedbackCSVImportTask.prototype.setTaskId = function(value) {
+proto.roadmunk.FeedbackCSVImportTask.prototype.setOldStatus = function(value) {
   jspb.Message.setField(this, 4, value);
+};
+
+
+/**
+ * optional string new_status = 5;
+ * @return {string}
+ */
+proto.roadmunk.FeedbackCSVImportTask.prototype.getNewStatus = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
+};
+
+
+/** @param {string} value */
+proto.roadmunk.FeedbackCSVImportTask.prototype.setNewStatus = function(value) {
+  jspb.Message.setField(this, 5, value);
 };
 
 
