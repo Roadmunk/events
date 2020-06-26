@@ -5,6 +5,7 @@ const { AccountUpdatedMessage }            = require('../dist/protos/account_upd
 const { ConfigureSAML }                    = require('../dist/protos/configure_saml_pb');
 const { CustomersCSVIngestionMessage }     = require('../dist/protos/customers_csv_ingestion_pb');
 const { FeedbackCommentedMessage }         = require('../dist/protos/feedback_commented_pb');
+const { FeedbackCSVImportTask }            = require('../dist/protos/feedback_csv_import_task_pb');
 const { FeedbackUpdatedMessage }           = require('../dist/protos/feedback_updated_pb');
 const { IdeaCommentedMessage }             = require('../dist/protos/idea_commented_pb');
 const { IdeaRoadmapItemAttachMessage }     = require('../dist/protos/idea_roadmap_item_attach_pb');
@@ -35,6 +36,7 @@ module.exports = {
 	'configure-saml'               : ConfigureSAML,
 	'customers-csv-ingestion'      : CustomersCSVIngestionMessage,
 	'feedback-commented'           : FeedbackCommentedMessage,
+	'feedback-csv-import-task'     : FeedbackCSVImportTask,
 	'feedback-updated'             : FeedbackUpdatedMessage,
 	'idea-commented'               : IdeaCommentedMessage,
 	'idea-roadmap-item-attach'     : IdeaRoadmapItemAttachMessage,
