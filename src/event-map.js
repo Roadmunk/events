@@ -10,6 +10,7 @@ const { FeedbackUpdatedMessage }           = require('../dist/protos/feedback_up
 const { IdeaCommentedMessage }             = require('../dist/protos/idea_commented_pb');
 const { IdeaRoadmapItemAttachMessage }     = require('../dist/protos/idea_roadmap_item_attach_pb');
 const { IdeaRoadmapItemDetachMessage }     = require('../dist/protos/idea_roadmap_item_detach_pb');
+const { IdeasCSVImportTask }               = require('../dist/protos/ideas_csv_import_task_pb');
 const { InviteUserRequest }                = require('../dist/protos/invite_user_pb');
 const { MergeAccountRequest }              = require('../dist/protos/merge_account_pb');
 const { MoveUserRequest }                  = require('../dist/protos/move_user_pb');
@@ -41,6 +42,7 @@ module.exports = {
 	'idea-commented'               : IdeaCommentedMessage,
 	'idea-roadmap-item-attach'     : IdeaRoadmapItemAttachMessage,
 	'idea-roadmap-item-detach'     : IdeaRoadmapItemDetachMessage,
+	'ideas-csv-import-task'        : IdeasCSVImportTask,
 	'invite-user'                  : InviteUserRequest,
 	'merge-account'                : MergeAccountRequest,
 	'move-user'                    : MoveUserRequest,
