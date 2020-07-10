@@ -29,13 +29,6 @@ lets every handler have a way to retry failed events independently of other hand
 
 ### Require `on` and listen to our SQS Queue
 
-To listen for events we need to require our `on` method from `@roadmunk/events`. We
-also need to make sure the following environment variables are set:
-- REGION - This is the AWS region our service is operating in
-- ACCOUNT - The AWS account number we are using
-- DEPLOYMENT - The deployment we are part of
-- SERVICE - The name of our service
-
 The `on` method takes an `eventName`, a handler, and an optional object with `queueGroup`
 in it. Since we use protobufs it's important we keep our them in sync with our event
 names. For example, `user-updated` is the event name for `UserUpdatedMessage`. This

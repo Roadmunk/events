@@ -14,16 +14,6 @@ This will use docker to build and update required changes in `dist`. We _do_ com
 
 ### Usage
 
-**Required Environment Variables**
-
-The following environment fields are required:
- - ACCOUNT - The AWS account number you are using
- - REGION - The AWS region your service is connecting to
- - DEPLOYMENT - The deployment the service is being used for
- - SERVICE - The name of the service you are using
-
-Copy the `.env.example` to `.env` and fill it in for local testing. 
-
 Clone the repo and run `npm run docs`. This will create the documentation and tutorials in the `docs` directory. You can 
 also check out `tutorials/on-tutorial.md` or `tutorials/publish-tutorial.md`.
 
