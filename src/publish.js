@@ -44,8 +44,17 @@ function createActions() {
  *
  * @returns {Object} A reference to Publish and getEventNAme
  */
-function createPublish({ deployment, region, service, date = Date }, lambda = new AWS.Lambda({ apiVersion : '2015-03-31' })) {
-	AWS.config.update({ region });
+function createPublish({ awsCredentials, deployment, region, service, date = Date }) {
+	if (!awsCredentials) {
+		throw new Error('Missing expected arguments: awsCredentials');
+	}
+
+	const lambda = new AWS.Lambda({
+		apiVersion  : '2015-03-31',
+		credentials : awsCredentials,
+		region,
+	});
+
 	const { getEventName, serialize } = createActions();
 
 	/**
@@ -55,11 +64,6 @@ function createPublish({ deployment, region, service, date = Date }, lambda = ne
 	 * `userUpdatedMessage` in the callback.
 	 *
    * Check out the {@tutorial publish-tutorial}
-	 *
-	 * ### Required Environment Variables
-   * - REGION - This is the AWS region our service is operating in
-   * - DEPLOYMENT - The deployment we are part of
-   * - SERVICE - The name of our service
 	 *
 	 * @module Publish
 	 * @param {Object} event An instance of a protobuf
