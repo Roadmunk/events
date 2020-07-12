@@ -102,9 +102,9 @@ function createHandlers({ deserialize }) {
  *
  * @returns {Object} A reference to On and onMessage.
  */
-function createOn({ awsCredentials, region, service, account, deployment, subscriptions = new Set() }, consumer = Consumer) {
-	if (!awsCredentials) {
-		throw new Error('Missing expected arguments: awsCredentials');
+function createOn({ sqs, region, service, account, deployment, subscriptions = new Set() }, consumer = Consumer) {
+	if (!sqs) {
+		throw new Error('Missing expected arguments: sqs');
 	}
 
 	const {
@@ -117,11 +117,6 @@ function createOn({ awsCredentials, region, service, account, deployment, subscr
 		onProcessingError,
 		onMessage,
 	} = createHandlers({ deserialize });
-
-	const sqs = new AWS.SQS({
-		credentials : awsCredentials,
-		region,
-	});
 
 	/**
      * On will take an event name and setup a listener for that event. It will automagically figure out the event type
