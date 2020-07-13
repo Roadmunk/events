@@ -102,18 +102,30 @@ function createHandlers({ deserialize }) {
  *
  * @returns {Object} A reference to On and onMessage.
  */
-function createOn({ region, service, account, deployment, subscriptions = new Set() }, consumer = Consumer) {
+function createOn({ awsCredentials, region, service, account, deployment, subscriptions = new Set() }, consumer = Consumer) {
+	if (!awsCredentials) {
+		throw new Error('Missing expected arguments: awsCredentials');
+	}
+
+	if (!region) {
+		throw new Error('Missing expected arguments: region');
+	}
+
 	const {
 		deserialize,
 		buildQueueUrl,
 	} = createActions();
 
-	AWS.config.update({ region });
 	const {
 		onError,
 		onProcessingError,
 		onMessage,
 	} = createHandlers({ deserialize });
+
+	const sqs = new AWS.SQS({
+		credentials : awsCredentials,
+		region,
+	});
 
 	/**
      * On will take an event name and setup a listener for that event. It will automagically figure out the event type
@@ -123,12 +135,6 @@ function createOn({ region, service, account, deployment, subscriptions = new Se
      * for additional analysis.
      *
      * Check out the {@tutorial on-tutorial}
-     *
-     * ### Required Environment Variables
-     * - REGION - This is the AWS region our service is operating in
-     * - ACCOUNT - The AWS account number we are using
-     * - DEPLOYMENT - The deployment we are part of
-     * - SERVICE - The name of our service
      *
      * @module On
      * @param {String} eventName The name of the event to listen for
@@ -155,6 +161,7 @@ function createOn({ region, service, account, deployment, subscriptions = new Se
 		const app = consumer.create({
 			queueUrl,
 			handleMessage : onMessage(eventName, callback),
+			sqs,
 		});
 
 		app.on('error', onError(eventName));
