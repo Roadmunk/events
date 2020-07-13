@@ -107,6 +107,10 @@ function createOn({ awsCredentials, region, service, account, deployment, subscr
 		throw new Error('Missing expected arguments: awsCredentials');
 	}
 
+	if (!region) {
+		throw new Error('Missing expected arguments: region');
+	}
+
 	const {
 		deserialize,
 		buildQueueUrl,

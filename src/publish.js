@@ -49,6 +49,10 @@ function createPublish({ awsCredentials, deployment, region, service, date = Dat
 		throw new Error('Missing expected arguments: awsCredentials');
 	}
 
+	if (!region) {
+		throw new Error('Missing expected arguments: region');
+	}
+
 	const lambda = new AWS.Lambda({
 		apiVersion  : '2015-03-31',
 		credentials : awsCredentials,
