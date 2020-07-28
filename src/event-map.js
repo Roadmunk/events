@@ -3,6 +3,7 @@ const { AccountPackageUpdated }            = require('../dist/protos/account_pac
 const { AccountSignupCompleted }           = require('../dist/protos/account_signup_pb');
 const { AccountUpdatedMessage }            = require('../dist/protos/account_updated_pb');
 const { ConfigureSAML }                    = require('../dist/protos/configure_saml_pb');
+const { CustomersCSVImportTask }           = require('../dist/protos/customers_csv_import_task_pb');
 const { CustomersCSVIngestionMessage }     = require('../dist/protos/customers_csv_ingestion_pb');
 const { FeedbackCommentedMessage }         = require('../dist/protos/feedback_commented_pb');
 const { FeedbackCSVImportTask }            = require('../dist/protos/feedback_csv_import_task_pb');
@@ -35,6 +36,7 @@ module.exports = {
 	'account-package-updated'      : AccountPackageUpdated,
 	'account-updated'              : AccountUpdatedMessage,
 	'configure-saml'               : ConfigureSAML,
+	'customers-csv-import-task'    : CustomersCSVImportTask,
 	'customers-csv-ingestion'      : CustomersCSVIngestionMessage,
 	'feedback-commented'           : FeedbackCommentedMessage,
 	'feedback-csv-import-task'     : FeedbackCSVImportTask,
