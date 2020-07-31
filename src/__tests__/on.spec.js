@@ -17,10 +17,11 @@ const mockConsumer = {
 
 const subscriptions     = new Set();
 const { on, onMessage } = createOn({
-	region     : REGION,
-	deployment : DEPLOYMENT,
-	service    : SERVICE,
-	account    : ACCOUNT,
+	awsCredentials : {},
+	region         : REGION,
+	deployment     : DEPLOYMENT,
+	service        : SERVICE,
+	account        : ACCOUNT,
 	subscriptions,
 }, mockConsumer);
 
