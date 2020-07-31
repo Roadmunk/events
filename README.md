@@ -30,6 +30,8 @@ commit may not find its way into your docker containers.
 }
 ```
 
+Note that if you are working in a fim-tools repo, such as `fim-monolith`, you will need to run `npm install` in `/fim-tools` (rather than `/fim-tools/fim-monolith/api`, as an) for your changes to appear.
+
 ### SQS Queue Convention
 
 The PubSub `on` function subscribes to SQS Queues under the covers. These queues are managed by each individual service. We use a convention to simplify our `on` functions by naming our SQS Queues with a few parameters. 
