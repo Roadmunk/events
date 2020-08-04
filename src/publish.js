@@ -44,8 +44,8 @@ function createActions() {
  *
  * @returns {Object} A reference to Publish and getEventNAme
  */
-function createPublish({ awsCredentials, deployment, region, service, date = Date }) {
-	if (!awsCredentials) {
+function createPublish({ awsCredentials, deployment, region, service, date = Date }, lambda) {
+	if (!lambda && !awsCredentials) {
 		throw new Error('Missing expected arguments: awsCredentials');
 	}
 
@@ -53,7 +53,8 @@ function createPublish({ awsCredentials, deployment, region, service, date = Dat
 		throw new Error('Missing expected arguments: region');
 	}
 
-	const lambda = new AWS.Lambda({
+	// if we do not have a lambda instance passed in, create one
+	lambda = lambda || new AWS.Lambda({
 		apiVersion  : '2015-03-31',
 		credentials : awsCredentials,
 		region,
