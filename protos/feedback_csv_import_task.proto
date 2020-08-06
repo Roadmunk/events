@@ -2,9 +2,11 @@ syntax = "proto3";
 package roadmunk;
 
 message FeedbackCSVImportTask {
-  string deployment = 1;
-  string account_id = 2;
-  string task_id    = 3;
-  string old_status = 4;
-  string new_status = 5;
+  string deployment   = 1;
+  string account_id   = 2;
+  string task_id      = 3;
+  string old_status   = 4;
+  string new_status   = 5;
+  string user_id      = 6;
+  string package_name = 7;
 }
