@@ -63,7 +63,9 @@ proto.roadmunk.CustomersCSVImportTask.toObject = function(includeInstance, msg) 
     accountId: jspb.Message.getFieldWithDefault(msg, 2, ""),
     taskId: jspb.Message.getFieldWithDefault(msg, 3, ""),
     oldStatus: jspb.Message.getFieldWithDefault(msg, 4, ""),
-    newStatus: jspb.Message.getFieldWithDefault(msg, 5, "")
+    newStatus: jspb.Message.getFieldWithDefault(msg, 5, ""),
+    userId: jspb.Message.getFieldWithDefault(msg, 6, ""),
+    packageName: jspb.Message.getFieldWithDefault(msg, 7, "")
   };
 
   if (includeInstance) {
@@ -119,6 +121,14 @@ proto.roadmunk.CustomersCSVImportTask.deserializeBinaryFromReader = function(msg
     case 5:
       var value = /** @type {string} */ (reader.readString());
       msg.setNewStatus(value);
+      break;
+    case 6:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setUserId(value);
+      break;
+    case 7:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setPackageName(value);
       break;
     default:
       reader.skipField();
@@ -181,6 +191,20 @@ proto.roadmunk.CustomersCSVImportTask.serializeBinaryToWriter = function(message
   if (f.length > 0) {
     writer.writeString(
       5,
+      f
+    );
+  }
+  f = message.getUserId();
+  if (f.length > 0) {
+    writer.writeString(
+      6,
+      f
+    );
+  }
+  f = message.getPackageName();
+  if (f.length > 0) {
+    writer.writeString(
+      7,
       f
     );
   }
@@ -259,6 +283,36 @@ proto.roadmunk.CustomersCSVImportTask.prototype.getNewStatus = function() {
 /** @param {string} value */
 proto.roadmunk.CustomersCSVImportTask.prototype.setNewStatus = function(value) {
   jspb.Message.setField(this, 5, value);
+};
+
+
+/**
+ * optional string user_id = 6;
+ * @return {string}
+ */
+proto.roadmunk.CustomersCSVImportTask.prototype.getUserId = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 6, ""));
+};
+
+
+/** @param {string} value */
+proto.roadmunk.CustomersCSVImportTask.prototype.setUserId = function(value) {
+  jspb.Message.setField(this, 6, value);
+};
+
+
+/**
+ * optional string package_name = 7;
+ * @return {string}
+ */
+proto.roadmunk.CustomersCSVImportTask.prototype.getPackageName = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 7, ""));
+};
+
+
+/** @param {string} value */
+proto.roadmunk.CustomersCSVImportTask.prototype.setPackageName = function(value) {
+  jspb.Message.setField(this, 7, value);
 };
 
 
