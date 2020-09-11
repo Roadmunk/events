@@ -149,6 +149,7 @@ function createOn({ awsCredentials, region, service, account, deployment, subscr
 			? `${eventName}-${queueGroup}`
 			: eventName;
 
+		console.log(key)
 		if (subscriptions.has(key)) {
 			console.error('Can only listen to an event once. Create a new SQS queue to listen to the same event.');
 			throw Error('Cannot subscribe to the same event multiple times. Check out how to add a queueGroup in the docs.');

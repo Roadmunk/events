@@ -11,12 +11,14 @@ const REGION         = 'us-east-1';
 const LAMBDA_TO_CALL = `event-bus-filter_${REGION}`;
 const DEPLOYMENT     = 'app-test';
 const SERVICE        = 'bifrost-unit-test';
+const TOPOLOGY       = 'local-test';
 
 const { publish } = createPublish({
 	date       : mockDate,
 	service    : SERVICE,
 	deployment : DEPLOYMENT,
 	region     : REGION,
+	topology   : TOPOLOGY,
 }, {
 	invoke : mockInvoke,
 });
@@ -44,6 +46,7 @@ describe('publish', () => {
 						Data             : Buffer.from(data.serializeBinary()).toString('base64'),
 						DateTime         : '1',
 						Deployment       : DEPLOYMENT,
+						Topology         : TOPOLOGY,
 						Region           : REGION,
 						Service          : SERVICE,
 					}),

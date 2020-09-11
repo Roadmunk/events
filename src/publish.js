@@ -44,13 +44,17 @@ function createActions() {
  *
  * @returns {Object} A reference to Publish and getEventNAme
  */
-function createPublish({ awsCredentials, deployment, region, service, date = Date }, lambda) {
+function createPublish({ awsCredentials, deployment, region, service, topology, date = Date }, lambda) {
 	if (!lambda && !awsCredentials) {
 		throw new Error('Missing expected arguments: awsCredentials');
 	}
 
 	if (!region) {
 		throw new Error('Missing expected arguments: region');
+	}
+
+	if (!topology) {
+		throw new Error('Missing expected arguments: topology');
 	}
 
 	// if we do not have a lambda instance passed in, create one
@@ -87,6 +91,7 @@ function createPublish({ awsCredentials, deployment, region, service, date = Dat
 				Data             : serialize(event),
 				DateTime         : Math.floor(date.now() / 1000).toString(),
 				Deployment       : deployment,
+				Topology         : topology,
 				Region           : region,
 				Service          : service,
 			}),
