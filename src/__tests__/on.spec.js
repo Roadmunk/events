@@ -3,6 +3,7 @@ const events   = require('../event-map');
 
 const REGION     = 'us-east-1';
 const DEPLOYMENT = 'app-test';
+const TOPOLOGY   = 'test-topology';
 const SERVICE    = 'bifrost-unit-test';
 const ACCOUNT    = 512346732851;
 
@@ -22,6 +23,7 @@ const { on, onMessage } = createOn({
 	deployment     : DEPLOYMENT,
 	service        : SERVICE,
 	account        : ACCOUNT,
+	topology       : TOPOLOGY,
 	subscriptions,
 }, mockConsumer);
 
@@ -42,7 +44,7 @@ describe('subscribe', () => {
 
 			expect(mockConsumer.create).toHaveBeenCalledTimes(1);
 			expect(mockConsumer.create).toHaveBeenCalledWith(expect.objectContaining({
-				queueUrl : `https://sqs.${REGION}.amazonaws.com/${ACCOUNT}/${SERVICE}-${DEPLOYMENT}-${eventName}`,
+				queueUrl : `https://sqs.${REGION}.amazonaws.com/${ACCOUNT}/${SERVICE}-${TOPOLOGY}-${DEPLOYMENT}-${eventName}`,
 			}));
 		});
 
@@ -54,7 +56,7 @@ describe('subscribe', () => {
 
 			expect(mockConsumer.create).toHaveBeenCalledTimes(1);
 			expect(mockConsumer.create).toHaveBeenCalledWith(expect.objectContaining({
-				queueUrl : `https://sqs.${REGION}.amazonaws.com/${ACCOUNT}/${SERVICE}-${DEPLOYMENT}-${eventName}-${queueGroup}`,
+				queueUrl : `https://sqs.${REGION}.amazonaws.com/${ACCOUNT}/${SERVICE}-${TOPOLOGY}-${DEPLOYMENT}-${eventName}-${queueGroup}`,
 			}));
 		});
 
@@ -67,10 +69,10 @@ describe('subscribe', () => {
 
 			expect(mockConsumer.create).toHaveBeenCalledTimes(2);
 			expect(mockConsumer.create).toHaveBeenCalledWith(expect.objectContaining({
-				queueUrl : `https://sqs.${REGION}.amazonaws.com/${ACCOUNT}/${SERVICE}-${DEPLOYMENT}-${eventName}`,
+				queueUrl : `https://sqs.${REGION}.amazonaws.com/${ACCOUNT}/${SERVICE}-${TOPOLOGY}-${DEPLOYMENT}-${eventName}`,
 			}));
 			expect(mockConsumer.create).toHaveBeenCalledWith(expect.objectContaining({
-				queueUrl : `https://sqs.${REGION}.amazonaws.com/${ACCOUNT}/${SERVICE}-${DEPLOYMENT}-${eventName}-${queueGroup}`,
+				queueUrl : `https://sqs.${REGION}.amazonaws.com/${ACCOUNT}/${SERVICE}-${TOPOLOGY}-${DEPLOYMENT}-${eventName}-${queueGroup}`,
 			}));
 		});
 
