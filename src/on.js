@@ -36,8 +36,9 @@ function createActions() {
 		account,
 		service,
 		deployment,
+		topology,
 	}) {
-		return `https://sqs.${region}.amazonaws.com/${account}/${service}-${deployment}-${eventName}`;
+		return `https://sqs.${region}.amazonaws.com/${account}/${service}-${topology}-${deployment}-${eventName}`;
 	}
 	return {
 		deserialize,
@@ -102,7 +103,7 @@ function createHandlers({ deserialize }) {
  *
  * @returns {Object} A reference to On and onMessage.
  */
-function createOn({ awsCredentials, region, service, account, deployment, subscriptions = new Set() }, consumer = Consumer) {
+function createOn({ awsCredentials, region, service, account, deployment, topology, subscriptions = new Set() }, consumer = Consumer) {
 	if (!awsCredentials) {
 		throw new Error('Missing expected arguments: awsCredentials');
 	}
@@ -154,7 +155,7 @@ function createOn({ awsCredentials, region, service, account, deployment, subscr
 			throw Error('Cannot subscribe to the same event multiple times. Check out how to add a queueGroup in the docs.');
 		}
 
-		const queueUrl = buildQueueUrl({ eventName : key, region, account, service, deployment });
+		const queueUrl = buildQueueUrl({ eventName : key, region, account, service, deployment, topology });
 
 		console.log(`Listener setup for ${queueUrl}`);
 
