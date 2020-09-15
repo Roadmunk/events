@@ -14,8 +14,8 @@ function createActions() {
      * @param {String} data Base64 encoded binary for the event protobuf
      */
 	function deserialize(eventName, data) {
-		const bytes = Buffer.from(data || '==', 'base64');
-		return eventMap[eventName].deserializeBinary(bytes);
+		const raw = Buffer.from(data || '==', 'base64');
+		return eventMap[eventName].deserializeBinary(raw);
 	}
 
 	/**
@@ -26,7 +26,8 @@ function createActions() {
      * @param {String} config.region The region you are listening in
      * @param {String} config.account The AWS account id
      * @param {String} config.service The name of the service that is listening to the event
-     * @param {String} config.deployment The deployment you are listening to
+     * @param {String} config.deployment The deployment you are listening to (OPTIONAL)
+     * @param {String} config.topology The topology that contains the region and deployments you are listening to
      * @param {String?} queueGroup Optional: If a service is listening to the same event in multiple places, this
      * field is required so we can handle retries if something fails
      */
@@ -85,7 +86,7 @@ function createHandlers({ deserialize }) {
 	function onMessage(eventName, cb) {
 		return function(message) {
 			const data = deserialize(eventName, message.Body);
-			cb(data.toObject());
+			cb(data.toObject(), message);
 		};
 	}
 
