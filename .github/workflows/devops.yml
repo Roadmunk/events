@@ -31,5 +31,5 @@ jobs:
 
       - name: "Publish"
         run: "npm publish"
-        with:
+        env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
