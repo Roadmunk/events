@@ -14,7 +14,7 @@
     "docs:watch": "nodemon --exec 'npx jsdoc -c .jsdoc.js' --watch ./src ./tutorials"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
+    "registry": "https://npm.pkg.github.com/@roadmunk"
   },
   "repository": {
     "type": "git",
