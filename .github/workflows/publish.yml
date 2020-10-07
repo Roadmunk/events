@@ -1,0 +1,37 @@
+name: "Build and Publish"
+
+on:
+  push:
+    branches:
+      - master
+      
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@master
+      
+      - name: "Setup Node.js"
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+        
+      - name: "install"
+        run: npm install
+        
+      - name: Install Protoc
+        uses: arduino/setup-protoc@v1
+        with:
+          version: '3.x'
+          
+      - name: "lint"
+        run: npm run lint
+          
+      - name: "Test"
+        run: "npm test"
+
+      - name: "Publish"
+        run: "npm publish"
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
