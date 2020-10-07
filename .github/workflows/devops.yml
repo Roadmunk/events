@@ -17,8 +17,6 @@ jobs:
          
          - name: "install"
            run: "npm install"
-           env:
-             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
          
          - name: Install Protoc
            uses: arduino/setup-protoc@v1
