@@ -17,7 +17,7 @@ jobs:
          
          - name: "install"
            run: "npm install"
-           with:
+           env:
              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
          
          - name: Install Protoc
