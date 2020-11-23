@@ -15,14 +15,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Roadmunk/events.git"
+    "url": "git+https://gitlab.com/roadmunk/events.git"
   },
   "author": "Jared Bydeley <jared@roadmunk.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Roadmunk/events/issues"
+    "url": "https://gitlab.com/roadmunk/events/issues"
   },
-  "homepage": "https://github.com/Roadmunk/events#readme",
+  "homepage": "https://gitlab.com/roadmunk/events#readme",
   "dependencies": {
     "google-protobuf": "^3.9.1",
     "sqs-consumer": "^5.4.0"

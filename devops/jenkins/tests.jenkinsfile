@@ -2,7 +2,7 @@
 void setBuildStatus(String context, String message, String state) {
   step([
       $class: "GitHubCommitStatusSetter",
-      reposSource: [$class: "ManuallyEnteredRepositorySource", url: "https://github.com/Roadmunk/events/"],
+      reposSource: [$class: "ManuallyEnteredRepositorySource", url: "https://gitlab.com/roadmunk/events/"],
       contextSource: [$class: "ManuallyEnteredCommitContextSource", context: context],
       errorHandlers: [[$class: "ChangingBuildStatusErrorHandler", result: "UNSTABLE"]],
       statusResultSource: [ $class: "ConditionalStatusResultSource", results: [[$class: "AnyBuildResult", message: message, state: state]] ]
@@ -52,7 +52,7 @@ pipeline {
                     doGenerateSubmoduleConfigurations : false,
                     extensions                        : [[$class: 'CloneOption', depth: 1, noTags: false, reference: '', shallow: true, timeout: 10]],
                     submoduleCfg                      : [],
-                    userRemoteConfigs                 : [[refspec: "+refs/pull/${ghprbPullId}/*:refs/remotes/origin/pr/${ghprbPullId}/*", credentialsId: '525a99e4-474e-4481-a580-116f4357d434', url: 'git@github.com:Roadmunk/events.git']]
+                    userRemoteConfigs                 : [[refspec: "+refs/pull/${ghprbPullId}/*:refs/remotes/origin/pr/${ghprbPullId}/*", credentialsId: 'sa-cicd-gitlab-sshkey', url: 'git@gitlab.com:roadmunk/events.git']]
                 ])
             }
         }
